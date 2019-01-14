@@ -5,15 +5,22 @@
  */
 package regras.acesso.persistencia;
 
+import java.util.List;
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author sergio
  */
 public interface Persistencia<T> {
      
-    public T criarEntidade(T entidade) throws Exception;   
-    public void excluirEntidade(T entidade) throws Exception;  
-    public T editarEntidade(T entidade) throws Exception;
+    
+    public EntityManager getEntityManager();
+    
+    public T criar(T entidade) throws Exception;   
+    public void excluir(T entidade) throws Exception;  
+    public T editar(T entidade) throws Exception;
 
-    public T getEntidade(int id);
+    public T get(int id);
+    public List<T> getAll();
 }
