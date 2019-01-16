@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 /**
  *
  * @author sergio
+ * @param <T>
  */
 public interface Persistencia<T> {
      

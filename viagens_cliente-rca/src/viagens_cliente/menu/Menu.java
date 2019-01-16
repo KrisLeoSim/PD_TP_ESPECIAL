@@ -6,7 +6,7 @@
 package viagens_cliente.menu;
 
 import java.util.Scanner;
-import lib.regras.negocio.ControladorRemote;
+import regras.negocio.ControladorRemote;
 
 /**
  *

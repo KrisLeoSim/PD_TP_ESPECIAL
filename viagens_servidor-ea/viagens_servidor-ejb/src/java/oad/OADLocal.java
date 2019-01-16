@@ -7,6 +7,7 @@ package oad;
 
 import javax.ejb.Local;
 import javax.persistence.EntityManager;
+import regras.acesso.entidade.User;
 
 /**
  *
@@ -17,8 +18,8 @@ public interface OADLocal {
 
     public EntityManager getEntityManager();
     
-//     public Utilizador login(String username, String password) throws Exception;
-//    public Utilizador getUtilizador(int id) throws Exception;
+//      public User login(String username, String password) ;
+//      public User getUtilizador(int id);
 //    public Utilizador criarUtilizador(Utilizador utilizador) throws Exception; 
 //    public void excluirUtilizador(Utilizador utilizador) throws Exception;
 //    public Utilizador editarUtilizador(Utilizador utilizador) throws Exception;

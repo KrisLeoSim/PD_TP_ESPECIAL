@@ -21,36 +21,34 @@ import regras.acesso.entidade.User;
  * @author sergio
  */
 @Stateless
-//@LocalBean
+@LocalBean
 public class UtilizadorP implements Persistencia<Object>{
     
     @EJB
     private OADLocal oad;
 
-    
- 
-    
-    
     public User atualizaUltimoLogin(User utilizador) throws Exception {
     
         utilizador.setDataUltimoLogin(new Date());
-        
+       
         return (User) editar(utilizador);
     }
     
     
     public User getUtilizador(String nome, String palavrapass ) {
         
-        Query query = getEntityManager().createNamedQuery("Utilizador.findByUsername");
+        Query query = getEntityManager().createNamedQuery("User.findByUsername");
         query.setParameter("username", nome);
-        List<regras.acesso.entidade.User> users = query.getResultList();
+        List<User> users = query.getResultList();
+         
+          System.out.println("****************************************  " + users.get(0).getUsername());
         
-        if (users.isEmpty() || users.get(0) == null) {
+        if (users.isEmpty()) {
             return null;
         }
-        
-        User utilizador = users.get(0);
-        
+        System.out.println("GETUSER:   " + users.get(0).getPrimeiroNome());
+        User utilizador = (User) users.get(0);
+       
         if (utilizador.getPassword().equals(palavrapass)) {
             return  utilizador;
         }
@@ -121,7 +119,7 @@ public class UtilizadorP implements Persistencia<Object>{
 
     @Override
     public EntityManager getEntityManager() {
-        return oad.getEntityManager();
+        return oad.getEntityManager(); 
     }
   
 }

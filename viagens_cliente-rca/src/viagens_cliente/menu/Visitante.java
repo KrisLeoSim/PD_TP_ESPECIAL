@@ -5,8 +5,8 @@
  */
 package viagens_cliente.menu;
 
-import lib.regras.negocio.ControladorRemote;
-import lib.regras.negocio.entidade.UtilizadorPojo;
+import regras.negocio.ControladorRemote;
+import regras.negocio.entidade.UtilizadorPojo;
 
 /**
  *
@@ -71,10 +71,14 @@ public class Visitante extends Menu{
             //String password = readPassword();
             String password = sc.nextLine();
             System.out.println();
-            
+            username = "joao";
+            password="1234";
             UtilizadorPojo utilizadorC = controladorEJB.login(username, password);
             
+            if(utilizadorC != null){
+            System.out.println("Bem vindo " + utilizadorC.getPrimeiroNome());
             return getEstado(utilizadorC);
+        }
             
         } catch(Exception e) {
             System.out.println("ERRO: "+e.getMessage());

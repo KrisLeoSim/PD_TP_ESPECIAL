@@ -5,12 +5,11 @@
  */
 package oad;
 
-import javax.annotation.PostConstruct;
+
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import regras.acesso.persistencia.UtilizadorP;
 
 /**
  *
@@ -19,20 +18,23 @@ import regras.acesso.persistencia.UtilizadorP;
 @Singleton
 public class OAD implements OADLocal {
     
-    @PersistenceContext
+    
+    @PersistenceContext(unitName="viagens_servidor-ejbPU")
     private EntityManager em;
 
-    private UtilizadorP utilizadorPersistencia;
+   // private UtilizadorP utilizadorPersistencia;
 
-    
+//    
 //   @Override
-//    public UtilizadorExtended login(String username, String password) {
+//    public User login(String username, String password) {
+//       
 //        return utilizadorPersistencia.getUtilizador(username, password);
 //    }
 //    
 //    @Override
-//    public Utilizador getUtilizador(int id) throws Exception {
-//        return utilizadorPersistencia.getEntidade(id);
+//    public User getUtilizador(int id) {
+//      //  return utilizadorPersistencia.getEntidade(id);
+//      return null;
 //    }
 //
 //    @Override
@@ -49,18 +51,17 @@ public class OAD implements OADLocal {
     
     
     
-    @PostConstruct
-    void inicia() {
-       utilizadorPersistencia = new UtilizadorP();
-//        perfilController = new PerfilController();
-//        produtoController = new ProdutoController();
-    }
+//    @PostConstruct
+//    public void initialize() {
+//    utilizadorPersistencia = new UtilizadorP();
+//    }       
     
      @PreDestroy
-    void encerra() {
+    public void encerra() {
         em.close();
     }
 
+    @Override
     public EntityManager getEntityManager() {
         return em;
     }

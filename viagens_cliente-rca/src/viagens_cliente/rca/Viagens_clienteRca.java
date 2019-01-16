@@ -8,7 +8,7 @@ package viagens_cliente.rca;
 import java.util.Properties;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import lib.regras.negocio.ControladorRemote;
+import regras.negocio.ControladorRemote;
 import viagens_cliente.menu.Cliente;
 import viagens_cliente.menu.Menu;
 import viagens_cliente.menu.Operador;
@@ -24,10 +24,11 @@ public class Viagens_clienteRca {
     
     
     //variaveis
-    public final static String nome = "java:global/viagens_servidor-ea/viagens_servidor-ejb/Controlador!lib.regras.negocio.ControladorRemote";
-    //public final static String nome = "regras.negocio.ControladorRemote";
-    public final static String ip = "192.168.56.175";
-    public final static String port = "4848"; 
+    public static String nome = "java:global/viagens_servidor-ea/viagens_servidor-ejb/Controlador!regras.negocio.ControladorRemote";
+   
+    //public final static String nome = "libregras.negocio.ControladorRemote";
+    public  static String ip = "192.168.56.175";
+    public  static String port = "3700"; 
      
     // "Ejb_controlos.Utilizador_Remote_BeanRemote"
      
@@ -68,7 +69,7 @@ public class Viagens_clienteRca {
 
             System.out.println("start lookup");
             controladorEJB = (ControladorRemote)  ctx.lookup(nome);
-
+            
         }catch(NamingException e) {
 
             System.out.println(e.getMessage());
