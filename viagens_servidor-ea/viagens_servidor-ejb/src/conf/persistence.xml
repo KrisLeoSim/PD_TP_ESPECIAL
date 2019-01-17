@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="viagens_servidor-ejbPU" transaction-type="JTA">
+  <persistence-unit name="viagensPU" transaction-type="JTA">
     <jta-data-source>jdbc/_voodBD</jta-data-source>
-    <class>regras.acesso.entidade.Carrinho</class>
-    <class>regras.acesso.entidade.Carteira</class>
-    <class>regras.acesso.entidade.Companhia</class>
-    <class>regras.acesso.entidade.Destinos</class>
-    <class>regras.acesso.entidade.Feedback</class>
-    <class>regras.acesso.entidade.Licitacoes</class>
-    <class>regras.acesso.entidade.Mensagens</class>
-    <class>regras.acesso.entidade.Movimentos</class>
-    <class>regras.acesso.entidade.User</class>
-    <class>regras.acesso.entidade.Voo</class>
+    <class>entidade.Utilizador</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>
+<!--      
+     <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.56.175:5432/pgaulas"/>
+      <property name="javax.persistence.jdbc.user" value="pguser"/>
+      <property name="javax.persistence.jdbc.password" value="pgpass"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+<provider>
+          org.eclipse.persistence.jpa.PersistenceProvider
+      </provider>
+      -->

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package regras.negocio;
+package logica;
 
 import javax.ejb.Remote;
-import regras.negocio.entidade.UtilizadorPojo;
+
 
 /**
  *
@@ -15,8 +15,6 @@ import regras.negocio.entidade.UtilizadorPojo;
 @Remote
 public interface ControladorRemote {
 
-    
-    
-    UtilizadorPojo login(String nomeutilizador, String palavrapass);
-    
+    int login(String utilizador, String password);
+
 }

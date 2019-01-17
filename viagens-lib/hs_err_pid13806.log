@@ -1,0 +1,260 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 32768 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2643), pid=13806, tid=0xb6488b40
+#
+# JRE version:  (8.0_181-b13) (build )
+# Java VM: OpenJDK Server VM (25.181-b13 mixed mode linux-x86 )
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread is native thread
+
+Stack: [0xb6438000,0xb6489000],  sp=0xb6487e40,  free space=319k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x8c7df3]
+V  [libjvm.so+0x3750f6]
+V  [libjvm.so+0x72ac7a]
+V  [libjvm.so+0x724e10]
+V  [libjvm.so+0x773a76]
+V  [libjvm.so+0x7722ae]
+V  [libjvm.so+0x4b7650]
+V  [libjvm.so+0x87654e]
+V  [libjvm.so+0x51f885]  JNI_CreateJavaVM+0x65
+C  [libjli.so+0x2654]
+C  [libpthread.so.0+0x627a]  start_thread+0xda
+
+
+---------------  P R O C E S S  ---------------
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0045e000-0045f000 r-xp 00000000 08:01 162652     /usr/lib/jvm/java-8-openjdk-i386/bin/javac
+0045f000-00460000 r--p 00000000 08:01 162652     /usr/lib/jvm/java-8-openjdk-i386/bin/javac
+00460000-00461000 rw-p 00001000 08:01 162652     /usr/lib/jvm/java-8-openjdk-i386/bin/javac
+02256000-02277000 rw-p 00000000 00:00 0          [heap]
+b62d6000-b62fe000 r-xp 00000000 08:01 280602     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libjava.so
+b62fe000-b62ff000 r--p 00027000 08:01 280602     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libjava.so
+b62ff000-b6300000 rw-p 00028000 08:01 280602     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libjava.so
+b6300000-b6321000 rw-p 00000000 00:00 0 
+b6321000-b6400000 ---p 00000000 00:00 0 
+b641f000-b642d000 r-xp 00000000 08:01 280620     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libverify.so
+b642d000-b642e000 r--p 0000d000 08:01 280620     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libverify.so
+b642e000-b642f000 rw-p 0000e000 08:01 280620     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libverify.so
+b642f000-b6436000 r-xp 00000000 08:01 262182     /lib/i386-linux-gnu/librt-2.24.so
+b6436000-b6437000 r--p 00006000 08:01 262182     /lib/i386-linux-gnu/librt-2.24.so
+b6437000-b6438000 rw-p 00007000 08:01 262182     /lib/i386-linux-gnu/librt-2.24.so
+b6438000-b6439000 ---p 00000000 00:00 0 
+b6439000-b6489000 rw-p 00000000 00:00 0 
+b6489000-b64a5000 r-xp 00000000 08:01 262160     /lib/i386-linux-gnu/libgcc_s.so.1
+b64a5000-b64a6000 r--p 0001b000 08:01 262160     /lib/i386-linux-gnu/libgcc_s.so.1
+b64a6000-b64a7000 rw-p 0001c000 08:01 262160     /lib/i386-linux-gnu/libgcc_s.so.1
+b64a7000-b64fa000 r-xp 00000000 08:01 262170     /lib/i386-linux-gnu/libm-2.24.so
+b64fa000-b64fb000 r--p 00052000 08:01 262170     /lib/i386-linux-gnu/libm-2.24.so
+b64fb000-b64fc000 rw-p 00053000 08:01 262170     /lib/i386-linux-gnu/libm-2.24.so
+b64fc000-b666c000 r-xp 00000000 08:01 6430       /usr/lib/i386-linux-gnu/libstdc++.so.6.0.22
+b666c000-b6672000 r--p 0016f000 08:01 6430       /usr/lib/i386-linux-gnu/libstdc++.so.6.0.22
+b6672000-b6673000 rw-p 00175000 08:01 6430       /usr/lib/i386-linux-gnu/libstdc++.so.6.0.22
+b6673000-b6676000 rw-p 00000000 00:00 0 
+b6676000-b7136000 r-xp 00000000 08:01 280623     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/server/libjvm.so
+b7136000-b7182000 r--p 00abf000 08:01 280623     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/server/libjvm.so
+b7182000-b7199000 rw-p 00b0b000 08:01 280623     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/server/libjvm.so
+b7199000-b75b8000 rw-p 00000000 00:00 0 
+b75b8000-b75ba000 rw-p 00000000 00:00 0 
+b75ba000-b776b000 r-xp 00000000 08:01 262166     /lib/i386-linux-gnu/libc-2.24.so
+b776b000-b776d000 r--p 001b0000 08:01 262166     /lib/i386-linux-gnu/libc-2.24.so
+b776d000-b776e000 rw-p 001b2000 08:01 262166     /lib/i386-linux-gnu/libc-2.24.so
+b776e000-b7771000 rw-p 00000000 00:00 0 
+b7771000-b7774000 r-xp 00000000 08:01 262169     /lib/i386-linux-gnu/libdl-2.24.so
+b7774000-b7775000 r--p 00002000 08:01 262169     /lib/i386-linux-gnu/libdl-2.24.so
+b7775000-b7776000 rw-p 00003000 08:01 262169     /lib/i386-linux-gnu/libdl-2.24.so
+b7776000-b7783000 r-xp 00000000 08:01 280588     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/jli/libjli.so
+b7783000-b7784000 r--p 0000c000 08:01 280588     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/jli/libjli.so
+b7784000-b7785000 rw-p 0000d000 08:01 280588     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/jli/libjli.so
+b7785000-b779e000 r-xp 00000000 08:01 262405     /lib/i386-linux-gnu/libz.so.1.2.8
+b779e000-b779f000 r--p 00018000 08:01 262405     /lib/i386-linux-gnu/libz.so.1.2.8
+b779f000-b77a0000 rw-p 00019000 08:01 262405     /lib/i386-linux-gnu/libz.so.1.2.8
+b77a0000-b77b9000 r-xp 00000000 08:01 262180     /lib/i386-linux-gnu/libpthread-2.24.so
+b77b9000-b77ba000 r--p 00018000 08:01 262180     /lib/i386-linux-gnu/libpthread-2.24.so
+b77ba000-b77bb000 rw-p 00019000 08:01 262180     /lib/i386-linux-gnu/libpthread-2.24.so
+b77bb000-b77bd000 rw-p 00000000 00:00 0 
+b77be000-b77c6000 r-xp 00000000 08:01 262173     /lib/i386-linux-gnu/libnss_compat-2.24.so
+b77c8000-b77c9000 rw-p 00000000 00:00 0 
+b77c9000-b77ca000 r--p 00000000 00:00 0 
+b77ca000-b77cd000 rw-p 00000000 00:00 0 
+b77cd000-b77cf000 r--p 00000000 00:00 0          [vvar]
+b77cf000-b77d1000 r-xp 00000000 00:00 0          [vdso]
+b77d1000-b77f4000 r-xp 00000000 08:01 262162     /lib/i386-linux-gnu/ld-2.24.so
+b77f4000-b77f5000 r--p 00022000 08:01 262162     /lib/i386-linux-gnu/ld-2.24.so
+b77f5000-b77f6000 rw-p 00023000 08:01 262162     /lib/i386-linux-gnu/ld-2.24.so
+bfc1d000-bfc3e000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dapplication.home=/usr/lib/jvm/java-8-openjdk-i386 -Xms8m 
+java_command: com.sun.tools.javac.Main -d /home/sergio/PD_TP_ESPECIAL/viagens-lib/build/classes -classpath /home/sergio/PD_TP_ESPECIAL/viagens-lib/build/classes:/home/sergio/netbeans-8.2/enterprise/modules/ext/javaee-api-7.0.jar:/home/sergio/netbeans-8.2/java/modules/ext/eclipselink/javax.persistence_2.1.0.v201304241213.jar:/home/sergio/netbeans-8.2/ide/modules/ext/postgresql-9.4.1209.jar:/home/sergio/netbeans-8.2/java/modules/ext/eclipselink/eclipselink.jar:/home/sergio/netbeans-8.2/java/modules/ext/eclipselink/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar -sourcepath /home/sergio/PD_TP_ESPECIAL/viagens-lib/build/empty -target 1.8 -encoding UTF-8 -g -processorpath /home/sergio/netbeans-8.2/enterprise/modules/ext/javaee-api-7.0.jar:/home/sergio/netbeans-8.2/java/modules/ext/eclipselink/javax.persistence_2.1.0.v201304241213.jar:/home/sergio/netbeans-8.2/ide/modules/ext/postgresql-9.4.1209.jar:/home/sergio/netbeans-8.2/java/modules/ext/eclipselink/eclipselink.jar:/home/sergio/netbeans-8.2/java/modules/ext/eclipselink/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar:/home/sergio/PD_TP_ESPECIAL/viagens-lib/build/empty -s /home/sergio/PD_TP_ESPECIAL/viagens-lib/build/generated-sources/ap-source-output -source 1.8 /home/sergio/PD_TP_ESPECIAL/viagens-lib/src/logica/ControladorRemote.java /home/sergio/PD_TP_ESPECIAL/viagens-lib/src/regras/negocio/entidade/UtilizadorPojo.java
+java_class_path (initial): /usr/lib/jvm/java-8-openjdk-i386/lib/tools.jar:/usr/lib/jvm/java-8-openjdk-i386/classes
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk-i386/jre/lib/amd64:/usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x8c88c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x8c88c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x7261c0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_IGN, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:PRETTY_NAME="Debian GNU/Linux 9 (stretch)"
+NAME="Debian GNU/Linux"
+VERSION_ID="9"
+VERSION="9 (stretch)"
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+uname:Linux 4.9.0-8-686-pae #1 SMP Debian 4.9.130-2 (2018-10-27) i686
+libc:glibc 2.24 NPTL 2.24 
+rlimit: STACK 8192k, CORE 0k, NPROC 16017, NOFILE 1048576, AS infinity
+load average:1.57 1.07 1.07
+
+/proc/meminfo:
+MemTotal:        2068084 kB
+MemFree:          115168 kB
+MemAvailable:          0 kB
+Buffers:            2024 kB
+Cached:            35476 kB
+SwapCached:            0 kB
+Active:          1888516 kB
+Inactive:          25444 kB
+Active(anon):    1876772 kB
+Inactive(anon):    14948 kB
+Active(file):      11744 kB
+Inactive(file):    10496 kB
+Unevictable:          96 kB
+Mlocked:              96 kB
+HighTotal:       1185736 kB
+HighFree:          15176 kB
+LowTotal:         882348 kB
+LowFree:           99992 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               180 kB
+Writeback:             0 kB
+AnonPages:       1876564 kB
+Mapped:            30832 kB
+Shmem:             15252 kB
+Slab:              18984 kB
+SReclaimable:       9476 kB
+SUnreclaim:         9508 kB
+KernelStack:        2656 kB
+PageTables:         8152 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1034040 kB
+Committed_AS:    2677596 kB
+VmallocTotal:     122880 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       16376 kB
+DirectMap2M:      894976 kB
+
+
+CPU:total 1 (initial active 1) 
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz
+stepping	: 9
+microcode	: 0x19
+cpu MHz		: 2394.560
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 nx rdtscp constant_tsc xtopology nonstop_tsc pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 x2apic popcnt aes xsave avx rdrand hypervisor lahf_lm fsgsbase
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 4789.12
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 2068084k(115044k free), swap 0k(0k free)
+
+vm_info: OpenJDK Server VM (25.181-b13) for linux-x86 JRE (1.8.0_181-8u181-b13-2~deb9u1-b13), built on Oct 22 2018 18:05:23 by "buildd" with gcc 6.3.0 20170516
+
+time: Thu Jan 17 23:37:37 2019
+elapsed time: 4 seconds (0d 0h 0m 4s)
+

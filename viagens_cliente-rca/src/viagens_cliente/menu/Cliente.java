@@ -5,7 +5,7 @@
  */
 package viagens_cliente.menu;
 
-import regras.negocio.ControladorRemote;
+import logica.ControladorRemote;
 
 /**
  *

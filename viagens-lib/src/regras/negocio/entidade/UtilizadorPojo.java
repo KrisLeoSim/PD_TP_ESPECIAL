@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author sergio
  */
 public class UtilizadorPojo implements Serializable{
-    private Integer idUser;
+    private Integer idUtilizador;
     private String username;
     private String password;
     private String primeiroNome;
@@ -25,12 +25,12 @@ public class UtilizadorPojo implements Serializable{
     private int estado;
     private Date dataUltimoLogin;
 
-    public Integer getIdUser() {
-        return idUser;
+    public Integer getIdUtilizador() {
+        return idUtilizador;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setIdUtilizador(Integer idUtilizador) {
+        this.idUtilizador = idUtilizador;
     }
 
     public String getUsername() {
@@ -108,7 +108,7 @@ public class UtilizadorPojo implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 61 * hash + Objects.hashCode(this.idUser);
+        hash = 61 * hash + Objects.hashCode(this.idUtilizador);
         return hash;
     }
 
@@ -124,7 +124,7 @@ public class UtilizadorPojo implements Serializable{
             return false;
         }
         final UtilizadorPojo other = (UtilizadorPojo) obj;
-        if (!Objects.equals(this.idUser, other.idUser)) {
+        if (!Objects.equals(this.idUtilizador, other.idUtilizador)) {
             return false;
         }
         return true;

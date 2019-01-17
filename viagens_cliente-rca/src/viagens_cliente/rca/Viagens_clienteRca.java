@@ -8,7 +8,7 @@ package viagens_cliente.rca;
 import java.util.Properties;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import regras.negocio.ControladorRemote;
+import logica.ControladorRemote;
 import viagens_cliente.menu.Cliente;
 import viagens_cliente.menu.Menu;
 import viagens_cliente.menu.Operador;
@@ -24,7 +24,7 @@ public class Viagens_clienteRca {
     
     
     //variaveis
-    public static String nome = "java:global/viagens_servidor-ea/viagens_servidor-ejb/Controlador!regras.negocio.ControladorRemote";
+    public static String nome = "java:global/viagens_servidor-ea/viagens_servidor-ejb/Controlador!logica.ControladorRemote";
    
     //public final static String nome = "libregras.negocio.ControladorRemote";
     public  static String ip = "192.168.56.175";
@@ -73,7 +73,7 @@ public class Viagens_clienteRca {
         }catch(NamingException e) {
 
             System.out.println(e.getMessage());
-            e.printStackTrace();
+           // e.printStackTrace();
             System.exit(1);
         }
         System.out.println("JNDI lookup done");

@@ -5,7 +5,7 @@
  */
 package viagens_cliente.menu;
 
-import regras.negocio.ControladorRemote;
+import logica.ControladorRemote;
 
 /**
  *
@@ -33,11 +33,8 @@ public class Operador extends Menu {
 
     @Override
     public int cicloDeVida() {
-        System.out.println();
-        System.out.println("--------------------------");
-        System.out.println("Operador");
-        System.out.println("--------------------------");
-        return ESTADO_VISITANTE;
+       imprimeMenu();
+       return ESTADO_VISITANTE;
     }
     
 }
