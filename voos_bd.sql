@@ -2,6 +2,7 @@
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/FXclF4
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
+CREATE SEQUENCE utilizador_seq;
 
 CREATE TABLE IF NOT EXISTS utilizador (
     id_utilizador int NOT NULL DEFAULT NEXTVAL ('utilizador_seq'),
@@ -20,7 +21,7 @@ CREATE TABLE IF NOT EXISTS utilizador (
      )
 );
 
-
+CREATE SEQUENCE companhia_seq;
 CREATE TABLE IF NOT EXISTS companhia (
     id_companhia int NOT NULL DEFAULT NEXTVAL ('companhia_seq'),
     nome_companhia varchar(200)   NOT NULL,
@@ -30,7 +31,7 @@ CREATE TABLE IF NOT EXISTS companhia (
      )
 );
 
-
+CREATE SEQUENCE destino_seq;
 CREATE TABLE IF NOT EXISTS destinos (
     id_destino int NOT NULL DEFAULT NEXTVAL ('destino_seq'),
     pais varchar(200)   NOT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE IF NOT EXISTS destinos (
      )
 );
 
-
+CREATE SEQUENCE voo_seq;
 CREATE TABLE IF NOT EXISTS voo (
     id_voo int NOT NULL DEFAULT NEXTVAL ('voo_seq'),
     id_companhia int   NOT NULL,
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS voo (
      )
 );
 
-
+CREATE SEQUENCE carteira_seq;
 CREATE TABLE IF NOT EXISTS carteira (
     id_carteira int NOT NULL DEFAULT NEXTVAL ('carteira_seq'),
     Montante money   NOT NULL,
@@ -68,7 +69,7 @@ CREATE TABLE IF NOT EXISTS carteira (
      )
 );
 
-
+CREATE SEQUENCE movimento_seq;
 CREATE TABLE IF NOT EXISTS movimentos (
     id_movimento int NOT NULL DEFAULT NEXTVAL ('movimento_seq'),
     id_utilizador int   NOT NULL,
@@ -81,7 +82,7 @@ CREATE TABLE IF NOT EXISTS movimentos (
      )
 );
 
-
+CREATE SEQUENCE carrinho_seq;
 CREATE TABLE IF NOT EXISTS carrinho (
     id_carrinho int NOT NULL DEFAULT NEXTVAL ('carrinho_seq'),
     id_utilizador int   NOT NULL,
@@ -96,7 +97,7 @@ CREATE TABLE IF NOT EXISTS carrinho (
      )
 );
 
-
+CREATE SEQUENCE mensagem_seq;
 CREATE TABLE IF NOT EXISTS mensagens (
     id_mensagem int NOT NULL DEFAULT NEXTVAL ('mensagem_seq'),
     id_utilizador_remetente int   NOT NULL,
@@ -110,7 +111,7 @@ CREATE TABLE IF NOT EXISTS mensagens (
      )
 );
 
-
+CREATE SEQUENCE licitacao_seq;
 CREATE TABLE IF NOT EXISTS licitacoes (
     id_licitacao int NOT NULL DEFAULT NEXTVAL ('licitacao_seq'),
     id_utilizador int   NOT NULL,
@@ -124,7 +125,7 @@ CREATE TABLE IF NOT EXISTS licitacoes (
      )
 );
 
-
+CREATE SEQUENCE feedback_seq;
 CREATE TABLE IF NOT EXISTS feedback (
     id_feedback int NOT NULL DEFAULT NEXTVAL ('feedback_seq'),
     id_utilizador int   NOT NULL,
@@ -143,28 +144,28 @@ ALTER TABLE voo ADD CONSTRAINT fk_voo_id_destino FOREIGN KEY(id_destino)
 REFERENCES destinos (id_destino);
 
 ALTER TABLE movimentos ADD CONSTRAINT fk_movimentos_id_utilizador FOREIGN KEY(id_utilizador)
-REFERENCES utilizador (id_utilizador);
+REFERENCES user (id_utilizador);
 
 ALTER TABLE movimentos ADD CONSTRAINT fk_movimentos_id_carteira FOREIGN KEY(id_carteira)
 REFERENCES carteira (id_carteira);
 
 ALTER TABLE carrinho ADD CONSTRAINT fk_carrinho_id_utilizador FOREIGN KEY(id_utilizador)
-REFERENCES utilizador (id_utilizador);
+REFERENCES user (id_utilizador);
 
 ALTER TABLE carrinho ADD CONSTRAINT fk_carrinho_id_voo FOREIGN KEY(id_voo)
 REFERENCES voo (id_voo);
 
 ALTER TABLE mensagens ADD CONSTRAINT fk_mensagens_id_utilizador_remetente FOREIGN KEY(id_utilizador_remetente)
-REFERENCES utilizador (id_utilizador);
+REFERENCES user (id_utilizador);
 
 ALTER TABLE licitacoes ADD CONSTRAINT fk_licitacoes_id_utilizador FOREIGN KEY(id_utilizador)
-REFERENCES utilizador (id_utilizador);
+REFERENCES user (id_utilizador);
 
 ALTER TABLE licitacoes ADD CONSTRAINT fk_licitacoes_id_voo FOREIGN KEY(id_voo)
 REFERENCES voo (id_voo);
 
 ALTER TABLE feedback ADD CONSTRAINT fk_feedback_id_utilizador FOREIGN KEY(id_utilizador)
-REFERENCES utilizador (id_utilizador);
+REFERENCES user (id_utilizador);
 
 ALTER TABLE feedback ADD CONSTRAINT fk_feedback_id_voo FOREIGN KEY(id_voo)
 REFERENCES voo (id_voo);
