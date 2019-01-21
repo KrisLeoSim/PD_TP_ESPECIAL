@@ -6,7 +6,6 @@
 package viagens_cliente.menu;
 
 import logica.ControladorRemote;
-import regras.negocio.entidade.UtilizadorPojo;
 
 /**
  *
@@ -36,7 +35,7 @@ public class Visitante extends Menu{
         try {         
             while(naoSair) {
                 imprimeMenu();
-                opcao = obtemOpcaoMenu(10);
+                opcao = obtemOpcaoMenu(3);
 
                 switch(opcao) {
                     case 1:
@@ -47,7 +46,7 @@ public class Visitante extends Menu{
                     case 2:
                         regista();
                         break;      
-                    case 0:
+                    case 0:                       
                         naoSair = false;
                         estado = ESTADO_SAIR;
                         break;
@@ -64,47 +63,73 @@ public class Visitante extends Menu{
     }
     
     private int login() {
+        
+        String tipoDeUtilizador;
+        int estado = ESTADO_VISITANTE;
+        
         try {
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  LOGIN  ");
+            System.out.println("--------------------------");
             System.out.print("username: ");
             String username = sc.nextLine();
             System.out.print("password: ");
-            //String password = readPassword();
             String password = sc.nextLine();
             System.out.println();
-            username = "joao";
-            password="1234";
-            int estado = controladorEJB.login(username, password);
             
-            if(estado != 1){
-            System.out.println("Bem vindo " + username +"estado: " +estado );
+            
+            
+            if(controladorEJB.login(username, password)){
+            System.out.println("Bem vindo " + username);
+            
+            tipoDeUtilizador = controladorEJB.getTipoDeUtilizador(username);
+            
+            estado = getEstado(tipoDeUtilizador);
+            
+            }
+            
             return estado;
-        }
             
         } catch(Exception e) {
             System.out.println("ERRO: "+e.getMessage());
             e.printStackTrace(System.out);
         }
-        return 1;
+        return estado;
     }
     
     private void regista() {
         try {
-        System.out.println();
-        System.out.println("--------------------------");
-        System.out.println("  Registar - BREVEMENTE");
-        System.out.println("--------------------------");
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  REGISTAR");
+            System.out.println("--------------------------");
+            System.out.print("username: ");
+            String username = sc.nextLine();
+            System.out.print("password: ");
+            String password = sc.nextLine();
+            System.out.print("nif: ");
+            int nif = sc.nextInt();    
             
+            System.out.println();
+            if(controladorEJB.registar(username, password, nif)){
+                System.out.print("Registou COM sucesso");
+            }else{
+                System.out.print("Não registou");
+            }
+            
+            System.out.println();
         } catch(Exception e) {
             System.out.println("ERRO: "+e.getMessage());
             e.printStackTrace(System.out);
         }
     }
 
-    private int getEstado(UtilizadorPojo utilizadorPojo) {
+    private int getEstado(String utilizador) {
         int estado = ESTADO_VISITANTE;
-        if(utilizadorPojo != null){
-        System.out.println("Bem vindo " + utilizadorPojo.getPrimeiroNome());
-        switch(utilizadorPojo.getTipoUser()){
+        if(utilizador != null){
+        
+        switch(utilizador){
             case "operador":
                 estado = ESTADO_OPERADOR;
                 break;
@@ -116,6 +141,5 @@ public class Visitante extends Menu{
         }       
         return estado;
     }
-    
-    
+
 }

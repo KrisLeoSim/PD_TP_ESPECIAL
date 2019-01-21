@@ -30,11 +30,32 @@ public class Cliente extends Menu{
 
     @Override
     public int cicloDeVida() {
-        System.out.println();
-        System.out.println("--------------------------");
-        System.out.println("Operador");
-        System.out.println("--------------------------");
-        return ESTADO_VISITANTE;
+       int estado = ESTADO_CLIENTE;
+        try {         
+            while(naoSair) {
+                imprimeMenu();
+                opcao = obtemOpcaoMenu(2);
+
+                switch(opcao) {
+                    case 1:
+                   //List<VoosPojo> listaVoos = controladorEJB.obtemVoosActivos();
+                        break;                
+                    case 0:
+                        //controladorEJB.logout();
+                        naoSair = false;
+                        estado = ESTADO_VISITANTE;
+                        break;
+                    default:                      
+                        break;
+                }
+            }
+            System.out.println("fim do menu Visitante");
+            
+        } catch(Exception e) {
+            e.printStackTrace();        
+        } 
+        return estado;
+    
     }
     
 }

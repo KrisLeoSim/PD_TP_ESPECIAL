@@ -15,7 +15,5 @@ import javax.persistence.EntityManager;
  */
 @Local
 public interface DAOLocal {
-
     public EntityManager getEntityManager();
-
 }

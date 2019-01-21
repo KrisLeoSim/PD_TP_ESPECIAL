@@ -119,17 +119,4 @@ public class Viagens_clienteRca {
         }
     }
        
-
-//             System.out.println("adicionar utilizador");
-//        Utilizador um = new Utilizador(); 
-//        
-//        um.setNome("Joao");
-//        //um.setDataNascimento(df.parce("11/5/2000"));
-//        um = ejb.guardar(um);
-//        System.out.println("utilizador salvo com id: "+ um.getId());
-        
-        
-        
-    
-    
 }

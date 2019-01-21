@@ -15,18 +15,20 @@ import entidade.Utilizador;
  * @author sergio
  */
 @Local
-public interface UtilizadorFacadeLocal {
-
+public interface UtilizadorFacadeLocal {    
+    
+    public Utilizador login(String nome, String palavrapass);
+    public boolean registar(String nome, String palavrapass, int nif);
+    
+    public Utilizador atualizaUltimoLogin(Utilizador utilizador) throws Exception;
+    //operações basicas
+    
     public EntityManager getEntityManager();
     
-    
-    public int login(String nome, String palavrapass );
-    
-    
-    public Utilizador criar(Utilizador entidade) throws Exception;   
-    public void excluir(Utilizador entidade) throws Exception;  
-    public Utilizador editar(Utilizador entidade) throws Exception;
+    public Utilizador criarUtilizador(Utilizador entidade) throws Exception;   
+    public void excluirUtilizador(Utilizador entidade) throws Exception;  
+    public Utilizador editarUtilizador(Utilizador entidade) throws Exception;
 
-    public Utilizador get(int id);
-    public List<Utilizador> getAll();
+    public Utilizador getUtilizador(int id);
+    public List<Utilizador> getAllUtilizador();
 }

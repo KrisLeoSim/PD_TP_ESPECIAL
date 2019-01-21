@@ -15,6 +15,8 @@ import javax.ejb.Remote;
 @Remote
 public interface ControladorRemote {
 
-    int login(String utilizador, String password);
+    boolean login(String utilizador, String password);
+    boolean registar(String username, String password, int nif);
+    String getTipoDeUtilizador(final String tipoDeUtilizador);
 
 }

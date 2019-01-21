@@ -23,12 +23,10 @@ public class DAO implements DAOLocal {
     
     @PersistenceContext(unitName = "viagensPU")
     private EntityManager em;
-   
-    //private EntityManagerFactory emf;
 
     @PostConstruct
     public void initializa() {
-    //em = emf.createEntityManager();
+
     }       
     
      @PreDestroy

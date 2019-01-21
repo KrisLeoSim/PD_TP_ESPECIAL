@@ -14,6 +14,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import entidade.Utilizador;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -23,40 +26,58 @@ import entidade.Utilizador;
 @Stateless
 public class UtilizadorFacade implements UtilizadorFacadeLocal{
     
-    public final static int ESTADO_VISITANTE = 1;
-    public final static int ESTADO_CLIENTE = 2;
-    public final static int ESTADO_OPERADOR = 3;
-    
-    
     @EJB
     private DAOLocal dao;
 
-    
-    private int gettipo(String tipo){
-    switch(tipo){
-        case "operador":
-            return ESTADO_OPERADOR;
-        default:
-            return ESTADO_VISITANTE; 
-    }
-    
-    }
-    
+    //METODOS A UTILIZAR
     
     @Override
-    public int login(String nome, String palavrapass ) {
+    public Utilizador login(String nome, String palavrapass ) {
         
         Query query = getEntityManager().createNamedQuery("Utilizador.findByUsername");
         query.setParameter("username", nome);
         List<Utilizador> users = query.getResultList();
         
-        if (!users.isEmpty()) {
-           return gettipo(users.get(0).getTipoUser());
+        if (!users.isEmpty() || users != null) {
+           return users.get(0);
         }
    
-        return 1;
+        return null;
     }
 
+    @Override
+    public boolean registar(String nome, String palavrapass, int nif) {
+        boolean registou = false;
+      //ver se ja ha algum utilizador com o mesmo nome
+ 
+      Utilizador novoUtilizador = new Utilizador();
+      novoUtilizador.setIdUtilizador(5);
+      novoUtilizador.setUsername(nome);
+      novoUtilizador.setPassword(palavrapass);
+      novoUtilizador.setNif(nif);
+      novoUtilizador.setEstado(1);   //ja aprovado depois mudar
+      
+      
+        try {
+            criarUtilizador(novoUtilizador);
+            registou = true;
+        } catch (Exception ex) {
+            Logger.getLogger(UtilizadorFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+      return registou;
+    }
+
+    //Metodos privados para uso apenas da class
+    
+    @Override
+    public Utilizador atualizaUltimoLogin(Utilizador utilizador) throws Exception {  
+        utilizador.setDataUltimoLogin(new Date());       
+        return (Utilizador) editarUtilizador(utilizador);
+    }
+    
+    
+    
     
     
     @Override
@@ -65,20 +86,20 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
     }
 
     @Override
-    public Utilizador criar(Utilizador entidade) throws Exception {
+    public Utilizador criarUtilizador(Utilizador entidade) throws Exception {
         getEntityManager().persist(entidade);
         getEntityManager().flush();
         return entidade;
     }
 
     @Override
-    public void excluir(Utilizador entidade) throws Exception {
+    public void excluirUtilizador(Utilizador entidade) throws Exception {
         getEntityManager().remove(entidade);
         getEntityManager().flush();
     }
 
     @Override
-    public Utilizador editar(Utilizador entidade) throws Exception {
+    public Utilizador editarUtilizador(Utilizador entidade) throws Exception {
         getEntityManager().merge(entidade);
         getEntityManager().flush();
         
@@ -86,23 +107,18 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
     }
 
     @Override
-    public Utilizador get(int id) {
+    public Utilizador getUtilizador(int id) {
         Query query = getEntityManager().createNamedQuery("Utilizador.findByIdUser");
         query.setParameter("id", id);
         return (Utilizador) query.getSingleResult();
     }
 
     @Override
-    public List<Utilizador> getAll() {
+    public List<Utilizador> getAllUtilizador() {
           Query query = getEntityManager().createNamedQuery("Utilizador.findAll");
         return query.getResultList();
     }
     
-    //    public Utilizador atualizaUltimoLogin(Utilizador utilizador) throws Exception {
-//    
-//        utilizador.setDataUltimoLogin(new Date());
-//       
-//        return (Utilizador) editar(utilizador);
-//    }
+ 
   
 }

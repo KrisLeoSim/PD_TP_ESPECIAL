@@ -15,11 +15,11 @@ INSERT INTO public.destinos(
 
 
 
--- INSERT TABELA USER
+-- INSERT TABELA UTILIZADOR
 
-INSERT INTO public."user"(
-	id_utilizador, username, password, primeiro_nome, ultimo_nome, nif, morada, tipo_user, estado, data_ultimo_login)
-	VALUES (1, 'joao', '1234', 'joão', 'antorio', '231498', 'rua da casa', 'operador', 1, '2019/01/12');
+INSERT INTO public."utilizador"(
+	 username, password, primeiro_nome, ultimo_nome, nif, morada, tipo_user, estado, data_ultimo_login)
+	VALUES ('joao', '1234', 'joão', 'antorio', '231498', 'rua da casa', 'operador', 1, '2019/01/12');
 
 
 
