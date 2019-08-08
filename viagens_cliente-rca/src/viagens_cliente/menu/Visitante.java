@@ -109,8 +109,8 @@ public class Visitante extends Menu{
             System.out.print("password: ");
             String password = sc.nextLine();
             System.out.print("nif: ");
-            int nif = sc.nextInt();    
-            
+            String nif = sc.next();    
+            //TODO fazer verificaçao do nif
             System.out.println();
             if(controladorEJB.registar(username, password, nif)){
                 System.out.print("Registou COM sucesso");
