@@ -6,7 +6,7 @@
 package entidade;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,8 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -27,16 +25,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author sergio
  */
 @Entity
-@Table(name = "movimentos")
+@Table(name = "movimento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Movimentos.findAll", query = "SELECT m FROM Movimentos m")
-    , @NamedQuery(name = "Movimentos.findByIdMovimento", query = "SELECT m FROM Movimentos m WHERE m.idMovimento = :idMovimento")
-    , @NamedQuery(name = "Movimentos.findByIdUtilizador", query = "SELECT m FROM Movimentos m WHERE m.idUtilizador = :idUtilizador")
-    , @NamedQuery(name = "Movimentos.findByDescricaoMovimento", query = "SELECT m FROM Movimentos m WHERE m.descricaoMovimento = :descricaoMovimento")
-    , @NamedQuery(name = "Movimentos.findByData", query = "SELECT m FROM Movimentos m WHERE m.data = :data")
-    , @NamedQuery(name = "Movimentos.findByHora", query = "SELECT m FROM Movimentos m WHERE m.hora = :hora")})
-public class Movimentos implements Serializable {
+    @NamedQuery(name = "Movimento.findAll", query = "SELECT m FROM Movimento m")
+    , @NamedQuery(name = "Movimento.findByIdMovimento", query = "SELECT m FROM Movimento m WHERE m.idMovimento = :idMovimento")
+    , @NamedQuery(name = "Movimento.findByValor", query = "SELECT m FROM Movimento m WHERE m.valor = :valor")
+    , @NamedQuery(name = "Movimento.findByTipoMovimento", query = "SELECT m FROM Movimento m WHERE m.tipoMovimento = :tipoMovimento")
+    , @NamedQuery(name = "Movimento.findByDescricaoMovimento", query = "SELECT m FROM Movimento m WHERE m.descricaoMovimento = :descricaoMovimento")
+    , @NamedQuery(name = "Movimento.findByData", query = "SELECT m FROM Movimento m WHERE m.data = :data")
+    , @NamedQuery(name = "Movimento.findByEstado", query = "SELECT m FROM Movimento m WHERE m.estado = :estado")})
+public class Movimento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,36 +43,25 @@ public class Movimentos implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_movimento")
     private Integer idMovimento;
-    @Basic(optional = false)
-    @Column(name = "id_utilizador")
-    private int idUtilizador;
-    @Basic(optional = false)
+    @Column(name = "valor")
+    private BigInteger valor;
+    @Column(name = "tipo_movimento")
+    private String tipoMovimento;
     @Column(name = "descricao_movimento")
     private String descricaoMovimento;
-    @Basic(optional = false)
     @Column(name = "data")
-    @Temporal(TemporalType.DATE)
-    private Date data;
-    @Basic(optional = false)
-    @Column(name = "hora")
-    private int hora;
+    private Integer data;
+    @Column(name = "estado")
+    private String estado;
     @JoinColumn(name = "id_carteira", referencedColumnName = "id_carteira")
     @ManyToOne(optional = false)
     private Carteira idCarteira;
 
-    public Movimentos() {
+    public Movimento() {
     }
 
-    public Movimentos(Integer idMovimento) {
+    public Movimento(Integer idMovimento) {
         this.idMovimento = idMovimento;
-    }
-
-    public Movimentos(Integer idMovimento, int idUtilizador, String descricaoMovimento, Date data, int hora) {
-        this.idMovimento = idMovimento;
-        this.idUtilizador = idUtilizador;
-        this.descricaoMovimento = descricaoMovimento;
-        this.data = data;
-        this.hora = hora;
     }
 
     public Integer getIdMovimento() {
@@ -84,12 +72,20 @@ public class Movimentos implements Serializable {
         this.idMovimento = idMovimento;
     }
 
-    public int getIdUtilizador() {
-        return idUtilizador;
+    public BigInteger getValor() {
+        return valor;
     }
 
-    public void setIdUtilizador(int idUtilizador) {
-        this.idUtilizador = idUtilizador;
+    public void setValor(BigInteger valor) {
+        this.valor = valor;
+    }
+
+    public String getTipoMovimento() {
+        return tipoMovimento;
+    }
+
+    public void setTipoMovimento(String tipoMovimento) {
+        this.tipoMovimento = tipoMovimento;
     }
 
     public String getDescricaoMovimento() {
@@ -100,20 +96,20 @@ public class Movimentos implements Serializable {
         this.descricaoMovimento = descricaoMovimento;
     }
 
-    public Date getData() {
+    public Integer getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Integer data) {
         this.data = data;
     }
 
-    public int getHora() {
-        return hora;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setHora(int hora) {
-        this.hora = hora;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Carteira getIdCarteira() {
@@ -134,10 +130,10 @@ public class Movimentos implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Movimentos)) {
+        if (!(object instanceof Movimento)) {
             return false;
         }
-        Movimentos other = (Movimentos) object;
+        Movimento other = (Movimento) object;
         if ((this.idMovimento == null && other.idMovimento != null) || (this.idMovimento != null && !this.idMovimento.equals(other.idMovimento))) {
             return false;
         }
@@ -146,7 +142,7 @@ public class Movimentos implements Serializable {
 
     @Override
     public String toString() {
-        return "entidade.Movimentos[ idMovimento=" + idMovimento + " ]";
+        return "entidade.Movimento[ idMovimento=" + idMovimento + " ]";
     }
     
 }

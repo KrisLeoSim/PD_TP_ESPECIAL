@@ -52,7 +52,7 @@ public class Controlador implements ControladorRemote {
     }
     
     @Override
-    public boolean registar(String username, String password, int nif) {
+    public boolean registar(String username, String password, String nif) {
         return utilizadorFacade.registar(username, password, nif);
     }
     

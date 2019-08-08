@@ -6,6 +6,7 @@
 package entidade;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,22 +43,19 @@ public class Carteira implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_carteira")
     private Integer idCarteira;
-    @Basic(optional = false)
     @Column(name = "montante")
-    private double montante;
+    private BigInteger montante;
+    @JoinColumn(name = "id_utilizador", referencedColumnName = "id_utilizador")
+    @ManyToOne(optional = false)
+    private Utilizador idUtilizador;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCarteira")
-    private Collection<Movimentos> movimentosCollection;
+    private Collection<Movimento> movimentoCollection;
 
     public Carteira() {
     }
 
     public Carteira(Integer idCarteira) {
         this.idCarteira = idCarteira;
-    }
-
-    public Carteira(Integer idCarteira, double montante) {
-        this.idCarteira = idCarteira;
-        this.montante = montante;
     }
 
     public Integer getIdCarteira() {
@@ -66,21 +66,29 @@ public class Carteira implements Serializable {
         this.idCarteira = idCarteira;
     }
 
-    public double getMontante() {
+    public BigInteger getMontante() {
         return montante;
     }
 
-    public void setMontante(double montante) {
+    public void setMontante(BigInteger montante) {
         this.montante = montante;
     }
 
-    @XmlTransient
-    public Collection<Movimentos> getMovimentosCollection() {
-        return movimentosCollection;
+    public Utilizador getIdUtilizador() {
+        return idUtilizador;
     }
 
-    public void setMovimentosCollection(Collection<Movimentos> movimentosCollection) {
-        this.movimentosCollection = movimentosCollection;
+    public void setIdUtilizador(Utilizador idUtilizador) {
+        this.idUtilizador = idUtilizador;
+    }
+
+    @XmlTransient
+    public Collection<Movimento> getMovimentoCollection() {
+        return movimentoCollection;
+    }
+
+    public void setMovimentoCollection(Collection<Movimento> movimentoCollection) {
+        this.movimentoCollection = movimentoCollection;
     }
 
     @Override

@@ -18,7 +18,7 @@ import entidade.Utilizador;
 public interface UtilizadorFacadeLocal {    
     
     public Utilizador login(String nome, String palavrapass);
-    public boolean registar(String nome, String palavrapass, int nif);
+    public boolean registar(String nome, String palavrapass, String nif);
     
     public Utilizador atualizaUltimoLogin(Utilizador utilizador) throws Exception;
     //operações basicas

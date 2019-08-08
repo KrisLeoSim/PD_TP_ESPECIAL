@@ -7,7 +7,6 @@ package entidade;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,8 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,11 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Voo.findByIdVoo", query = "SELECT v FROM Voo v WHERE v.idVoo = :idVoo")
     , @NamedQuery(name = "Voo.findByLugaresMaximo", query = "SELECT v FROM Voo v WHERE v.lugaresMaximo = :lugaresMaximo")
     , @NamedQuery(name = "Voo.findByLugaresDisponiveis", query = "SELECT v FROM Voo v WHERE v.lugaresDisponiveis = :lugaresDisponiveis")
-    , @NamedQuery(name = "Voo.findByPrecoBilhete", query = "SELECT v FROM Voo v WHERE v.precoBilhete = :precoBilhete")
-    , @NamedQuery(name = "Voo.findByDataPartida", query = "SELECT v FROM Voo v WHERE v.dataPartida = :dataPartida")
-    , @NamedQuery(name = "Voo.findByHoraPartida", query = "SELECT v FROM Voo v WHERE v.horaPartida = :horaPartida")
-    , @NamedQuery(name = "Voo.findByDuracaoVoo", query = "SELECT v FROM Voo v WHERE v.duracaoVoo = :duracaoVoo")
-    , @NamedQuery(name = "Voo.findByMaiorLicitacao", query = "SELECT v FROM Voo v WHERE v.maiorLicitacao = :maiorLicitacao")})
+    , @NamedQuery(name = "Voo.findByDuracaoVoo", query = "SELECT v FROM Voo v WHERE v.duracaoVoo = :duracaoVoo")})
 public class Voo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,57 +44,30 @@ public class Voo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_voo")
     private Integer idVoo;
-    @Basic(optional = false)
     @Column(name = "lugares_maximo")
-    private int lugaresMaximo;
-    @Basic(optional = false)
+    private Integer lugaresMaximo;
     @Column(name = "lugares_disponiveis")
-    private int lugaresDisponiveis;
-    @Basic(optional = false)
-    @Column(name = "preco_bilhete")
-    private double precoBilhete;
-    @Basic(optional = false)
-    @Column(name = "data_partida")
-    @Temporal(TemporalType.DATE)
-    private Date dataPartida;
-    @Basic(optional = false)
-    @Column(name = "hora_partida")
-    private int horaPartida;
-    @Basic(optional = false)
+    private Integer lugaresDisponiveis;
     @Column(name = "duracao_voo")
-    private int duracaoVoo;
-    @Basic(optional = false)
-    @Column(name = "maior_licitacao")
-    private double maiorLicitacao;
+    private Integer duracaoVoo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVoo")
-    private Collection<Feedback> feedbackCollection;
+    private Collection<Lugar> lugarCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVoo")
+    private Collection<Partida> partidaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVoo")
+    private Collection<Chegada> chegadaCollection;
+    @JoinColumn(name = "id_agencia", referencedColumnName = "id_agencia")
+    @ManyToOne(optional = false)
+    private Agencia idAgencia;
     @JoinColumn(name = "id_companhia", referencedColumnName = "id_companhia")
     @ManyToOne(optional = false)
     private Companhia idCompanhia;
-    @JoinColumn(name = "id_destino", referencedColumnName = "id_destino")
-    @ManyToOne(optional = false)
-    private Destinos idDestino;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVoo")
-    private Collection<Carrinho> carrinhoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVoo")
-    private Collection<Licitacoes> licitacoesCollection;
 
     public Voo() {
     }
 
     public Voo(Integer idVoo) {
         this.idVoo = idVoo;
-    }
-
-    public Voo(Integer idVoo, int lugaresMaximo, int lugaresDisponiveis, double precoBilhete, Date dataPartida, int horaPartida, int duracaoVoo, double maiorLicitacao) {
-        this.idVoo = idVoo;
-        this.lugaresMaximo = lugaresMaximo;
-        this.lugaresDisponiveis = lugaresDisponiveis;
-        this.precoBilhete = precoBilhete;
-        this.dataPartida = dataPartida;
-        this.horaPartida = horaPartida;
-        this.duracaoVoo = duracaoVoo;
-        this.maiorLicitacao = maiorLicitacao;
     }
 
     public Integer getIdVoo() {
@@ -112,69 +78,63 @@ public class Voo implements Serializable {
         this.idVoo = idVoo;
     }
 
-    public int getLugaresMaximo() {
+    public Integer getLugaresMaximo() {
         return lugaresMaximo;
     }
 
-    public void setLugaresMaximo(int lugaresMaximo) {
+    public void setLugaresMaximo(Integer lugaresMaximo) {
         this.lugaresMaximo = lugaresMaximo;
     }
 
-    public int getLugaresDisponiveis() {
+    public Integer getLugaresDisponiveis() {
         return lugaresDisponiveis;
     }
 
-    public void setLugaresDisponiveis(int lugaresDisponiveis) {
+    public void setLugaresDisponiveis(Integer lugaresDisponiveis) {
         this.lugaresDisponiveis = lugaresDisponiveis;
     }
 
-    public double getPrecoBilhete() {
-        return precoBilhete;
-    }
-
-    public void setPrecoBilhete(double precoBilhete) {
-        this.precoBilhete = precoBilhete;
-    }
-
-    public Date getDataPartida() {
-        return dataPartida;
-    }
-
-    public void setDataPartida(Date dataPartida) {
-        this.dataPartida = dataPartida;
-    }
-
-    public int getHoraPartida() {
-        return horaPartida;
-    }
-
-    public void setHoraPartida(int horaPartida) {
-        this.horaPartida = horaPartida;
-    }
-
-    public int getDuracaoVoo() {
+    public Integer getDuracaoVoo() {
         return duracaoVoo;
     }
 
-    public void setDuracaoVoo(int duracaoVoo) {
+    public void setDuracaoVoo(Integer duracaoVoo) {
         this.duracaoVoo = duracaoVoo;
     }
 
-    public double getMaiorLicitacao() {
-        return maiorLicitacao;
+    @XmlTransient
+    public Collection<Lugar> getLugarCollection() {
+        return lugarCollection;
     }
 
-    public void setMaiorLicitacao(double maiorLicitacao) {
-        this.maiorLicitacao = maiorLicitacao;
+    public void setLugarCollection(Collection<Lugar> lugarCollection) {
+        this.lugarCollection = lugarCollection;
     }
 
     @XmlTransient
-    public Collection<Feedback> getFeedbackCollection() {
-        return feedbackCollection;
+    public Collection<Partida> getPartidaCollection() {
+        return partidaCollection;
     }
 
-    public void setFeedbackCollection(Collection<Feedback> feedbackCollection) {
-        this.feedbackCollection = feedbackCollection;
+    public void setPartidaCollection(Collection<Partida> partidaCollection) {
+        this.partidaCollection = partidaCollection;
+    }
+
+    @XmlTransient
+    public Collection<Chegada> getChegadaCollection() {
+        return chegadaCollection;
+    }
+
+    public void setChegadaCollection(Collection<Chegada> chegadaCollection) {
+        this.chegadaCollection = chegadaCollection;
+    }
+
+    public Agencia getIdAgencia() {
+        return idAgencia;
+    }
+
+    public void setIdAgencia(Agencia idAgencia) {
+        this.idAgencia = idAgencia;
     }
 
     public Companhia getIdCompanhia() {
@@ -183,32 +143,6 @@ public class Voo implements Serializable {
 
     public void setIdCompanhia(Companhia idCompanhia) {
         this.idCompanhia = idCompanhia;
-    }
-
-    public Destinos getIdDestino() {
-        return idDestino;
-    }
-
-    public void setIdDestino(Destinos idDestino) {
-        this.idDestino = idDestino;
-    }
-
-    @XmlTransient
-    public Collection<Carrinho> getCarrinhoCollection() {
-        return carrinhoCollection;
-    }
-
-    public void setCarrinhoCollection(Collection<Carrinho> carrinhoCollection) {
-        this.carrinhoCollection = carrinhoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Licitacoes> getLicitacoesCollection() {
-        return licitacoesCollection;
-    }
-
-    public void setLicitacoesCollection(Collection<Licitacoes> licitacoesCollection) {
-        this.licitacoesCollection = licitacoesCollection;
     }
 
     @Override

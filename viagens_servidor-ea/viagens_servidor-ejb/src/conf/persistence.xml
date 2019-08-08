@@ -2,13 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="viagensPU" transaction-type="JTA">
     <jta-data-source>jdbc/_voodBD</jta-data-source>
-    <class>entidade.Utilizador</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
     </properties>
   </persistence-unit>
 </persistence>
-<!--      
+<!--     
+<class>entidade.Utilizador</class> 
      <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.56.175:5432/pgaulas"/>
       <property name="javax.persistence.jdbc.user" value="pguser"/>

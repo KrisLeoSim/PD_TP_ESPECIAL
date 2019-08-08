@@ -46,7 +46,7 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
     }
 
     @Override
-    public boolean registar(String nome, String palavrapass, int nif) {
+    public boolean registar(String nome, String palavrapass, String nif) {
         boolean registou = false;
       //ver se ja ha algum utilizador com o mesmo nome
  
@@ -72,7 +72,7 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
     
     @Override
     public Utilizador atualizaUltimoLogin(Utilizador utilizador) throws Exception {  
-        utilizador.setDataUltimoLogin(new Date());       
+        utilizador.setDataUltimoLogin(5);       
         return (Utilizador) editarUtilizador(utilizador);
     }
     

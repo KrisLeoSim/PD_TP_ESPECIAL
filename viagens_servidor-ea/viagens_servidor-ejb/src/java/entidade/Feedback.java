@@ -29,9 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Feedback.findAll", query = "SELECT f FROM Feedback f")
     , @NamedQuery(name = "Feedback.findByIdFeedback", query = "SELECT f FROM Feedback f WHERE f.idFeedback = :idFeedback")
-    , @NamedQuery(name = "Feedback.findByIdUtilizador", query = "SELECT f FROM Feedback f WHERE f.idUtilizador = :idUtilizador")
-    , @NamedQuery(name = "Feedback.findByClassificacaoCompanhia", query = "SELECT f FROM Feedback f WHERE f.classificacaoCompanhia = :classificacaoCompanhia")
-    , @NamedQuery(name = "Feedback.findByClassificacaoDestinos", query = "SELECT f FROM Feedback f WHERE f.classificacaoDestinos = :classificacaoDestinos")})
+    , @NamedQuery(name = "Feedback.findByAvaliacao", query = "SELECT f FROM Feedback f WHERE f.avaliacao = :avaliacao")})
 public class Feedback implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,31 +38,23 @@ public class Feedback implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_feedback")
     private Integer idFeedback;
-    @Basic(optional = false)
-    @Column(name = "id_utilizador")
-    private int idUtilizador;
-    @Basic(optional = false)
-    @Column(name = "classificacao_companhia")
-    private int classificacaoCompanhia;
-    @Basic(optional = false)
-    @Column(name = "classificacao_destinos")
-    private int classificacaoDestinos;
-    @JoinColumn(name = "id_voo", referencedColumnName = "id_voo")
+    @Column(name = "avaliacao")
+    private Integer avaliacao;
+    @JoinColumn(name = "id_companhia", referencedColumnName = "id_companhia")
     @ManyToOne(optional = false)
-    private Voo idVoo;
+    private Companhia idCompanhia;
+    @JoinColumn(name = "id_local", referencedColumnName = "id_local")
+    @ManyToOne(optional = false)
+    private Local idLocal;
+    @JoinColumn(name = "id_utilizador", referencedColumnName = "id_utilizador")
+    @ManyToOne(optional = false)
+    private Utilizador idUtilizador;
 
     public Feedback() {
     }
 
     public Feedback(Integer idFeedback) {
         this.idFeedback = idFeedback;
-    }
-
-    public Feedback(Integer idFeedback, int idUtilizador, int classificacaoCompanhia, int classificacaoDestinos) {
-        this.idFeedback = idFeedback;
-        this.idUtilizador = idUtilizador;
-        this.classificacaoCompanhia = classificacaoCompanhia;
-        this.classificacaoDestinos = classificacaoDestinos;
     }
 
     public Integer getIdFeedback() {
@@ -75,36 +65,36 @@ public class Feedback implements Serializable {
         this.idFeedback = idFeedback;
     }
 
-    public int getIdUtilizador() {
+    public Integer getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Integer avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
+    public Companhia getIdCompanhia() {
+        return idCompanhia;
+    }
+
+    public void setIdCompanhia(Companhia idCompanhia) {
+        this.idCompanhia = idCompanhia;
+    }
+
+    public Local getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(Local idLocal) {
+        this.idLocal = idLocal;
+    }
+
+    public Utilizador getIdUtilizador() {
         return idUtilizador;
     }
 
-    public void setIdUtilizador(int idUtilizador) {
+    public void setIdUtilizador(Utilizador idUtilizador) {
         this.idUtilizador = idUtilizador;
-    }
-
-    public int getClassificacaoCompanhia() {
-        return classificacaoCompanhia;
-    }
-
-    public void setClassificacaoCompanhia(int classificacaoCompanhia) {
-        this.classificacaoCompanhia = classificacaoCompanhia;
-    }
-
-    public int getClassificacaoDestinos() {
-        return classificacaoDestinos;
-    }
-
-    public void setClassificacaoDestinos(int classificacaoDestinos) {
-        this.classificacaoDestinos = classificacaoDestinos;
-    }
-
-    public Voo getIdVoo() {
-        return idVoo;
-    }
-
-    public void setIdVoo(Voo idVoo) {
-        this.idVoo = idVoo;
     }
 
     @Override

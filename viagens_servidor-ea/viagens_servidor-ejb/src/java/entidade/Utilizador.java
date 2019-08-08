@@ -6,8 +6,10 @@
 package entidade;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,10 +17,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,7 +39,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Utilizador.findByPrimeiroNome", query = "SELECT u FROM Utilizador u WHERE u.primeiroNome = :primeiroNome")
     , @NamedQuery(name = "Utilizador.findByUltimoNome", query = "SELECT u FROM Utilizador u WHERE u.ultimoNome = :ultimoNome")
     , @NamedQuery(name = "Utilizador.findByNif", query = "SELECT u FROM Utilizador u WHERE u.nif = :nif")
-    , @NamedQuery(name = "Utilizador.findByMorada", query = "SELECT u FROM Utilizador u WHERE u.morada = :morada")
+    , @NamedQuery(name = "Utilizador.findByCc", query = "SELECT u FROM Utilizador u WHERE u.cc = :cc")
+    , @NamedQuery(name = "Utilizador.findByPassaporte", query = "SELECT u FROM Utilizador u WHERE u.passaporte = :passaporte")
+    , @NamedQuery(name = "Utilizador.findByNacionalidade", query = "SELECT u FROM Utilizador u WHERE u.nacionalidade = :nacionalidade")
+    , @NamedQuery(name = "Utilizador.findByDataNascimento", query = "SELECT u FROM Utilizador u WHERE u.dataNascimento = :dataNascimento")
+    , @NamedQuery(name = "Utilizador.findByRua", query = "SELECT u FROM Utilizador u WHERE u.rua = :rua")
+    , @NamedQuery(name = "Utilizador.findByNPorta", query = "SELECT u FROM Utilizador u WHERE u.nPorta = :nPorta")
+    , @NamedQuery(name = "Utilizador.findByCodigoPostal", query = "SELECT u FROM Utilizador u WHERE u.codigoPostal = :codigoPostal")
+    , @NamedQuery(name = "Utilizador.findByLocalidade", query = "SELECT u FROM Utilizador u WHERE u.localidade = :localidade")
+    , @NamedQuery(name = "Utilizador.findByDistrito", query = "SELECT u FROM Utilizador u WHERE u.distrito = :distrito")
+    , @NamedQuery(name = "Utilizador.findByPais", query = "SELECT u FROM Utilizador u WHERE u.pais = :pais")
     , @NamedQuery(name = "Utilizador.findByTipoUser", query = "SELECT u FROM Utilizador u WHERE u.tipoUser = :tipoUser")
     , @NamedQuery(name = "Utilizador.findByEstado", query = "SELECT u FROM Utilizador u WHERE u.estado = :estado")
     , @NamedQuery(name = "Utilizador.findByDataUltimoLogin", query = "SELECT u FROM Utilizador u WHERE u.dataUltimoLogin = :dataUltimoLogin")})
@@ -47,53 +60,59 @@ public class Utilizador implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_utilizador")
     private Integer idUtilizador;
-    @Basic(optional = false)
     @Column(name = "username")
     private String username;
-    @Basic(optional = false)
     @Column(name = "password")
     private String password;
-    @Basic(optional = false)
     @Column(name = "primeiro_nome")
     private String primeiroNome;
-    @Basic(optional = false)
     @Column(name = "ultimo_nome")
     private String ultimoNome;
-    @Basic(optional = false)
     @Column(name = "nif")
-    private int nif;
-    @Basic(optional = false)
-    @Column(name = "morada")
-    private String morada;
-    @Basic(optional = false)
+    private String nif;
+    @Column(name = "cc")
+    private String cc;
+    @Column(name = "passaporte")
+    private String passaporte;
+    @Column(name = "nacionalidade")
+    private String nacionalidade;
+    @Column(name = "data_nascimento")
+    @Temporal(TemporalType.DATE)
+    private Date dataNascimento;
+    @Column(name = "rua")
+    private String rua;
+    @Column(name = "n_porta")
+    private String nPorta;
+    @Column(name = "codigo_postal")
+    private String codigoPostal;
+    @Column(name = "localidade")
+    private String localidade;
+    @Column(name = "distrito")
+    private String distrito;
+    @Column(name = "pais")
+    private String pais;
     @Column(name = "tipo_user")
     private String tipoUser;
-    @Basic(optional = false)
     @Column(name = "estado")
-    private int estado;
-    @Basic(optional = false)
+    private Integer estado;
     @Column(name = "data_ultimo_login")
-    @Temporal(TemporalType.DATE)
-    private Date dataUltimoLogin;
+    private Integer dataUltimoLogin;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUtilizador")
+    private Collection<Compra> compraCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUtilizador")
+    private Collection<Licitacao> licitacaoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUtilizador")
+    private Collection<ItemCarrinho> itemCarrinhoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUtilizador")
+    private Collection<Feedback> feedbackCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUtilizador")
+    private Collection<Carteira> carteiraCollection;
 
     public Utilizador() {
     }
 
     public Utilizador(Integer idUtilizador) {
         this.idUtilizador = idUtilizador;
-    }
-
-    public Utilizador(Integer idUtilizador, String username, String password, String primeiroNome, String ultimoNome, int nif, String morada, String tipoUser, int estado, Date dataUltimoLogin) {
-        this.idUtilizador = idUtilizador;
-        this.username = username;
-        this.password = password;
-        this.primeiroNome = primeiroNome;
-        this.ultimoNome = ultimoNome;
-        this.nif = nif;
-        this.morada = morada;
-        this.tipoUser = tipoUser;
-        this.estado = estado;
-        this.dataUltimoLogin = dataUltimoLogin;
     }
 
     public Integer getIdUtilizador() {
@@ -136,20 +155,92 @@ public class Utilizador implements Serializable {
         this.ultimoNome = ultimoNome;
     }
 
-    public int getNif() {
+    public String getNif() {
         return nif;
     }
 
-    public void setNif(int nif) {
+    public void setNif(String nif) {
         this.nif = nif;
     }
 
-    public String getMorada() {
-        return morada;
+    public String getCc() {
+        return cc;
     }
 
-    public void setMorada(String morada) {
-        this.morada = morada;
+    public void setCc(String cc) {
+        this.cc = cc;
+    }
+
+    public String getPassaporte() {
+        return passaporte;
+    }
+
+    public void setPassaporte(String passaporte) {
+        this.passaporte = passaporte;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getNPorta() {
+        return nPorta;
+    }
+
+    public void setNPorta(String nPorta) {
+        this.nPorta = nPorta;
+    }
+
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
     public String getTipoUser() {
@@ -160,20 +251,65 @@ public class Utilizador implements Serializable {
         this.tipoUser = tipoUser;
     }
 
-    public int getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 
-    public Date getDataUltimoLogin() {
+    public Integer getDataUltimoLogin() {
         return dataUltimoLogin;
     }
 
-    public void setDataUltimoLogin(Date dataUltimoLogin) {
+    public void setDataUltimoLogin(Integer dataUltimoLogin) {
         this.dataUltimoLogin = dataUltimoLogin;
+    }
+
+    @XmlTransient
+    public Collection<Compra> getCompraCollection() {
+        return compraCollection;
+    }
+
+    public void setCompraCollection(Collection<Compra> compraCollection) {
+        this.compraCollection = compraCollection;
+    }
+
+    @XmlTransient
+    public Collection<Licitacao> getLicitacaoCollection() {
+        return licitacaoCollection;
+    }
+
+    public void setLicitacaoCollection(Collection<Licitacao> licitacaoCollection) {
+        this.licitacaoCollection = licitacaoCollection;
+    }
+
+    @XmlTransient
+    public Collection<ItemCarrinho> getItemCarrinhoCollection() {
+        return itemCarrinhoCollection;
+    }
+
+    public void setItemCarrinhoCollection(Collection<ItemCarrinho> itemCarrinhoCollection) {
+        this.itemCarrinhoCollection = itemCarrinhoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Feedback> getFeedbackCollection() {
+        return feedbackCollection;
+    }
+
+    public void setFeedbackCollection(Collection<Feedback> feedbackCollection) {
+        this.feedbackCollection = feedbackCollection;
+    }
+
+    @XmlTransient
+    public Collection<Carteira> getCarteiraCollection() {
+        return carteiraCollection;
+    }
+
+    public void setCarteiraCollection(Collection<Carteira> carteiraCollection) {
+        this.carteiraCollection = carteiraCollection;
     }
 
     @Override
