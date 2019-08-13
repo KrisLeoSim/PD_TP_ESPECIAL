@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.ArrayList;
 import javax.ejb.Remote;
+import regras.negocio.entidade.UtilizadorPojo;
 
 
 /**
@@ -16,7 +18,24 @@ import javax.ejb.Remote;
 public interface ControladorRemote {
 
     boolean login(String utilizador, String password);
-    boolean registar(String username, String password, String nif);
     String getTipoDeUtilizador(final String tipoDeUtilizador);
-
+    
+    //Tempo
+    
+    int tempoAtual();
+    void alteraTempo(int valor);
+    
+    boolean registarOperador(String username, String password, String nif);
+    boolean registarUtilizador(String username, String password, String nif);
+    
+    //Utilizador
+    
+    boolean actualizaUtilizador(UtilizadorPojo novosDados);
+    boolean apagaUtilizador(int idUtilizador);
+    
+    ArrayList<UtilizadorPojo> listaContasQueAguardamAprovação();
+    ArrayList<UtilizadorPojo> listaClientes();
+    ArrayList<UtilizadorPojo> listaOperadores();
+    UtilizadorPojo selecionarUtilizador(String username);
+        
 }
