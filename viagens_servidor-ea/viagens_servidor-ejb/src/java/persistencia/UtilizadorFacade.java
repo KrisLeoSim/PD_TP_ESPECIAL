@@ -46,16 +46,17 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
     }
 
     @Override
-    public boolean registar(String nome, String palavrapass, String nif) {
+    public boolean registar(String nome, String palavrapass, String nif, String tipoDeUtilizador ) {
         boolean registou = false;
       //ver se ja ha algum utilizador com o mesmo nome
  
       Utilizador novoUtilizador = new Utilizador();
-      novoUtilizador.setIdUtilizador(5);
+      //novoUtilizador.setIdUtilizador(5);
       novoUtilizador.setUsername(nome);
       novoUtilizador.setPassword(palavrapass);
       novoUtilizador.setNif(nif);
-      novoUtilizador.setEstado(1);   //ja aprovado depois mudar
+      novoUtilizador.setEstado(0);
+      novoUtilizador.setTipoUser(tipoDeUtilizador);
       
       
         try {
@@ -75,10 +76,6 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
         utilizador.setDataUltimoLogin(5);       
         return (Utilizador) editarUtilizador(utilizador);
     }
-    
-    
-    
-    
     
     @Override
     public EntityManager getEntityManager() {
@@ -108,14 +105,21 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
 
     @Override
     public Utilizador getUtilizador(int id) {
-        Query query = getEntityManager().createNamedQuery("Utilizador.findByIdUser");
-        query.setParameter("id", id);
+        Query query = getEntityManager().createNamedQuery("Utilizador.findByIdUtilizador");
+        query.setParameter("idUtilizador", id);
         return (Utilizador) query.getSingleResult();
     }
 
     @Override
-    public List<Utilizador> getAllUtilizador() {
+    public List<Utilizador> getAllUtilizadores() {
           Query query = getEntityManager().createNamedQuery("Utilizador.findAll");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Utilizador> getTodosUtilizadoresQueAguardamAprovacao() {
+        Query query = getEntityManager().createNamedQuery("Utilizador.findByEstado");
+        query.setParameter("estado", 0);
         return query.getResultList();
     }
     

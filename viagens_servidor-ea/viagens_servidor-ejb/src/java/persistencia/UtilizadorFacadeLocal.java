@@ -18,7 +18,7 @@ import entidade.Utilizador;
 public interface UtilizadorFacadeLocal {    
     
     public Utilizador login(String nome, String palavrapass);
-    public boolean registar(String nome, String palavrapass, String nif);
+    public boolean registar(String nome, String palavrapass, String nif, String tipoDeUtilizador );
     
     public Utilizador atualizaUltimoLogin(Utilizador utilizador) throws Exception;
     //operações basicas
@@ -30,5 +30,7 @@ public interface UtilizadorFacadeLocal {
     public Utilizador editarUtilizador(Utilizador entidade) throws Exception;
 
     public Utilizador getUtilizador(int id);
-    public List<Utilizador> getAllUtilizador();
+    public List<Utilizador> getAllUtilizadores();
+    
+    public List<Utilizador> getTodosUtilizadoresQueAguardamAprovacao();
 }

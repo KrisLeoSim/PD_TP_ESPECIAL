@@ -7,12 +7,14 @@ package logica;
 
 
 import entidade.Utilizador;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import persistencia.UtilizadorFacadeLocal;
 import persistencia.VooFacadeLocal;
+import regras.negocio.entidade.UtilizadorPojo;
 
 
 /**
@@ -52,8 +54,13 @@ public class Controlador implements ControladorRemote {
     }
     
     @Override
-    public boolean registar(String username, String password, String nif) {
-        return utilizadorFacade.registar(username, password, nif);
+    public boolean registarUtilizador(String username, String password, String nif ) {
+        return utilizadorFacade.registar(username, password, nif, "cliente");
+    }
+    
+    @Override
+    public boolean registarOperador(String username, String password, String nif ) {
+        return utilizadorFacade.registar(username, password, nif, "operador");
     }
     
     @Override
@@ -62,9 +69,46 @@ public class Controlador implements ControladorRemote {
     }
 
    //logout89;
-    //obtemListaVoos();
-     // ...
-    
-    
+
+
+    @Override
+    public int tempoAtual() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alteraTempo(int valor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean actualizaUtilizador(UtilizadorPojo novosDados) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean apagaUtilizador(int idUtilizador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<UtilizadorPojo> listaContasQueAguardamAprovação() {     
+       return util.converteEntityToPojo.converteListaDeUtilizadorToUtilizadorPojo(utilizadorFacade.getTodosUtilizadoresQueAguardamAprovacao());    
+    }
+
+    @Override
+    public ArrayList<UtilizadorPojo> listaClientes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<UtilizadorPojo> listaOperadores() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UtilizadorPojo selecionarUtilizador(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
