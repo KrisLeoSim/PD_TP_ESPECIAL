@@ -30,7 +30,7 @@ public interface ControladorRemote {
     
     //Utilizador
     
-    boolean actualizaUtilizador(UtilizadorPojo novosDados);
+    boolean actualizaUtilizadorEstado(UtilizadorPojo novosDados);
     boolean apagaUtilizador(int idUtilizador);
     
     ArrayList<UtilizadorPojo> listaContasQueAguardamAprovação();
