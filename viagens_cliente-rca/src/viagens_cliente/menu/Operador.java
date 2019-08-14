@@ -36,35 +36,80 @@ public class Operador extends Menu {
      protected void imprimeMenuGestaoUtilizadores() {
         System.out.println();
         System.out.println("--------------------------");
-        System.out.println("Gestão de utilizadores");
-        System.out.println("  1  - Adicionar Utilizador");
-        System.out.println("  2  - Remover Utilizador");
-        System.out.println("  3  - Pedidos de registos pendentes");
+        System.out.println("GESTÂO DE UTILIZADORES");
+        System.out.println("  1  - Registar utilizador");
+        System.out.println("  2  - Remover utilizador");
+        System.out.println("  3  - Pedidos de registo pendentes");
+        System.out.println("  4  - Listar utilizadores");
+        System.out.println("--------------------------");
+        System.out.println("  0  - Sair");
+        System.out.println("--------------------------");
+    }
+     
+    protected void imprimeMenuGestaoUtilizadores_Registar() {
+        System.out.println();
+        System.out.println("--------------------------");
+        System.out.println("REGISTAR");
+        System.out.println("  1  - Cliente");
+        System.out.println("  2  - Operador");
         System.out.println("--------------------------");
         System.out.println("  0  - Sair");
         System.out.println("--------------------------");
     }
     
-    public void cicloDeVidaGestaoUtilizadores() {
-      
-        try {         
-            while(naoSair) {
-                imprimeMenuGestaoUtilizadores();
-                opcao = obtemOpcaoMenu(4);
+    public void cicloDeVidaGestaoUtilizadores_Registar() {
+      boolean naoSairRegistar= true;
+       
+      try {         
+            while(naoSairRegistar) {
+                imprimeMenuGestaoUtilizadores_Registar();
+                
+                opcao = obtemOpcaoMenu(3);
 
                 switch(opcao) {
                     case 1:
-                        ListaDeUtilizadoresComRegistoPendente();
+                        registarCliente();
                         break;
                     case 2:
-                       //obtemVoos();
+                        registarOperador();
+                        break;      
+                    case 0:
+                    naoSairRegistar = false;
+                    break;                        
+                    default:                      
+                        break;
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();        
+        } 
+    } 
+     
+    public void cicloDeVidaGestaoUtilizadores() {
+      boolean naoSairUtilizador = true;
+       
+      try {         
+            while(naoSairUtilizador) {
+                imprimeMenuGestaoUtilizadores();
+                
+                opcao = obtemOpcaoMenu(5);
+
+                switch(opcao) {
+                    case 1:
+                        cicloDeVidaGestaoUtilizadores_Registar();
+                        break;
+                    case 2:
+                        removerUtilizador() ;
                         break;      
                     case 3:
                          ListaDeUtilizadoresComRegistoPendente();
                         break;
+                    case 4:
+                         ListarUtilizadores();                    
+                        break;
                     case 0:
                        //logout();
-                    naoSair = false;
+                    naoSairUtilizador = false;
                     break;                        
                     default:                      
                         break;
@@ -112,44 +157,66 @@ public class Operador extends Menu {
         } 
         return estado;
     }
-    
-    //public void obtemVoos(){
-    //    List<VoosPojo> listaVoos = controladorEJB.obtemVoos();
-    //    for....
-    //    imprime....
-    //    }
 
-    //public void ListaDeUtilizadoresComRegistoPendente(){
-    //listar nome dos utilizadores com registo pendente                      
-    //List<String> lista_UCRP =   controladorEJB.ListaDeUtilizadoresComRegistoPendente();
-    //listar tambem utilizadores registados no sistema
-    //poder selecionar e ver perfil? e editar os dados? (da muito trablaho ... com interface web é bem mais simples ver se é
-    //necesario)
-    //}
+    //Utilizadores
+    
+    public ArrayList<UtilizadorPojo> ListarUtilizadores(){
+            
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  UTILIZADORES ");
+            System.out.println("--------------------------");
+            
+            ArrayList<UtilizadorPojo> lista_utilizadores= controladorEJB.listaClientes();
+            
+            int i = 1;
+            for(UtilizadorPojo utilizadorPojo : lista_utilizadores){
+                
+                System.out.println(" " + i + "-" + utilizadorPojo.getUsername() + " tipo:" + utilizadorPojo.getTipoUser());
+                i++;
+            
+            }
+            
+            if(lista_utilizadores.isEmpty()){            
+            System.out.println("Não tem Utilizadores");
+            }
+            
+    return lista_utilizadores;
+    }
     
     public void ListaDeUtilizadoresComRegistoPendente(){
         
         try {
             System.out.println();
-            System.out.println("--------------------------");
+            System.out.println("--------------------------------------");
             System.out.println("  UTILIZADORES QUE AGUARDAM APROVAÇÂO ");
-            System.out.println("--------------------------");
+            System.out.println("--------------------------------------");
             
             ArrayList<UtilizadorPojo> lista_utilizadores= controladorEJB.listaContasQueAguardamAprovação();
             int i = 1;
             for(UtilizadorPojo utilizadorPojo : lista_utilizadores){
-                
-            System.out.println(" " + i + "-" + utilizadorPojo.getUsername() + " tipo:" + utilizadorPojo.getTipoUser());
-            i++;
-            
+
+                System.out.println(" " + i + "-" + utilizadorPojo.getUsername() + " tipo:" + utilizadorPojo.getTipoUser());
+                i++;
+
             }
-            System.out.println("0 - sair");
-            System.out.println("--------------------------");
             
-           // System.out.print("inserir o numero do utilizador: ");
-            //String username = sc.nextLine();
-            //System.out.println();
-     
+            if(!lista_utilizadores.isEmpty()){
+                System.out.println("0 - Voltar ...");
+                opcao = obtemOpcaoMenu(lista_utilizadores.size());
+                --opcao;
+                if(opcao != -1){
+                
+                    UtilizadorPojo utilizadorPojo = lista_utilizadores.get(opcao);
+                    utilizadorPojo.setEstado(1);
+                    
+                    controladorEJB.actualizaUtilizadorEstado(utilizadorPojo);
+              
+                }
+
+            }else{
+            System.out.println("Não tem pedido pendentes");
+            }
             
         } catch(Exception e) {
             System.out.println("ERRO: "+e.getMessage());
@@ -158,4 +225,95 @@ public class Operador extends Menu {
   
     }
     
+    private void removerUtilizador() {
+        
+        try {
+            
+            System.out.println();
+            System.out.println("--------------------------------------");
+            System.out.println("  UTILIZADORES  ");
+            System.out.println("--------------------------------------");
+            
+            ArrayList<UtilizadorPojo> lista_utilizadores = ListarUtilizadores();
+          
+                    
+            if(!lista_utilizadores.isEmpty()){
+                System.out.println("0 - Voltar ...");
+                opcao = obtemOpcaoMenu(lista_utilizadores.size());
+            --opcao;
+            if(opcao != -1){
+                
+                int id = lista_utilizadores.get(opcao).getIdUtilizador();
+                
+            if(controladorEJB.apagaUtilizador(id)){
+                System.out.print("Apagou COM sucesso");
+            }else{
+                System.out.print("Não foi possivel apagar");
+            }
+            }
+            
+            
+            }else{
+            System.out.println("Não ha utilizadores");
+            }
+
+        } catch(Exception e) {
+            System.out.println("ERRO: "+e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+    
+    private void registarCliente() {
+        try {
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  REGISTAR CLIENTE");
+            System.out.println("--------------------------");
+            System.out.print("username: ");
+            String username = sc.nextLine();
+            System.out.print("password: ");
+            String password = sc.nextLine();
+            System.out.print("nif: ");
+            String nif = sc.next();    
+            //TODO fazer verificaçao do nif
+            System.out.println();
+            if(controladorEJB.registarUtilizador(username, password, nif)){
+                System.out.print("Registou COM sucesso");
+            }else{
+                System.out.print("Não registou");
+            }
+            
+            System.out.println();
+        } catch(Exception e) {
+            System.out.println("ERRO: "+e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+    
+    private void registarOperador() {
+        try {
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  REGISTAR OPERADOR");
+            System.out.println("--------------------------");
+            System.out.print("username: ");
+            String username = sc.nextLine();
+            System.out.print("password: ");
+            String password = sc.nextLine();
+            System.out.print("nif: ");
+            String nif = sc.next();    
+            //TODO fazer verificaçao do nif
+            System.out.println();
+            if(controladorEJB.registarUtilizador(username, password, nif)){
+                System.out.print("Registou COM sucesso");
+            }else{
+                System.out.print("Não registou");
+            }
+            
+            System.out.println();
+        } catch(Exception e) {
+            System.out.println("ERRO: "+e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }  
 }

@@ -23,8 +23,6 @@ public class Visitante extends Menu{
         System.out.println("--------------------------");
         System.out.println("Viagens");
         System.out.println("  1  - Login");
-        System.out.println("  2  - Registar Utilizador");
-        System.out.println("  3  - Registar Operador");
         System.out.println("--------------------------");
         System.out.println("  0  - Sair");
         System.out.println("--------------------------");
@@ -36,7 +34,7 @@ public class Visitante extends Menu{
         try {         
             while(naoSair) {
                 imprimeMenu();
-                opcao = obtemOpcaoMenu(4);
+                opcao = obtemOpcaoMenu(2);
 
                 switch(opcao) {
                     case 1:
@@ -44,12 +42,6 @@ public class Visitante extends Menu{
                         if(estado != ESTADO_SAIR || estado != ESTADO_VISITANTE)
                         return estado;
                         break;
-                    case 2:
-                        registaUtilizador();
-                        break;
-                    case 3:
-                        registaOperador();
-                        break; 
                     case 0:                       
                         naoSair = false;
                         estado = ESTADO_SAIR;
@@ -100,60 +92,6 @@ public class Visitante extends Menu{
             e.printStackTrace(System.out);
         }
         return estado;
-    }
-    
-    private void registaUtilizador() {
-        try {
-            System.out.println();
-            System.out.println("--------------------------");
-            System.out.println("  REGISTAR UTILIZADOR");
-            System.out.println("--------------------------");
-            System.out.print("username: ");
-            String username = sc.nextLine();
-            System.out.print("password: ");
-            String password = sc.nextLine();
-            System.out.print("nif: ");
-            String nif = sc.next();    
-            //TODO fazer verificaçao do nif
-            System.out.println();
-            if(controladorEJB.registarUtilizador(username, password, nif)){
-                System.out.print("Registou COM sucesso");
-            }else{
-                System.out.print("Não registou");
-            }
-            
-            System.out.println();
-        } catch(Exception e) {
-            System.out.println("ERRO: "+e.getMessage());
-            e.printStackTrace(System.out);
-        }
-    }
-    
-    private void registaOperador() {
-        try {
-            System.out.println();
-            System.out.println("--------------------------");
-            System.out.println("  REGISTAR OPERADOR");
-            System.out.println("--------------------------");
-            System.out.print("username: ");
-            String username = sc.nextLine();
-            System.out.print("password: ");
-            String password = sc.nextLine();
-            System.out.print("nif: ");
-            String nif = sc.next();    
-            //TODO fazer verificaçao do nif
-            System.out.println();
-            if(controladorEJB.registarUtilizador(username, password, nif)){
-                System.out.print("Registou COM sucesso");
-            }else{
-                System.out.print("Não registou");
-            }
-            
-            System.out.println();
-        } catch(Exception e) {
-            System.out.println("ERRO: "+e.getMessage());
-            e.printStackTrace(System.out);
-        }
     }
 
     private int getEstado(String utilizador) {
