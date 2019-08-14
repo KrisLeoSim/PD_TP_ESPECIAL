@@ -33,14 +33,14 @@ public class Operador extends Menu {
         System.out.println("--------------------------");
     }
     
-     protected void imprimeMenuGestaoUtilizadores() {
+    protected void imprimeMenuGestaoUtilizadores() {
         System.out.println();
         System.out.println("--------------------------");
         System.out.println("GESTÂO DE UTILIZADORES");
         System.out.println("  1  - Registar utilizador");
         System.out.println("  2  - Remover utilizador");
-        System.out.println("  3  - Pedidos de registo pendentes");
-        System.out.println("  4  - Listar utilizadores");
+        System.out.println("  3  - Editar utilizadores");
+        System.out.println("  4  - Pedidos de registo pendentes");        
         System.out.println("--------------------------");
         System.out.println("  0  - Sair");
         System.out.println("--------------------------");
@@ -54,6 +54,19 @@ public class Operador extends Menu {
         System.out.println("  2  - Operador");
         System.out.println("--------------------------");
         System.out.println("  0  - Sair");
+        System.out.println("--------------------------");
+    }
+    
+    protected void imprimeMenuGestaoUtilizadores_Editar() {
+        System.out.println();
+        System.out.println("--------------------------");
+        System.out.println("EDITAR");
+        System.out.println("  1  - Username");
+        System.out.println("  2  - Password");
+        System.out.println("  3  - Cidade");
+        System.out.println("  4  - Nif");
+        System.out.println("--------------------------");
+        System.out.println("  0  - Voltar");
         System.out.println("--------------------------");
     }
     
@@ -102,10 +115,11 @@ public class Operador extends Menu {
                         removerUtilizador() ;
                         break;      
                     case 3:
-                         ListaDeUtilizadoresComRegistoPendente();
+                        editarUtilizadores(); 
+                         
                         break;
                     case 4:
-                         ListarUtilizadores();                    
+                        ListaDeUtilizadoresComRegistoPendente();                 
                         break;
                     case 0:
                        //logout();
@@ -120,7 +134,6 @@ public class Operador extends Menu {
         } 
     }
     
-
     @Override
     public int cicloDeVida() {
        int estado = ESTADO_OPERADOR;
@@ -223,6 +236,70 @@ public class Operador extends Menu {
             e.printStackTrace(System.out);
         }
   
+    }
+    
+    
+    private void editarUtilizadores(){
+        try {
+            
+            System.out.println();
+            System.out.println("--------------------------------------");
+            System.out.println("  EDITAR UTILIZADORES  ");
+            System.out.println("--------------------------------------");
+            
+            ArrayList<UtilizadorPojo> lista_utilizadores = ListarUtilizadores();
+                              
+            if(!lista_utilizadores.isEmpty()){
+                System.out.println("0 - Voltar ...");
+                opcao = obtemOpcaoMenu(lista_utilizadores.size());
+            --opcao;
+            if(opcao != -1){
+                
+                UtilizadorPojo utilizadorPojo = lista_utilizadores.get(opcao);      
+                imprimeMenuGestaoUtilizadores_Editar();
+                
+                opcao = obtemOpcaoMenu(5);
+              
+                switch(opcao){
+                    case 1:
+                        System.out.print("username: ");
+                        String username = sc.nextLine();
+                        utilizadorPojo.setUsername(username);
+                        break;
+                    case 2:
+                         System.out.print("password: ");
+                         String password = sc.nextLine();
+                        utilizadorPojo.setPassword(password);
+                        break;
+                    case 3:
+                         System.out.print("cidade: ");
+                         String cidade = sc.nextLine(); 
+                         utilizadorPojo.setPais(cidade);
+                    case 4:
+                         System.out.print("nif: ");
+                         String nif = sc.next(); 
+                         utilizadorPojo.setNif(nif);
+                        break;
+                
+                }              
+                
+            if(controladorEJB.editarUtilizador(utilizadorPojo)){
+                System.out.print("Editou COM sucesso");
+            }else{
+                System.out.print("Não foi possivel editar");
+            }
+            }
+            
+            
+            }else{
+            System.out.println("Não ha utilizadores");
+            }
+
+        } catch(Exception e) {
+            System.out.println("ERRO: "+e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    
     }
     
     private void removerUtilizador() {
