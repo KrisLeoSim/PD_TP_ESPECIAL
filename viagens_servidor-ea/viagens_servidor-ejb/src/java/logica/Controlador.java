@@ -100,6 +100,25 @@ public class Controlador implements ControladorRemote {
         return true;
     }
 
+     @Override
+    public boolean editarUtilizador(UtilizadorPojo novosDados) {
+        
+        try {
+             Utilizador utilizadorAactualizar = util.convertePojoToEntity.converteUtilizadorToUtilizadorPojo(novosDados);
+
+            if (utilizadorAactualizar == null) {
+                return false;
+            }
+
+            utilizadorFacade.editarUtilizador(utilizadorAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+    
+    
     @Override
     public boolean apagaUtilizador(int idUtilizador) {
         
@@ -109,8 +128,7 @@ public class Controlador implements ControladorRemote {
             if (utilizadorAapagar == null) {
                 return false;
             }
-
-            /*SENAO APAGA A COMPANHIA*/
+          
             utilizadorFacade.excluirUtilizador(utilizadorAapagar);
 
         } catch (Exception e) {
@@ -136,8 +154,8 @@ public class Controlador implements ControladorRemote {
     }
 
     @Override
-    public UtilizadorPojo selecionarUtilizador(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UtilizadorPojo selecionarUtilizador(int id) {
+        return util.converteEntityToPojo.converteUtilizadorToUtilizadorPojo(utilizadorFacade.getUtilizador(id));
     }
     
 }

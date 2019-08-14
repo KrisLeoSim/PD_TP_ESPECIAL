@@ -25,19 +25,41 @@ public class converteEntityToPojo {
         return listaConvertida;
         }
         
-        for(Utilizador utilizador : listUtilizador){
+        for(Utilizador entidadeUtilizador : listUtilizador){
         
         UtilizadorPojo pojoUtilizador= new UtilizadorPojo();
             
-        pojoUtilizador.setIdUtilizador(utilizador.getIdUtilizador());
-        pojoUtilizador.setTipoUser(utilizador.getTipoUser());
-        pojoUtilizador.setUsername(utilizador.getUsername());
-        pojoUtilizador.setPassword(utilizador.getPassword());
+        pojoUtilizador.setIdUtilizador(entidadeUtilizador.getIdUtilizador());
+        pojoUtilizador.setTipoUser(entidadeUtilizador.getTipoUser());
+        pojoUtilizador.setUsername(entidadeUtilizador.getUsername());
+        pojoUtilizador.setPassword(entidadeUtilizador.getPassword());
+        pojoUtilizador.setNif(entidadeUtilizador.getNif());
+        pojoUtilizador.setNacionalidade(entidadeUtilizador.getNacionalidade());
+        pojoUtilizador.setEstado(entidadeUtilizador.getEstado());
         
-        //Continuar com o resto se necessario .. enfim demasiados dados 
+        
         listaConvertida.add(pojoUtilizador);
         }
 
          return listaConvertida;
+    }
+    
+    public static UtilizadorPojo converteUtilizadorToUtilizadorPojo(Utilizador entidadeUtilizador){
+        
+        UtilizadorPojo pojoUtilizador= new UtilizadorPojo();
+        
+        if(entidadeUtilizador == null){
+        return pojoUtilizador;
+        }
+                   
+        pojoUtilizador.setIdUtilizador(entidadeUtilizador.getIdUtilizador());
+        pojoUtilizador.setTipoUser(entidadeUtilizador.getTipoUser());
+        pojoUtilizador.setUsername(entidadeUtilizador.getUsername());
+        pojoUtilizador.setPassword(entidadeUtilizador.getPassword());
+        pojoUtilizador.setNif(entidadeUtilizador.getNif());
+        pojoUtilizador.setNacionalidade(entidadeUtilizador.getNacionalidade());
+        pojoUtilizador.setEstado(entidadeUtilizador.getEstado());
+      
+    return pojoUtilizador;
     }
 }
