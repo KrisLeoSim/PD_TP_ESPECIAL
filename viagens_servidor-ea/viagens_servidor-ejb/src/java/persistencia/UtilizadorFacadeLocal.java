@@ -33,4 +33,6 @@ public interface UtilizadorFacadeLocal {
     public List<Utilizador> getAllUtilizadores();
     
     public List<Utilizador> getTodosUtilizadoresQueAguardamAprovacao();
+    public List<Utilizador> getClientes();
+    public List<Utilizador> getOperadores();
 }

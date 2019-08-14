@@ -123,6 +123,18 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
         return query.getResultList();
     }
     
- 
+    @Override
+    public List<Utilizador> getClientes() {      
+        Query query = getEntityManager().createNamedQuery("Utilizador.findByTipoUser");
+        query.setParameter("tipoUser", "cliente");
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Utilizador> getOperadores() {
+        Query query = getEntityManager().createNamedQuery("Utilizador.findByTipoUser");
+        query.setParameter("tipoUser", "operador");
+        return query.getResultList();
+    }
   
 }

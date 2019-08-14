@@ -82,13 +82,42 @@ public class Controlador implements ControladorRemote {
     }
 
     @Override
-    public boolean actualizaUtilizador(UtilizadorPojo novosDados) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean actualizaUtilizadorEstado(UtilizadorPojo novosDados) {
+        
+        try {
+             Utilizador utilizadorAactualizar = utilizadorFacade.getUtilizador(novosDados.getIdUtilizador());
+
+            if (utilizadorAactualizar == null) {
+                return false;
+            }
+           
+            utilizadorAactualizar.setEstado(novosDados.getEstado());
+            utilizadorFacade.editarUtilizador(utilizadorAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
     public boolean apagaUtilizador(int idUtilizador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            Utilizador utilizadorAapagar = utilizadorFacade.getUtilizador(idUtilizador);
+
+            if (utilizadorAapagar == null) {
+                return false;
+            }
+
+            /*SENAO APAGA A COMPANHIA*/
+            utilizadorFacade.excluirUtilizador(utilizadorAapagar);
+
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -98,12 +127,12 @@ public class Controlador implements ControladorRemote {
 
     @Override
     public ArrayList<UtilizadorPojo> listaClientes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return util.converteEntityToPojo.converteListaDeUtilizadorToUtilizadorPojo(utilizadorFacade.getClientes()); 
     }
 
     @Override
     public ArrayList<UtilizadorPojo> listaOperadores() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return util.converteEntityToPojo.converteListaDeUtilizadorToUtilizadorPojo(utilizadorFacade.getOperadores()); 
     }
 
     @Override
