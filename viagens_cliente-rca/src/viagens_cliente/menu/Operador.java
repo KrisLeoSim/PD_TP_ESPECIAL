@@ -8,6 +8,7 @@ package viagens_cliente.menu;
 import java.util.ArrayList;
 import logica.ControladorRemote;
 import regras.negocio.entidade.UtilizadorPojo;
+import regras.negocio.entidade.VooPojo;
 
 /**
  *
@@ -147,10 +148,10 @@ public class Operador extends Menu {
                         cicloDeVidaGestaoUtilizadores();
                         break;
                     case 2:
-                       //obtemVoos();
+                       
                         break;      
                     case 3:
-                        
+                        ListarVoos();
                         break;
                     case 4:
                   
@@ -236,6 +237,30 @@ public class Operador extends Menu {
             e.printStackTrace(System.out);
         }
   
+    }
+    
+    public ArrayList<VooPojo> ListarVoos(){
+            
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  VOOS ");
+            System.out.println("--------------------------");
+            
+            ArrayList<VooPojo> lista_voos= controladorEJB.listaVoos();
+            
+            int i = 1;
+            for(VooPojo vooPojo : lista_voos){
+                
+                System.out.println(" " + i + "- Agencia: " + vooPojo.getIdAgencia().getNome() + " duracao: " + vooPojo.getDuracaoVoo());
+                i++;
+            
+            }
+            
+            if(lista_voos.isEmpty()){            
+            System.out.println("Não tem Voos");
+            }
+            
+    return lista_voos;
     }
     
     
