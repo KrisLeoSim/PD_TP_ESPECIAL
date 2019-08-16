@@ -5,7 +5,7 @@
  */
 package persistencia;
 
-import entidade.Voo;
+import entidade.Companhia;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +19,7 @@ import javax.persistence.Query;
  * @author sergio
  */
 @Stateless
-public class VooFacade implements VooFacadeLocal {
+public class CompanhiaFacade implements CompanhiaFacadeLocal {
 
     @EJB
     private DAOLocal dao;
@@ -30,51 +30,51 @@ public class VooFacade implements VooFacadeLocal {
     }
 
     @Override
-    public boolean registarVoo(Voo entidade) {
+    public boolean registarCompanhia(Companhia entidade) {
         try {
             getEntityManager().persist(entidade);
             getEntityManager().flush();
         } catch (Exception e) {
-            Logger.getLogger(VooFacade.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(CompanhiaFacade.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
         return true;
     }
 
     @Override
-    public boolean excluirVoo(Voo entidade) {
+    public boolean excluirCompanhia(Companhia entidade) {
         try {
             getEntityManager().remove(entidade);
             getEntityManager().flush();
         } catch (Exception e) {
-            Logger.getLogger(VooFacade.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(CompanhiaFacade.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
         return true;
     }
 
     @Override
-    public boolean editarVoo(Voo entidade) {
+    public boolean editarCompanhia(Companhia entidade) {
         try {
             getEntityManager().merge(entidade);
             getEntityManager().flush();
         } catch (Exception e) {
-            Logger.getLogger(VooFacade.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(CompanhiaFacade.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
         return true;
     }
 
     @Override
-    public Voo getVoo(int id) {
-        Query query = getEntityManager().createNamedQuery("Companhia.findByIdVoo");
-        query.setParameter("idVoo", id);
-        return (Voo) query.getSingleResult();
+    public Companhia getCompanhia(int id) {
+        Query query = getEntityManager().createNamedQuery("Companhia.findByIdCompanhia");
+        query.setParameter("idCompanhia", id);
+        return (Companhia) query.getSingleResult();
     }
 
     @Override
-    public List<Voo> getAllVoos() {
-        Query query = getEntityManager().createNamedQuery("Voo.findAll");
+    public List<Companhia> getAllCompanhias() {
+        Query query = getEntityManager().createNamedQuery("Companhia.findAll");
         return query.getResultList();
     }
 

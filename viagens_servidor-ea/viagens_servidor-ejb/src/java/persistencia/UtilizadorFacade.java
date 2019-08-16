@@ -5,8 +5,6 @@
  */
 package persistencia;
 
-
-
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -14,93 +12,102 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import entidade.Utilizador;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 /**
  *
  * @author sergio
  */
 @Stateless
-public class UtilizadorFacade implements UtilizadorFacadeLocal{
-    
+public class UtilizadorFacade implements UtilizadorFacadeLocal {
+
     @EJB
     private DAOLocal dao;
 
     //METODOS A UTILIZAR
-    
     @Override
-    public Utilizador login(String nome, String palavrapass ) {
-        
+    public Utilizador login(String nome, String palavrapass) {
+
         Query query = getEntityManager().createNamedQuery("Utilizador.findByUsername");
         query.setParameter("username", nome);
         List<Utilizador> users = query.getResultList();
-        
+
         if (!users.isEmpty() || users != null) {
-           return users.get(0);
+            return users.get(0);
         }
-   
+
         return null;
     }
 
     @Override
-    public boolean registar(String nome, String palavrapass, String nif, String tipoDeUtilizador ) {
+    public boolean registar(String nome, String palavrapass, String nif, String tipoDeUtilizador) {
         boolean registou = false;
-      //ver se ja ha algum utilizador com o mesmo nome
- 
-      Utilizador novoUtilizador = new Utilizador();
-      //novoUtilizador.setIdUtilizador(5);
-      novoUtilizador.setUsername(nome);
-      novoUtilizador.setPassword(palavrapass);
-      novoUtilizador.setNif(nif);
-      novoUtilizador.setEstado(0);
-      novoUtilizador.setTipoUser(tipoDeUtilizador);
-      
-      
+        //ver se ja ha algum utilizador com o mesmo nome
+
+        Utilizador novoUtilizador = new Utilizador();
+        //novoUtilizador.setIdUtilizador(5);
+        novoUtilizador.setUsername(nome);
+        novoUtilizador.setPassword(palavrapass);
+        novoUtilizador.setNif(nif);
+        novoUtilizador.setEstado(0);
+        novoUtilizador.setTipoUser(tipoDeUtilizador);
+
         try {
-            criarUtilizador(novoUtilizador);
-            registou = true;
+            registou = criarUtilizador(novoUtilizador);
+
         } catch (Exception ex) {
             Logger.getLogger(UtilizadorFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-      return registou;
+
+        return registou;
     }
 
     //Metodos privados para uso apenas da class
-    
     @Override
-    public Utilizador atualizaUltimoLogin(Utilizador utilizador) throws Exception {  
-        utilizador.setDataUltimoLogin(5);       
-        return (Utilizador) editarUtilizador(utilizador);
+    public boolean atualizaUltimoLogin(Utilizador utilizador) throws Exception {
+        utilizador.setDataUltimoLogin(5);
+        return editarUtilizador(utilizador);
     }
-    
+
     @Override
     public EntityManager getEntityManager() {
-        return dao.getEntityManager(); 
+        return dao.getEntityManager();
+    }
+
+    public boolean criarUtilizador(Utilizador entidade) throws Exception {
+        try {
+            getEntityManager().persist(entidade);
+            getEntityManager().flush();
+        } catch (Exception e) {
+            Logger.getLogger(UtilizadorFacade.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public Utilizador criarUtilizador(Utilizador entidade) throws Exception {
-        getEntityManager().persist(entidade);
-        getEntityManager().flush();
-        return entidade;
+    public boolean excluirUtilizador(Utilizador entidade) {
+        try {
+            getEntityManager().remove(entidade);
+            getEntityManager().flush();
+        } catch (Exception e) {
+            Logger.getLogger(UtilizadorFacade.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public void excluirUtilizador(Utilizador entidade) throws Exception {
-        getEntityManager().remove(entidade);
-        getEntityManager().flush();
-    }
-
-    @Override
-    public Utilizador editarUtilizador(Utilizador entidade) throws Exception {
-        getEntityManager().merge(entidade);
-        getEntityManager().flush();
-        
-        return entidade;
+    public boolean editarUtilizador(Utilizador entidade) {
+        try {
+            getEntityManager().merge(entidade);
+            getEntityManager().flush();
+        } catch (Exception e) {
+            Logger.getLogger(UtilizadorFacade.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -112,7 +119,7 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
 
     @Override
     public List<Utilizador> getAllUtilizadores() {
-          Query query = getEntityManager().createNamedQuery("Utilizador.findAll");
+        Query query = getEntityManager().createNamedQuery("Utilizador.findAll");
         return query.getResultList();
     }
 
@@ -122,19 +129,19 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal{
         query.setParameter("estado", 0);
         return query.getResultList();
     }
-    
+
     @Override
-    public List<Utilizador> getClientes() {      
+    public List<Utilizador> getClientes() {
         Query query = getEntityManager().createNamedQuery("Utilizador.findByTipoUser");
         query.setParameter("tipoUser", "cliente");
         return query.getResultList();
     }
-    
+
     @Override
     public List<Utilizador> getOperadores() {
         Query query = getEntityManager().createNamedQuery("Utilizador.findByTipoUser");
         query.setParameter("tipoUser", "operador");
         return query.getResultList();
     }
-  
+
 }

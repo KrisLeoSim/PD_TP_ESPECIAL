@@ -5,7 +5,8 @@
  */
 package persistencia;
 
-import entidade.Voo;
+import entidade.Companhia;
+import entidade.Partida;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,7 @@ import javax.persistence.Query;
  * @author sergio
  */
 @Stateless
-public class VooFacade implements VooFacadeLocal {
+public class PartidaFacade implements PartidaFacadeLocal {
 
     @EJB
     private DAOLocal dao;
@@ -30,51 +31,51 @@ public class VooFacade implements VooFacadeLocal {
     }
 
     @Override
-    public boolean registarVoo(Voo entidade) {
+    public boolean registarPartida(Partida entidade) {
         try {
             getEntityManager().persist(entidade);
             getEntityManager().flush();
         } catch (Exception e) {
-            Logger.getLogger(VooFacade.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PartidaFacade.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
         return true;
     }
 
     @Override
-    public boolean excluirVoo(Voo entidade) {
+    public boolean excluirPartida(Partida entidade) {
         try {
             getEntityManager().remove(entidade);
             getEntityManager().flush();
         } catch (Exception e) {
-            Logger.getLogger(VooFacade.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PartidaFacade.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
         return true;
     }
 
     @Override
-    public boolean editarVoo(Voo entidade) {
+    public boolean editarPartida(Partida entidade) {
         try {
             getEntityManager().merge(entidade);
             getEntityManager().flush();
         } catch (Exception e) {
-            Logger.getLogger(VooFacade.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PartidaFacade.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
         return true;
     }
 
     @Override
-    public Voo getVoo(int id) {
-        Query query = getEntityManager().createNamedQuery("Companhia.findByIdVoo");
-        query.setParameter("idVoo", id);
-        return (Voo) query.getSingleResult();
+    public Companhia getPartida(int id) {
+        Query query = getEntityManager().createNamedQuery("Companhia.findByIdPartida");
+        query.setParameter("idPartida", id);
+        return (Companhia) query.getSingleResult();
     }
 
     @Override
-    public List<Voo> getAllVoos() {
-        Query query = getEntityManager().createNamedQuery("Voo.findAll");
+    public List<Companhia> getAllPartidas() {
+        Query query = getEntityManager().createNamedQuery("Partida.findAll");
         return query.getResultList();
     }
 

@@ -5,7 +5,7 @@
  */
 package persistencia;
 
-import entidade.Voo;
+import entidade.Companhia;
 import java.util.List;
 import javax.ejb.Local;
 import javax.persistence.EntityManager;
@@ -15,18 +15,17 @@ import javax.persistence.EntityManager;
  * @author sergio
  */
 @Local
-public interface VooFacadeLocal {
+public interface CompanhiaFacadeLocal {
 
     public EntityManager getEntityManager();
 
-    public boolean registarVoo(Voo entidade);
+    public boolean registarCompanhia(Companhia entidade);
 
-    public boolean excluirVoo(Voo entidade);
+    public boolean excluirCompanhia(Companhia entidade);
 
-    public boolean editarVoo(Voo entidade);
+    public boolean editarCompanhia(Companhia entidade);
 
-    public Voo getVoo(int id);
+    public Companhia getCompanhia(int id);
 
-    public List<Voo> getAllVoos();
-
+    public List<Companhia> getAllCompanhias();
 }

@@ -6,15 +6,19 @@
 package logica;
 
 
+import entidade.Companhia;
 import entidade.Utilizador;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import persistencia.CompanhiaFacadeLocal;
 import persistencia.UtilizadorFacadeLocal;
 import persistencia.VooFacadeLocal;
+import regras.negocio.entidade.CompanhiaPojo;
 import regras.negocio.entidade.UtilizadorPojo;
+import regras.negocio.entidade.VooPojo;
 
 
 /**
@@ -29,6 +33,9 @@ public class Controlador implements ControladorRemote {
 
     @EJB
     private UtilizadorFacadeLocal utilizadorFacade;
+    
+    @EJB
+    private CompanhiaFacadeLocal companhiaFacade;
     
     
 
@@ -158,4 +165,43 @@ public class Controlador implements ControladorRemote {
         return util.converteEntityToPojo.converteUtilizadorToUtilizadorPojo(utilizadorFacade.getUtilizador(id));
     }
     
+    /*
+    //Companhia
+    public boolean registaCompanhia(CompanhiaPojo companhiaPojo){
+ 
+    }
+    
+    
+    public boolean editarCompanhia(CompanhiaPojo companhiaPojo);
+    public boolean apagaCompanhia(int idCompanhia){
+    try {
+            Companhia companhiaAapagar = companhiaFacade.getCompanhia(idCompanhia);
+
+            if (companhiaAapagar == null) {
+                return false;
+            }
+          
+            companhiaFacade.excluirCompanhia(companhiaAapagar);
+
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    
+    }
+    public ArrayList<CompanhiaPojo> getCompanhias();
+*/
+
+    @Override
+    public boolean registaCompanhia(CompanhiaPojo companhiaPojo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    //voos
+    
+    @Override
+    public ArrayList<VooPojo> listaVoos() {
+        return util.converteEntityToPojo.converteListaDeVooToVooPojo(vooFacade.getAllVoos()); 
+    }
 }
