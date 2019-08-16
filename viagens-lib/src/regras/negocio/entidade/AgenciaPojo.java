@@ -30,6 +30,10 @@ public class AgenciaPojo implements Serializable {
         this.idAgencia = idAgencia;
     }
 
+    public AgenciaPojo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdAgencia() {
         return idAgencia;
     }

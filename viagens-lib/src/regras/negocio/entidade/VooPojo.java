@@ -24,13 +24,17 @@ public class VooPojo implements Serializable {
     private ArrayList<LugarPojo> lista_lugars;
     private ArrayList<PartidaPojo> lista_partidas;   
     private ArrayList<ChegadaPojo> lista_chegadas;    
-    //private AgenciaPojo idAgencia;
-    //private CompanhiaPojo idCompanhia;
+    private AgenciaPojo idAgencia;
+    private CompanhiaPojo idCompanhia;
 
     public VooPojo(int lugaresMaximo, int lugaresDisponiveis, int duracaoVoo) {
         this.lugaresMaximo = lugaresMaximo;
         this.lugaresDisponiveis = lugaresDisponiveis;
         this.duracaoVoo = duracaoVoo;
+    }
+
+    public VooPojo() {
+        
     }
 
     public int getIdVoo() {
@@ -87,6 +91,22 @@ public class VooPojo implements Serializable {
 
     public void setLista_chegadas(ArrayList<ChegadaPojo> lista_chegadas) {
         this.lista_chegadas = lista_chegadas;
+    }
+
+    public AgenciaPojo getIdAgencia() {
+        return idAgencia;
+    }
+
+    public void setIdAgencia(AgenciaPojo idAgencia) {
+        this.idAgencia = idAgencia;
+    }
+
+    public CompanhiaPojo getIdCompanhia() {
+        return idCompanhia;
+    }
+
+    public void setIdCompanhia(CompanhiaPojo idCompanhia) {
+        this.idCompanhia = idCompanhia;
     }
 
     @Override

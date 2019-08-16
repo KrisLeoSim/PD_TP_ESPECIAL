@@ -25,6 +25,10 @@ public class CompanhiaPojo implements Serializable {
         this.nome = nome;
     }
 
+    public CompanhiaPojo() {
+        
+    }
+
     public int getIdCompanhia() {
         return idCompanhia;
     }

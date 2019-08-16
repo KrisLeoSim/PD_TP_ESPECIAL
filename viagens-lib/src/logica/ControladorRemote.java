@@ -7,7 +7,9 @@ package logica;
 
 import java.util.ArrayList;
 import javax.ejb.Remote;
+import regras.negocio.entidade.CompanhiaPojo;
 import regras.negocio.entidade.UtilizadorPojo;
+import regras.negocio.entidade.VooPojo;
 
 
 /**
@@ -38,6 +40,11 @@ public interface ControladorRemote {
     ArrayList<UtilizadorPojo> listaContasQueAguardamAprovação();
     ArrayList<UtilizadorPojo> listaClientes();
     ArrayList<UtilizadorPojo> listaOperadores();
+
     
-        
+    //Companhia
+    boolean registaCompanhia(CompanhiaPojo companhiaPojo);
+    
+    //voo
+    ArrayList<VooPojo> listaVoos();    
 }
