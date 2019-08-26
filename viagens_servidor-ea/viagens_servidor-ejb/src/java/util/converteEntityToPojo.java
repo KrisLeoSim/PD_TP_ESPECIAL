@@ -103,8 +103,13 @@ public class converteEntityToPojo {
         //pojoVoo.setLista_chegadas((ArrayList<ChegadaPojo>) (List) entidadeVoo.getChegadaCollection());
         //pojoVoo.setLista_lugars((ArrayList<LugarPojo>) (List) entidadeVoo.getLugarCollection());
         
-        pojoVoo.setIdAgencia(converteAgenciaToAgenciaPojo(entidadeVoo.getIdAgencia()));
-        pojoVoo.setIdCompanhia(converteCompanhiaToCompanhiaPojo(entidadeVoo.getIdCompanhia()));
+        
+        
+        pojoVoo.setIdAgencia(
+                converteAgenciaToAgenciaPojo(entidadeVoo.getIdAgencia()));
+        
+        
+        //pojoVoo.setIdCompanhia(converteCompanhiaToCompanhiaPojo(entidadeVoo.getIdCompanhia()));
 
         return pojoVoo;
     }

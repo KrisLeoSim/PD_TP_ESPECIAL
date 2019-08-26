@@ -6,7 +6,6 @@
 package logica;
 
 
-import entidade.Companhia;
 import entidade.Utilizador;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -14,6 +13,7 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import persistencia.CompanhiaFacadeLocal;
+import persistencia.TempoFacadeLocal;
 import persistencia.UtilizadorFacadeLocal;
 import persistencia.VooFacadeLocal;
 import regras.negocio.entidade.CompanhiaPojo;
@@ -27,6 +27,9 @@ import regras.negocio.entidade.VooPojo;
  */
 @Stateful
 public class Controlador implements ControladorRemote {
+
+    @EJB
+    private TempoFacadeLocal tempoFacade;
 
     @EJB
     private VooFacadeLocal vooFacade;
@@ -80,12 +83,12 @@ public class Controlador implements ControladorRemote {
 
     @Override
     public int tempoAtual() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tempoFacade.getTempoAtual();
     }
 
     @Override
     public void alteraTempo(int valor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tempoFacade.alterarTempo(valor);
     }
 
     @Override
