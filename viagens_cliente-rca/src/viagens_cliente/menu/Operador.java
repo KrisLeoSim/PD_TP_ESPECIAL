@@ -34,7 +34,7 @@ public class Operador extends Menu {
         System.out.println("--------------------------");
     }
     
-    protected void imprimeMenuGestaoUtilizadores() {
+   protected void imprimeMenuGestaoUtilizadores() {
         System.out.println();
         System.out.println("--------------------------");
         System.out.println("GESTÂO DE UTILIZADORES");
@@ -42,6 +42,17 @@ public class Operador extends Menu {
         System.out.println("  2  - Remover utilizador");
         System.out.println("  3  - Editar utilizadores");
         System.out.println("  4  - Pedidos de registo pendentes");        
+        System.out.println("--------------------------");
+        System.out.println("  0  - Sair");
+        System.out.println("--------------------------");
+    }
+    
+    protected void imprimeMenuTempo() {
+        System.out.println();
+        System.out.println("--------------------------");
+        System.out.println("CONTROLO DO TEMPO");
+        System.out.println("  1  - Obter tempo actual");
+        System.out.println("  2  - Editar tempo");      
         System.out.println("--------------------------");
         System.out.println("  0  - Sair");
         System.out.println("--------------------------");
@@ -116,8 +127,7 @@ public class Operador extends Menu {
                         removerUtilizador() ;
                         break;      
                     case 3:
-                        editarUtilizadores(); 
-                         
+                        editarUtilizadores();                          
                         break;
                     case 4:
                         ListaDeUtilizadoresComRegistoPendente();                 
@@ -135,6 +145,35 @@ public class Operador extends Menu {
         } 
     }
     
+    public void menuTempo() {
+      boolean Sair= false;
+       
+      try {         
+            while(!Sair) {
+                imprimeMenuTempo();
+                
+                opcao = obtemOpcaoMenu(3);
+
+                switch(opcao) {
+                    case 1:
+                        obtemTempoActual();
+                        break;
+                    case 2:
+                        alteraTempo();
+                        break;                   
+                    case 0:
+                    Sair = true;
+                    break;                        
+                    default:                      
+                        break;
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();        
+        } 
+    }
+    
+    
     @Override
     public int cicloDeVida() {
        int estado = ESTADO_OPERADOR;
@@ -148,7 +187,7 @@ public class Operador extends Menu {
                         cicloDeVidaGestaoUtilizadores();
                         break;
                     case 2:
-                       
+                        menuTempo();
                         break;      
                     case 3:
                         ListarVoos();
@@ -172,6 +211,20 @@ public class Operador extends Menu {
         return estado;
     }
 
+    
+    //Tempo
+    private void obtemTempoActual(){
+     System.out.print("Tempo actual: "+ controladorEJB.tempoAtual());
+    }
+    
+    private void alteraTempo(){       
+        
+        int tempo = 0;
+        System.out.print("Novo tempo: ");
+           tempo = sc.nextInt();
+           controladorEJB.alteraTempo(tempo);
+    }
+    
     //Utilizadores
     
     public ArrayList<UtilizadorPojo> ListarUtilizadores(){
@@ -252,8 +305,7 @@ public class Operador extends Menu {
             for(VooPojo vooPojo : lista_voos){
                 
                 System.out.println(" " + i + "- Agencia: " + vooPojo.getIdAgencia().getNome() + " duracao: " + vooPojo.getDuracaoVoo());
-                i++;
-            
+                i++;           
             }
             
             if(lista_voos.isEmpty()){            
@@ -262,8 +314,7 @@ public class Operador extends Menu {
             
     return lista_voos;
     }
-    
-    
+      
     private void editarUtilizadores(){
         try {
             
