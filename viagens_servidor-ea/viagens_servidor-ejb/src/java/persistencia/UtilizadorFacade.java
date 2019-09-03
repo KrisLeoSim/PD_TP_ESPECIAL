@@ -32,8 +32,8 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal {
         Query query = getEntityManager().createNamedQuery("Utilizador.findByUsername");
         query.setParameter("username", nome);
         List<Utilizador> users = query.getResultList();
-
-        if (!users.isEmpty() || users != null) {
+      
+        if (!users.isEmpty()) {
             return users.get(0);
         }
 
