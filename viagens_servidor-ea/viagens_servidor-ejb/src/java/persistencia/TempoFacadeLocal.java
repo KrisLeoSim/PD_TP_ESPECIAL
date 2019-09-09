@@ -13,9 +13,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface TempoFacadeLocal {
-    void apagaTempos();
+    void velocidadeDoTempo(int novaVelocidade);
     void alterarTempo(int novoTempo);
     int getTempoAtual();
-
-    public void para();
+    void paraTempo();
+    void activarTempo();
+    boolean isTempoActivado();
 }
