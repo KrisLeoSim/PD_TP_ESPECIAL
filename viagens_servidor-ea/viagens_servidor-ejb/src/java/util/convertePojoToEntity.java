@@ -5,9 +5,11 @@
  */
 package util;
 
+import entidade.Local;
 import entidade.Utilizador;
 import entidade.Voo;
 import java.util.Collection;
+import regras.negocio.entidade.LocalPojo;
 import regras.negocio.entidade.UtilizadorPojo;
 import regras.negocio.entidade.VooPojo;
 
@@ -52,8 +54,26 @@ public class convertePojoToEntity {
 
         entityVoo.setPartidaCollection((Collection) vooPojo.getLista_partidas());
         entityVoo.setChegadaCollection((Collection) vooPojo.getLista_chegadas());
-        entityVoo.setLugarCollection((Collection) vooPojo.getLista_lugars());
+        //entityVoo.setLugarCollection((Collection) vooPojo.getLista_lugars());
 
         return entityVoo;
     }
+    
+    //local
+    //local
+    public static Local converteLocalToLocalPojo(Local PojoLocal) {
+        Local entidade = new Local();
+
+        if (PojoLocal == null) {
+            return null;
+        }
+
+        entidade.setIdLocal(PojoLocal.getIdLocal());
+        entidade.setPais(PojoLocal.getPais());
+        entidade.setCidade(PojoLocal.getCidade());
+        entidade.setDescricaoLocal(PojoLocal.getDescricaoLocal());
+        //pojoAgencia.setVoos(voos);
+        return entidade;
+    }
+    
 }

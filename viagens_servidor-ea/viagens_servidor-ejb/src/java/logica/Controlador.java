@@ -7,16 +7,22 @@ package logica;
 
 
 import entidade.Companhia;
+import entidade.Local;
 import entidade.Utilizador;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import persistencia.AgenciaFacadeLocal;
 import persistencia.CompanhiaFacadeLocal;
+import persistencia.LocalFacadeLocal;
+import persistencia.TempoFacadeLocal;
 import persistencia.UtilizadorFacadeLocal;
 import persistencia.VooFacadeLocal;
+import regras.negocio.entidade.AgenciaPojo;
 import regras.negocio.entidade.CompanhiaPojo;
+import regras.negocio.entidade.LocalPojo;
 import regras.negocio.entidade.UtilizadorPojo;
 import regras.negocio.entidade.VooPojo;
 
@@ -29,6 +35,9 @@ import regras.negocio.entidade.VooPojo;
 public class Controlador implements ControladorRemote {
 
     @EJB
+    private TempoFacadeLocal tempoFacade;
+
+    @EJB
     private VooFacadeLocal vooFacade;
 
     @EJB
@@ -36,6 +45,12 @@ public class Controlador implements ControladorRemote {
     
     @EJB
     private CompanhiaFacadeLocal companhiaFacade;
+    
+    @EJB
+    private AgenciaFacadeLocal agenciaFacade;
+    
+    @EJB
+    private LocalFacadeLocal localFacade;
     
     
 
@@ -80,14 +95,34 @@ public class Controlador implements ControladorRemote {
 
     @Override
     public int tempoAtual() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tempoFacade.getTempoAtual();
     }
 
     @Override
     public void alteraTempo(int valor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tempoFacade.alterarTempo(valor);
+    }
+    
+    @Override
+    public void velocidadeDoTempo(int valor) {
+        tempoFacade.velocidadeDoTempo(valor);
+    }
+    
+    @Override
+    public void activarTempo(){
+        tempoFacade.activarTempo();
+    }
+    
+    @Override
+    public void paraTempo(){
+        tempoFacade.paraTempo();
     }
 
+    @Override
+    public boolean isTempoActivado(){
+        return tempoFacade.isTempoActivado();
+    }
+    
     @Override
     public boolean actualizaUtilizadorEstado(UtilizadorPojo novosDados) {
         
@@ -203,5 +238,47 @@ public class Controlador implements ControladorRemote {
     @Override
     public ArrayList<VooPojo> listaVoos() {
         return util.converteEntityToPojo.converteListaDeVooToVooPojo(vooFacade.getAllVoos()); 
+    }
+
+    @Override
+    public boolean editarCompanhia(CompanhiaPojo companhiaPojo) {
+   
+        return false;
+    }
+
+    @Override
+    public ArrayList<CompanhiaPojo> listaCompanhias() {
+        return util.converteEntityToPojo.converteListaDeCompanhiaToCompanhiaPojo(companhiaFacade.getAllCompanhias()); 
+    }
+
+    @Override
+    public boolean registarAgencia(AgenciaPojo agenciaPojo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean editarAgencia(AgenciaPojo agenciaPojo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<AgenciaPojo> listaAgencias() {
+        return util.converteEntityToPojo.converteListaDeAgenciaToAgenciaPojo(agenciaFacade.getAllAgencias()); 
+    }
+
+    @Override
+    public boolean registarLocal(LocalPojo localPojo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean editarLocal(LocalPojo localPojo) {
+     
+        return false;
+    }
+
+    @Override
+    public ArrayList<LocalPojo> listaLocais() {
+        return util.converteEntityToPojo.converteListaDeLocalToLocalPojo(localFacade.getAllLocais()); 
     }
 }

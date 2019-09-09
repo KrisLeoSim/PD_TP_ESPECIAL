@@ -19,12 +19,16 @@ public class PartidaPojo implements Serializable {
     private int idPartida;    
     private int dataPartida;
     
-    //private LocalPojo idLocal;
+    private LocalPojo idLocal;
    
     //private Voo idVoo;
 
     public PartidaPojo(int dataPartida) {
         this.dataPartida = dataPartida;
+    }
+
+    public PartidaPojo() {
+     
     }
 
     public int getIdPartida() {
@@ -41,6 +45,14 @@ public class PartidaPojo implements Serializable {
 
     public void setDataPartida(int dataPartida) {
         this.dataPartida = dataPartida;
+    }
+
+    public LocalPojo getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(LocalPojo idLocal) {
+        this.idLocal = idLocal;
     }
 
     @Override

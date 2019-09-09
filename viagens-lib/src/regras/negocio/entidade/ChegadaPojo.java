@@ -18,12 +18,16 @@ public class ChegadaPojo implements Serializable {
     private int idChegada;
     private int dataChegada;
    
-    //private LocalPojo idLocal;
+    private LocalPojo idLocal;
   
     //private VooPojo idVoo;
 
     public ChegadaPojo(int dataChegada) {
         this.dataChegada = dataChegada;
+    }
+
+    public ChegadaPojo() {
+        
     }
 
     public int getIdChegada() {
@@ -42,6 +46,14 @@ public class ChegadaPojo implements Serializable {
         this.dataChegada = dataChegada;
     }
 
+    public LocalPojo getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(LocalPojo idLocal) {
+        this.idLocal = idLocal;
+    } 
+    
     @Override
     public String toString() {
         return "ChegadaPojo{" + "idChegada=" + idChegada + ", dataChegada=" + dataChegada + '}';

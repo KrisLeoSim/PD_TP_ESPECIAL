@@ -10,7 +10,8 @@ package util;
  * @author sergio
  */
 public class Tempo {
-
+    private final int VALOR_MAX = 30;
+    private final int VALOR_MIN = 0;
     int tempo;
 
     public Tempo(int valorInicial) {
@@ -25,6 +26,14 @@ public class Tempo {
         this.tempo = tempo;
     }
 
+    public int getVALOR_MAX() {
+        return VALOR_MAX;
+    }
+
+    public int getVALOR_MIN() {
+        return VALOR_MIN;
+    }
+    
     @Override
     public String toString() {
         return "Tempo{" + "tempo=" + tempo + '}';
