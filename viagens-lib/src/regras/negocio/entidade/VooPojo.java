@@ -21,7 +21,7 @@ public class VooPojo implements Serializable {
     private int lugaresMaximo;
     private int lugaresDisponiveis;
     private int duracaoVoo;
-    private ArrayList<LugarPojo> lista_lugars;
+    //private ArrayList<LugarPojo> lista_lugars;
     private ArrayList<PartidaPojo> lista_partidas;   
     private ArrayList<ChegadaPojo> lista_chegadas;    
     private AgenciaPojo idAgencia;
@@ -69,14 +69,6 @@ public class VooPojo implements Serializable {
         this.duracaoVoo = duracaoVoo;
     }
 
-    public ArrayList<LugarPojo> getLista_lugars() {
-        return lista_lugars;
-    }
-
-    public void setLista_lugars(ArrayList<LugarPojo> lista_lugars) {
-        this.lista_lugars = lista_lugars;
-    }
-
     public ArrayList<PartidaPojo> getLista_partidas() {
         return lista_partidas;
     }
@@ -111,7 +103,7 @@ public class VooPojo implements Serializable {
 
     @Override
     public String toString() {
-        return "VooPojo{" + "idVoo=" + idVoo + ", lugaresMaximo=" + lugaresMaximo + ", lugaresDisponiveis=" + lugaresDisponiveis + ", duracaoVoo=" + duracaoVoo + ", lista_lugars=" + lista_lugars + ", lista_partidas=" + lista_partidas + ", lista_chegadas=" + lista_chegadas + '}';
+        return "VooPojo{" + "idVoo=" + idVoo + ", lugaresMaximo=" + lugaresMaximo + ", lugaresDisponiveis=" + lugaresDisponiveis + ", duracaoVoo=" + duracaoVoo + ", lista_partidas=" + lista_partidas + ", lista_chegadas=" + lista_chegadas + '}';
     }
 
     

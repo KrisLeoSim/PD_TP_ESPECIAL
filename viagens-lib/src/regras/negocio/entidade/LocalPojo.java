@@ -29,6 +29,10 @@ public class LocalPojo implements Serializable {
         this.cidade = cidade;
     }
 
+    public LocalPojo() {
+        
+    }
+
     public int getIdLocal() {
         return idLocal;
     }
