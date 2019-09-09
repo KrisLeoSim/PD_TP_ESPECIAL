@@ -33,8 +33,8 @@ public class UtilizadorFacade implements UtilizadorFacadeLocal {
         query.setParameter("username", nome);
         List<Utilizador> users = query.getResultList();
 
-        if (!users.isEmpty() || users != null) {
-            return users.get(0);
+        if (!users.isEmpty()) {
+            return (Utilizador) users.get(0);
         }
 
         return null;
