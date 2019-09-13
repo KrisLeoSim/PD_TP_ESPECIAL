@@ -24,8 +24,6 @@ public class AgenciaPojo implements Serializable {
         
     }
 
-    
-
     public AgenciaPojo(int idAgencia) {
         this.idAgencia = idAgencia;
     }

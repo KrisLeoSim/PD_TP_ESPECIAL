@@ -5,10 +5,14 @@
  */
 package util;
 
+import entidade.Agencia;
+import entidade.Companhia;
 import entidade.Local;
 import entidade.Utilizador;
 import entidade.Voo;
 import java.util.Collection;
+import regras.negocio.entidade.AgenciaPojo;
+import regras.negocio.entidade.CompanhiaPojo;
 import regras.negocio.entidade.LocalPojo;
 import regras.negocio.entidade.UtilizadorPojo;
 import regras.negocio.entidade.VooPojo;
@@ -58,10 +62,10 @@ public class convertePojoToEntity {
 
         return entityVoo;
     }
-    
+
     //local
     //local
-    public static Local converteLocalToLocalPojo(Local PojoLocal) {
+    public static Local converteLocalPojoToLocal(LocalPojo PojoLocal) {
         Local entidade = new Local();
 
         if (PojoLocal == null) {
@@ -75,5 +79,30 @@ public class convertePojoToEntity {
         //pojoAgencia.setVoos(voos);
         return entidade;
     }
-    
+
+    public static Companhia converteCompanhiaPojoToCompanhia(CompanhiaPojo PojoCompanhia) {
+        Companhia entidade = new Companhia();
+
+        if (PojoCompanhia == null) {
+            return null;
+        }
+
+        entidade.setIdCompanhia(PojoCompanhia.getIdCompanhia());
+        entidade.setNome(PojoCompanhia.getNome());
+
+        return entidade;
+    }
+
+    public static Agencia converteAgenciaPojoToAgencia(AgenciaPojo PojoAgencia) {
+        Agencia entidade = new Agencia();
+
+        if (PojoAgencia == null) {
+            return null;
+        }
+
+        entidade.setIdAgencia(PojoAgencia.getIdAgencia());
+        entidade.setNome(PojoAgencia.getNome());
+
+        return entidade;
+    }
 }
