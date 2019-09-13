@@ -1,0 +1,767 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 131072 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2643), pid=24359, tid=0xb6493b40
+#
+# JRE version: OpenJDK Runtime Environment (8.0_181-b13) (build 1.8.0_181-8u181-b13-2~deb9u1-b13)
+# Java VM: OpenJDK Server VM (25.181-b13 mixed mode linux-x86 )
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0xb6308c00):  JavaThread "main" [_thread_in_vm, id=24363, stack(0xb6443000,0xb6494000)]
+
+Stack: [0xb6443000,0xb6494000],  sp=0xb6490fb4,  free space=311k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x8c7df3]
+V  [libjvm.so+0x3750f6]
+V  [libjvm.so+0x72b0a0]
+V  [libjvm.so+0x724fb3]
+V  [libjvm.so+0x8c495c]
+V  [libjvm.so+0x6b0398]
+V  [libjvm.so+0x6b05d1]
+V  [libjvm.so+0x6b1905]
+V  [libjvm.so+0x6b1a9c]
+V  [libjvm.so+0x6b2f0c]
+V  [libjvm.so+0x6b3067]
+V  [libjvm.so+0x1834b8]
+V  [libjvm.so+0x364de7]
+V  [libjvm.so+0x6b9299]
+V  [libjvm.so+0x2dc7e6]
+V  [libjvm.so+0x2dd1a6]
+V  [libjvm.so+0x2df022]
+V  [libjvm.so+0x2e5c12]
+V  [libjvm.so+0x8441a9]
+V  [libjvm.so+0x842e06]
+V  [libjvm.so+0x844e36]
+V  [libjvm.so+0x36764b]
+V  [libjvm.so+0x4ebb0b]
+j  sun.security.jca.ProviderList.<clinit>()V+18
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x4fd07d]
+V  [libjvm.so+0x4fc18a]
+V  [libjvm.so+0x4c5b79]
+V  [libjvm.so+0x4c60e0]
+V  [libjvm.so+0x4c63db]
+V  [libjvm.so+0x60ad4b]
+V  [libjvm.so+0x60afca]
+V  [libjvm.so+0x4ef1cd]
+j  sun.security.jca.Providers.<clinit>()V+10
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x4fd07d]
+V  [libjvm.so+0x4fc18a]
+V  [libjvm.so+0x4c5b79]
+V  [libjvm.so+0x4c60e0]
+V  [libjvm.so+0x4c63db]
+V  [libjvm.so+0x60b380]
+V  [libjvm.so+0x60f09c]
+V  [libjvm.so+0x611918]
+V  [libjvm.so+0x4f0b6b]
+j  sun.security.util.SignatureFileVerifier.<init>(Ljava/util/ArrayList;Lsun/security/util/ManifestDigester;Ljava/lang/String;[B)V+33
+j  java.util.jar.JarVerifier.processEntry(Lsun/security/util/ManifestEntryVerifier;)V+311
+j  java.util.jar.JarVerifier.update(I[BIILsun/security/util/ManifestEntryVerifier;)V+39
+j  java.util.jar.JarFile.initializeVerifier()V+143
+j  java.util.jar.JarFile.getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;+25
+j  sun.net.www.protocol.jar.JarURLConnection.getInputStream()Ljava/io/InputStream;+88
+j  com.sun.tools.javac.util.ServiceLoader.parse(Ljava/lang/Class;Ljava/net/URL;)Ljava/util/Iterator;+28
+j  com.sun.tools.javac.util.ServiceLoader.access$200(Lcom/sun/tools/javac/util/ServiceLoader;Ljava/lang/Class;Ljava/net/URL;)Ljava/util/Iterator;+3
+j  com.sun.tools.javac.util.ServiceLoader$LazyIterator.hasNext()Z+140
+j  com.sun.tools.javac.util.ServiceLoader$1.hasNext()Z+21
+j  com.sun.tools.javac.processing.JavacProcessingEnvironment$ServiceIterator.hasNext()Z+4
+j  com.sun.tools.javac.processing.JavacProcessingEnvironment$DiscoveredProcessors$ProcessorStateIterator.hasNext()Z+39
+j  com.sun.tools.javac.processing.JavacProcessingEnvironment.atLeastOneProcessor()Z+7
+j  com.sun.tools.javac.main.JavaCompiler.initProcessAnnotations(Ljava/lang/Iterable;)V+55
+j  com.sun.tools.javac.main.JavaCompiler.compile(Lcom/sun/tools/javac/util/List;Lcom/sun/tools/javac/util/List;Ljava/lang/Iterable;)V+133
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;[Ljava/lang/String;Lcom/sun/tools/javac/util/Context;Lcom/sun/tools/javac/util/List;Ljava/lang/Iterable;)Lcom/sun/tools/javac/main/Main$Result;+1299
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;Lcom/sun/tools/javac/util/Context;Lcom/sun/tools/javac/util/List;Ljava/lang/Iterable;)Lcom/sun/tools/javac/main/Main$Result;+7
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;Lcom/sun/tools/javac/util/Context;)Lcom/sun/tools/javac/main/Main$Result;+7
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;)Lcom/sun/tools/javac/main/Main$Result;+15
+j  com.sun.tools.javac.Main.compile([Ljava/lang/String;)I+12
+j  com.sun.tools.javac.Main.main([Ljava/lang/String;)V+1
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x4fd07d]
+V  [libjvm.so+0x4fc18a]
+V  [libjvm.so+0x51b4a7]
+V  [libjvm.so+0x51d240]
+C  [libjli.so+0x2c60]
+C  [libpthread.so.0+0x627a]  start_thread+0xda
+C  [libc.so.6+0xe7ae6]  clone+0x66
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  sun.security.jca.ProviderList.<clinit>()V+18
+v  ~StubRoutines::call_stub
+j  sun.security.jca.Providers.<clinit>()V+10
+v  ~StubRoutines::call_stub
+j  sun.security.util.SignatureFileVerifier.<init>(Ljava/util/ArrayList;Lsun/security/util/ManifestDigester;Ljava/lang/String;[B)V+33
+j  java.util.jar.JarVerifier.processEntry(Lsun/security/util/ManifestEntryVerifier;)V+311
+j  java.util.jar.JarVerifier.update(I[BIILsun/security/util/ManifestEntryVerifier;)V+39
+j  java.util.jar.JarFile.initializeVerifier()V+143
+j  java.util.jar.JarFile.getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;+25
+j  sun.net.www.protocol.jar.JarURLConnection.getInputStream()Ljava/io/InputStream;+88
+j  com.sun.tools.javac.util.ServiceLoader.parse(Ljava/lang/Class;Ljava/net/URL;)Ljava/util/Iterator;+28
+j  com.sun.tools.javac.util.ServiceLoader.access$200(Lcom/sun/tools/javac/util/ServiceLoader;Ljava/lang/Class;Ljava/net/URL;)Ljava/util/Iterator;+3
+j  com.sun.tools.javac.util.ServiceLoader$LazyIterator.hasNext()Z+140
+j  com.sun.tools.javac.util.ServiceLoader$1.hasNext()Z+21
+j  com.sun.tools.javac.processing.JavacProcessingEnvironment$ServiceIterator.hasNext()Z+4
+j  com.sun.tools.javac.processing.JavacProcessingEnvironment$DiscoveredProcessors$ProcessorStateIterator.hasNext()Z+39
+j  com.sun.tools.javac.processing.JavacProcessingEnvironment.atLeastOneProcessor()Z+7
+j  com.sun.tools.javac.main.JavaCompiler.initProcessAnnotations(Ljava/lang/Iterable;)V+55
+j  com.sun.tools.javac.main.JavaCompiler.compile(Lcom/sun/tools/javac/util/List;Lcom/sun/tools/javac/util/List;Ljava/lang/Iterable;)V+133
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;[Ljava/lang/String;Lcom/sun/tools/javac/util/Context;Lcom/sun/tools/javac/util/List;Ljava/lang/Iterable;)Lcom/sun/tools/javac/main/Main$Result;+1299
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;Lcom/sun/tools/javac/util/Context;Lcom/sun/tools/javac/util/List;Ljava/lang/Iterable;)Lcom/sun/tools/javac/main/Main$Result;+7
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;Lcom/sun/tools/javac/util/Context;)Lcom/sun/tools/javac/main/Main$Result;+7
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;)Lcom/sun/tools/javac/main/Main$Result;+15
+j  com.sun.tools.javac.Main.compile([Ljava/lang/String;)I+12
+j  com.sun.tools.javac.Main.main([Ljava/lang/String;)V+1
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0xb6386800 JavaThread "Service Thread" daemon [_thread_blocked, id=24371, stack(0x866c1000,0x86712000)]
+  0xb6384400 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=24370, stack(0x86712000,0x86793000)]
+  0xb6382800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=24369, stack(0x86793000,0x86814000)]
+  0xb6381000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=24368, stack(0x86814000,0x86865000)]
+  0xb6366000 JavaThread "Finalizer" daemon [_thread_blocked, id=24367, stack(0x86b1b000,0x86b6c000)]
+  0xb6364400 JavaThread "Reference Handler" daemon [_thread_blocked, id=24365, stack(0x86b6c000,0x86bbd000)]
+=>0xb6308c00 JavaThread "main" [_thread_in_vm, id=24363, stack(0xb6443000,0xb6494000)]
+
+Other Threads:
+  0xb635ec00 VMThread [stack: 0x86bbd000,0x86c3e000] [id=24364]
+  0xb6388800 WatcherThread [stack: 0x86640000,0x866c1000] [id=24372]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ def new generation   total 3840K, used 1904K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,  45% used [0x87400000, 0x875883e8, 0x87760000)
+  from space 384K,  87% used [0x87760000, 0x877b3f88, 0x877c0000)
+  to   space 384K,   0% used [0x877c0000, 0x877c0000, 0x87820000)
+ tenured generation   total 8316K, used 5195K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  62% used [0x91ca0000, 0x921b2cd8, 0x921b2e00, 0x924bf000)
+ Metaspace       used 4726K, capacity 4740K, committed 4760K, reserved 5424K
+
+Card table byte_map: [0x87302000,0x87400000] byte_map_base: 0x86ec8000
+
+Polling page: 0xb77d2000
+
+CodeCache: size=245760Kb used=2178Kb max_used=2190Kb free=243581Kb
+ bounds [0xa72b1000, 0xa74f1000, 0xb62b1000]
+ total_blobs=782 nmethods=621 adapters=76
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 11.115 Thread 0xb6382800  621       4       java.util.StringTokenizer::skipDelimiters (116 bytes)
+Event: 11.119 Thread 0xb6382800 nmethod 621 0xa7363688 code [0xa73637a0, 0xa73639f0]
+Event: 11.250 Thread 0xb6382800  622       4       java.net.URI$Parser::checkChars (44 bytes)
+Event: 11.282 Thread 0xb6382800 nmethod 622 0xa74d2a48 code [0xa74d2b60, 0xa74d3230]
+Event: 11.282 Thread 0xb6382800  623       4       java.net.URI$Parser::parseHierarchical (180 bytes)
+Event: 11.306 Thread 0xb6382800 nmethod 623 0xa74d71c8 code [0xa74d7360, 0xa74d7ff0]
+Event: 11.331 Thread 0xb6382800  624 %     4       java.util.jar.JarFile::match @ 14 (116 bytes)
+Event: 11.383 Thread 0xb6382800 nmethod 624% 0xa74d2408 code [0xa74d2520, 0xa74d2870]
+Event: 11.399 Thread 0xb6382800  625       4       java.util.jar.JarFile::match (116 bytes)
+Event: 11.403 Thread 0xb6382800 nmethod 625 0xa7363108 code [0xa7363220, 0xa7363450]
+
+GC Heap History (10 events):
+Event: 9.642 GC heap before
+{Heap before GC invocations=116 (full 1):
+ def new generation   total 3840K, used 3839K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K, 100% used [0x87400000, 0x87760000, 0x87760000)
+  from space 384K,  99% used [0x877c0000, 0x8781ffe0, 0x87820000)
+  to   space 384K,   0% used [0x87760000, 0x87760000, 0x877c0000)
+ tenured generation   total 8316K, used 8125K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  97% used [0x91ca0000, 0x9248f4c8, 0x9248f600, 0x924bf000)
+ Metaspace       used 4663K, capacity 4708K, committed 4760K, reserved 5424K
+Event: 9.696 GC heap after
+Heap after GC invocations=117 (full 2):
+ def new generation   total 3840K, used 0K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,   0% used [0x87400000, 0x87400000, 0x87760000)
+  from space 384K,   0% used [0x87760000, 0x87760000, 0x877c0000)
+  to   space 384K,   0% used [0x877c0000, 0x877c0000, 0x87820000)
+ tenured generation   total 8316K, used 4612K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  55% used [0x91ca0000, 0x921211e8, 0x92121200, 0x924bf000)
+ Metaspace       used 4663K, capacity 4708K, committed 4760K, reserved 5424K
+}
+Event: 9.940 GC heap before
+{Heap before GC invocations=117 (full 2):
+ def new generation   total 3840K, used 3453K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,  99% used [0x87400000, 0x8775f700, 0x87760000)
+  from space 384K,   0% used [0x87760000, 0x87760000, 0x877c0000)
+  to   space 384K,   0% used [0x877c0000, 0x877c0000, 0x87820000)
+ tenured generation   total 8316K, used 4612K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  55% used [0x91ca0000, 0x921211e8, 0x92121200, 0x924bf000)
+ Metaspace       used 4663K, capacity 4708K, committed 4760K, reserved 5424K
+Event: 9.950 GC heap after
+Heap after GC invocations=118 (full 2):
+ def new generation   total 3840K, used 369K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,   0% used [0x87400000, 0x87400000, 0x87760000)
+  from space 384K,  96% used [0x877c0000, 0x8781c7b8, 0x87820000)
+  to   space 384K,   0% used [0x87760000, 0x87760000, 0x877c0000)
+ tenured generation   total 8316K, used 4646K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  55% used [0x91ca0000, 0x92129b88, 0x92129c00, 0x924bf000)
+ Metaspace       used 4663K, capacity 4708K, committed 4760K, reserved 5424K
+}
+Event: 10.689 GC heap before
+{Heap before GC invocations=118 (full 2):
+ def new generation   total 3840K, used 3825K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K, 100% used [0x87400000, 0x87760000, 0x87760000)
+  from space 384K,  96% used [0x877c0000, 0x8781c7b8, 0x87820000)
+  to   space 384K,   0% used [0x87760000, 0x87760000, 0x877c0000)
+ tenured generation   total 8316K, used 4646K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  55% used [0x91ca0000, 0x92129b88, 0x92129c00, 0x924bf000)
+ Metaspace       used 4666K, capacity 4708K, committed 4760K, reserved 5424K
+Event: 10.690 GC heap after
+Heap after GC invocations=119 (full 2):
+ def new generation   total 3840K, used 380K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,   0% used [0x87400000, 0x87400000, 0x87760000)
+  from space 384K,  99% used [0x87760000, 0x877bf2c0, 0x877c0000)
+  to   space 384K,   0% used [0x877c0000, 0x877c0000, 0x87820000)
+ tenured generation   total 8316K, used 4869K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  58% used [0x91ca0000, 0x92161690, 0x92161800, 0x924bf000)
+ Metaspace       used 4666K, capacity 4708K, committed 4760K, reserved 5424K
+}
+Event: 11.038 GC heap before
+{Heap before GC invocations=119 (full 2):
+ def new generation   total 3840K, used 3836K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K, 100% used [0x87400000, 0x87760000, 0x87760000)
+  from space 384K,  99% used [0x87760000, 0x877bf2c0, 0x877c0000)
+  to   space 384K,   0% used [0x877c0000, 0x877c0000, 0x87820000)
+ tenured generation   total 8316K, used 4869K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  58% used [0x91ca0000, 0x92161690, 0x92161800, 0x924bf000)
+ Metaspace       used 4666K, capacity 4708K, committed 4760K, reserved 5424K
+Event: 11.039 GC heap after
+Heap after GC invocations=120 (full 2):
+ def new generation   total 3840K, used 220K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,   0% used [0x87400000, 0x87400000, 0x87760000)
+  from space 384K,  57% used [0x877c0000, 0x877f71f0, 0x87820000)
+  to   space 384K,   0% used [0x87760000, 0x87760000, 0x877c0000)
+ tenured generation   total 8316K, used 5081K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  61% used [0x91ca0000, 0x92196468, 0x92196600, 0x924bf000)
+ Metaspace       used 4666K, capacity 4708K, committed 4760K, reserved 5424K
+}
+Event: 11.328 GC heap before
+{Heap before GC invocations=120 (full 2):
+ def new generation   total 3840K, used 3653K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,  99% used [0x87400000, 0x8775a560, 0x87760000)
+  from space 384K,  57% used [0x877c0000, 0x877f71f0, 0x87820000)
+  to   space 384K,   0% used [0x87760000, 0x87760000, 0x877c0000)
+ tenured generation   total 8316K, used 5081K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  61% used [0x91ca0000, 0x92196468, 0x92196600, 0x924bf000)
+ Metaspace       used 4666K, capacity 4708K, committed 4760K, reserved 5424K
+Event: 11.329 GC heap after
+Heap after GC invocations=121 (full 2):
+ def new generation   total 3840K, used 335K [0x87400000, 0x87820000, 0x91ca0000)
+  eden space 3456K,   0% used [0x87400000, 0x87400000, 0x87760000)
+  from space 384K,  87% used [0x87760000, 0x877b3f88, 0x877c0000)
+  to   space 384K,   0% used [0x877c0000, 0x877c0000, 0x87820000)
+ tenured generation   total 8316K, used 5195K [0x91ca0000, 0x924bf000, 0xa6e00000)
+   the space 8316K,  62% used [0x91ca0000, 0x921b2cd8, 0x921b2e00, 0x924bf000)
+ Metaspace       used 4666K, capacity 4708K, committed 4760K, reserved 5424K
+}
+
+Deoptimization events (10 events):
+Event: 2.662 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa73ea01c method=java.util.zip.ZipCoder.encoder()Ljava/nio/charset/CharsetEncoder; @ 4
+Event: 2.671 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa73d1e54 method=java.util.zip.ZipCoder.encoder()Ljava/nio/charset/CharsetEncoder; @ 4
+Event: 7.866 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa73b12d4 method=java.lang.String.replace(CC)Ljava/lang/String; @ 2
+Event: 7.954 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa7449cc8 method=java.util.StringTokenizer.skipDelimiters(I)I @ 64
+Event: 7.954 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa740e200 method=java.util.StringTokenizer.scanToken(I)I @ 42
+Event: 7.979 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa745b920 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 20
+Event: 7.980 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa73db288 method=java.lang.String.indexOf([CII[CIII)I @ 134
+Event: 8.481 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa73e1a08 method=java.lang.String.<init>([CII)V @ 18
+Event: 8.481 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa7472710 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 25
+Event: 8.517 Thread 0xb6308c00 Uncommon trap: reason=unstable_if action=reinterpret pc=0xa73ed1d0 method=sun.misc.URLClassPath$JarLoader.getResource(Ljava/lang/String;Z)Lsun/misc/Resource; @ 62
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 11.316 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x87743df0) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.316 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x87743ff0) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x87745b50) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x87745d50) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x87747e50) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x87748050) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x8774a080) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x8774a280) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x8774c100) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 11.317 Thread 0xb6308c00 Exception <a 'java/security/PrivilegedActionException'> (0x8774c300) thrown at [/build/openjdk-8-FRGKAs/openjdk-8-8u181-b13/src/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+
+Events (10 events):
+Event: 11.997 loading class sun/security/jca/Providers done
+Event: 11.997 loading class java/lang/InheritableThreadLocal
+Event: 11.997 loading class java/lang/InheritableThreadLocal done
+Event: 11.997 Executing VM operation: Deoptimize
+Event: 11.997 Executing VM operation: Deoptimize done
+Event: 11.997 loading class sun/security/jca/ProviderList
+Event: 11.999 loading class sun/security/jca/ProviderList done
+Event: 11.999 loading class sun/security/jca/ProviderConfig
+Event: 11.999 loading class sun/security/jca/ProviderConfig done
+Event: 12.000 loading class java/security/Provider
+
+
+Dynamic libraries:
+00405000-00406000 r-xp 00000000 08:01 559883     /usr/lib/jvm/java-8-openjdk-i386/bin/javac
+00406000-00407000 r--p 00000000 08:01 559883     /usr/lib/jvm/java-8-openjdk-i386/bin/javac
+00407000-00408000 rw-p 00001000 08:01 559883     /usr/lib/jvm/java-8-openjdk-i386/bin/javac
+00abe000-00f16000 rw-p 00000000 00:00 0          [heap]
+85600000-85675000 rw-p 00000000 00:00 0 
+85675000-85700000 ---p 00000000 00:00 0 
+85761000-8577f000 r--s 00142000 08:01 280250     /opt/payara5/glassfish/modules/org.eclipse.persistence.jpa.jpql.jar
+8577f000-857bf000 r--s 004e4000 08:01 280350     /opt/payara5/glassfish/modules/org.eclipse.persistence.core.jar
+857bf000-85800000 r--s 00359000 08:01 280437     /opt/payara5/glassfish/modules/jaxb-osgi.jar
+85800000-858ff000 rw-p 00000000 00:00 0 
+858ff000-85900000 ---p 00000000 00:00 0 
+8591a000-8591c000 r--s 0000d000 08:01 280245     /opt/payara5/glassfish/modules/org.eclipse.persistence.jpa.modelgen.processor.jar
+8591c000-85933000 r--s 00155000 08:01 280345     /opt/payara5/glassfish/modules/org.eclipse.persistence.jpa.jar
+85933000-85935000 r--s 00014000 08:01 280340     /opt/payara5/glassfish/modules/jms-core.jar
+85935000-85937000 r--s 0000f000 08:01 280557     /opt/payara5/glassfish/modules/jta.jar
+85937000-85a00000 r--s 00c07000 08:01 280211     /opt/payara5/glassfish/modules/webservices-osgi.jar
+85a00000-85b00000 rw-p 00000000 00:00 0 
+85b00000-85b01000 r--s 00003000 08:01 280339     /opt/payara5/glassfish/modules/gf-jms-connector.jar
+85b01000-85b07000 r--s 00059000 08:01 280381     /opt/payara5/glassfish/modules/jts.jar
+85b07000-85b09000 r--s 00010000 08:01 280546     /opt/payara5/glassfish/modules/webservices-connector.jar
+85b09000-85b0b000 r--s 00006000 08:01 280318     /opt/payara5/glassfish/modules/javamail-connector.jar
+85b0b000-85b0c000 r--s 00002000 08:01 280430     /opt/payara5/glassfish/modules/gf-connectors-connector.jar
+85b0c000-85b13000 r--s 0007b000 08:01 280560     /opt/payara5/glassfish/modules/connectors-runtime.jar
+85b13000-85b14000 r--s 00007000 08:01 280297     /opt/payara5/glassfish/modules/connectors-inbound-runtime.jar
+85b14000-85b16000 r--s 0000a000 08:01 280166     /opt/payara5/glassfish/modules/work-management.jar
+85b16000-85b1a000 r--s 0003d000 08:01 280545     /opt/payara5/glassfish/modules/jsr109-impl.jar
+85b1a000-85b2e000 r--s 000e3000 08:01 280220     /opt/payara5/glassfish/modules/jaxb-extra-osgi.jar
+85b2e000-85b32000 r--s 00024000 08:01 280256     /opt/payara5/glassfish/modules/stax2-api.jar
+85b32000-85b38000 r--s 00071000 08:01 280169     /opt/payara5/glassfish/modules/woodstox-core-asl.jar
+85b38000-85b39000 r--s 00000000 08:01 280304     /opt/payara5/glassfish/modules/webservices-extra-jdk-packages.jar
+85b39000-85b3c000 r--s 00009000 08:01 280219     /opt/payara5/glassfish/modules/javax.xml.rpc-api.jar
+85b3c000-85b3e000 r--s 00004000 08:01 280310     /opt/payara5/glassfish/modules/web-sse.jar
+85b3e000-85b40000 r--s 00006000 08:01 280507     /opt/payara5/glassfish/modules/web-embed-api.jar
+85b40000-85b42000 r--s 0000b000 08:01 280285     /opt/payara5/glassfish/modules/websecurity.jar
+85b42000-85b43000 r--s 00009000 08:01 280239     /opt/payara5/glassfish/modules/web-gui-plugin-common.jar
+85b43000-85b45000 r--s 00001000 08:01 280398     /opt/payara5/glassfish/modules/admin-core.jar
+85b45000-85b4c000 r--s 00080000 08:01 280197     /opt/payara5/glassfish/modules/javax.servlet.jsp.jar
+85b4c000-85b4d000 r--s 00002000 08:01 280491     /opt/payara5/glassfish/modules/microprofile-opentracing-api.jar
+85b4d000-85b4e000 r--s 00004000 08:01 280187     /opt/payara5/glassfish/modules/opentracing-adapter.jar
+85b4e000-85b52000 r--s 0001c000 08:01 280157     /opt/payara5/glassfish/modules/javax.ws.rs-api.jar
+85b52000-85b55000 r--s 0000f000 08:01 280532     /opt/payara5/glassfish/modules/jersey-media-jaxb.jar
+85b55000-85b5b000 r--s 00036000 08:01 280516     /opt/payara5/glassfish/modules/jersey-client.jar
+85b5b000-85b6e000 r--s 000d1000 08:01 280253     /opt/payara5/glassfish/modules/jersey-server.jar
+85b6e000-85b70000 r--s 00003000 08:01 280299     /opt/payara5/glassfish/modules/microprofile-config-api.jar
+85b70000-85b71000 r--s 00003000 08:01 280232     /opt/payara5/glassfish/modules/microprofile-rest-client-api.jar
+85b71000-85b88000 r--s 00100000 08:01 280421     /opt/payara5/glassfish/modules/jersey-common.jar
+85b88000-85b8a000 r--s 0000d000 08:01 280251     /opt/payara5/glassfish/modules/jersey-container-servlet-core.jar
+85b8a000-85b8c000 r--s 0000b000 08:01 280295     /opt/payara5/glassfish/modules/tyrus-container-grizzly-client.jar
+85b8c000-85b8e000 r--s 00002000 08:01 280549     /opt/payara5/glassfish/modules/tyrus-spi.jar
+85b8e000-85b95000 r--s 00057000 08:01 280331     /opt/payara5/glassfish/modules/tyrus-core.jar
+85b95000-85b97000 r--s 00010000 08:01 280301     /opt/payara5/glassfish/modules/tyrus-client.jar
+85b97000-85b99000 r--s 00007000 08:01 280319     /opt/payara5/glassfish/modules/javax.websocket-api.jar
+85b99000-85b9b000 r--s 00005000 08:01 280551     /opt/payara5/glassfish/modules/tyrus-container-servlet.jar
+85b9b000-85ba8000 r--s 00112000 08:01 280510     /opt/payara5/glassfish/modules/web-core.jar
+85ba8000-85bab000 r--s 0001a000 08:01 280309     /opt/payara5/glassfish/modules/web-naming.jar
+85bab000-85bad000 r--s 00008000 08:01 280212     /opt/payara5/glassfish/modules/gf-web-connector.jar
+85bad000-85bb0000 r--s 0000b000 08:01 280321     /opt/payara5/glassfish/modules/javax.servlet.jsp-api.jar
+85bb0000-85bb3000 r--s 00019000 08:01 280383     /opt/payara5/glassfish/modules/war-util.jar
+85bb3000-85bb5000 r--s 00006000 08:01 280283     /opt/payara5/glassfish/modules/javax.management.j2ee-api.jar
+85bb5000-85bb8000 r--s 00012000 08:01 280286     /opt/payara5/glassfish/modules/amx-javaee.jar
+85bb8000-85bbc000 r--s 0002f000 08:01 280335     /opt/payara5/glassfish/modules/web-cli.jar
+85bbc000-85bc5000 r--s 0009b000 08:01 280259     /opt/payara5/glassfish/modules/web-glue.jar
+85bc5000-85be3000 r--s 0017a000 08:01 280361     /opt/payara5/glassfish/modules/glassfish-corba-orb.jar
+85be3000-85c00000 r--s 00133000 08:01 280404     /opt/payara5/glassfish/modules/glassfish-corba-omgapi.jar
+85c00000-85cf9000 rw-p 00000000 00:00 0 
+85cf9000-85d00000 ---p 00000000 00:00 0 
+85d00000-85dff000 rw-p 00000000 00:00 0 
+85dff000-85e00000 ---p 00000000 00:00 0 
+85e00000-85e01000 r--s 00003000 08:01 280271     /opt/payara5/glassfish/modules/tyrus-server.jar
+85e01000-85e03000 r--s 00013000 08:01 280519     /opt/payara5/glassfish/modules/webservices.security.jar
+85e03000-85e05000 r--s 00006000 08:01 280172     /opt/payara5/glassfish/modules/acc-config.jar
+85e05000-85e08000 r--s 00014000 08:01 280509     /opt/payara5/glassfish/modules/orb-iiop.jar
+85e08000-85e0c000 r--s 00019000 08:01 280392     /opt/payara5/glassfish/modules/glassfish-corba-csiv2-idl.jar
+85e0c000-85e0f000 r--s 00015000 08:01 280366     /opt/payara5/glassfish/modules/ejb.security.jar
+85e0f000-85e10000 r--s 00004000 08:01 280515     /opt/payara5/glassfish/modules/appclient.security.jar
+85e10000-85e13000 r--s 0000d000 08:01 280188     /opt/payara5/glassfish/modules/javax.jms-api.jar
+85e13000-85e15000 r--s 00007000 08:01 280384     /opt/payara5/glassfish/modules/glassfish-corba-internal-api.jar
+85e15000-85e17000 r--s 00002000 08:01 280505     /opt/payara5/glassfish/modules/orb-enabler.jar
+85e17000-85e1a000 r--s 0000c000 08:01 280175     /opt/payara5/glassfish/modules/orb-connector.jar
+85e1a000-85e1b000 r--s 00004000 08:01 280432     /opt/payara5/glassfish/modules/gf-ejb-connector.jar
+85e1b000-85e1c000 r--s 00006000 08:01 280482     /opt/payara5/glassfish/modules/persistence-common.jar
+85e1c000-85e1d000 r--s 00004000 08:01 280348     /opt/payara5/glassfish/modules/osgi-resource-locator.jar
+85e1d000-85e1f000 r--s 00007000 08:01 280445     /opt/payara5/glassfish/modules/ha-api.jar
+85e1f000-85e22000 r--s 00012000 08:01 280255     /opt/payara5/glassfish/modules/glassfish-naming.jar
+85e22000-85e28000 r--s 00029000 08:01 280317     /opt/payara5/glassfish/modules/container-common.jar
+85e28000-85e2c000 r--s 00011000 08:01 280426     /opt/payara5/glassfish/modules/stats77.jar
+85e2c000-85e34000 r--s 00068000 08:01 280526     /opt/payara5/glassfish/modules/amx-core.jar
+85e34000-85f00000 r--s 00872000 08:01 280559     /opt/payara5/glassfish/modules/hazelcast.jar
+85f00000-86000000 rw-p 00000000 00:00 0 
+86000000-86005000 r--s 00038000 08:01 280529     /opt/payara5/glassfish/modules/jmxremote_optional-repackaged.jar
+86005000-86007000 r--s 00010000 08:01 280176     /opt/payara5/glassfish/modules/glassfish-mbeanserver.jar
+86007000-8600b000 r--s 0001a000 08:01 280330     /opt/payara5/glassfish/modules/monitoring-core.jar
+8600b000-8600f000 r--s 00033000 08:01 280554     /opt/payara5/glassfish/modules/javax.el.jar
+8600f000-86012000 r--s 0001d000 08:01 280284     /opt/payara5/glassfish/modules/healthcheck-core.jar
+86012000-86013000 r--s 00003000 08:01 280293     /opt/payara5/glassfish/modules/healthcheck-stuck.jar
+86013000-86014000 r--s 00003000 08:01 280373     /opt/payara5/glassfish/modules/payara-executor-service.jar
+86014000-86016000 r--s 0000e000 08:01 280294     /opt/payara5/glassfish/modules/launcher.jar
+86016000-86019000 r--s 0001c000 08:01 280418     /opt/payara5/glassfish/modules/javax.json.jar
+86019000-8601b000 r--s 0000e000 08:01 280336     /opt/payara5/glassfish/modules/mimepull.jar
+8601b000-8601f000 r--s 0002a000 08:01 280159     /opt/payara5/glassfish/modules/admin-cli.jar
+8601f000-86022000 r--s 00016000 08:01 280456     /opt/payara5/glassfish/modules/hazelcast-bootstrap.jar
+86022000-8602a000 r--s 00098000 08:01 280171     /opt/payara5/glassfish/modules/javax.mail.jar
+8602a000-8602e000 r--s 00014000 08:01 280322     /opt/payara5/glassfish/modules/notification-core.jar
+8602e000-86031000 r--s 00010000 08:01 280378     /opt/payara5/glassfish/modules/requesttracing-core.jar
+86031000-86033000 r--s 00000000 08:01 280438     /opt/payara5/glassfish/modules/api-exporter.jar
+86033000-86037000 r--s 0002e000 08:01 280391     /opt/payara5/glassfish/modules/logging.jar
+86037000-86038000 r--s 00002000 08:01 280400     /opt/payara5/glassfish/modules/simple-glassfish-api.jar
+86038000-8603b000 r--s 0001e000 08:01 280222     /opt/payara5/glassfish/modules/glassfish.jar
+8603b000-8603f000 r--s 00020000 08:01 280493     /opt/payara5/glassfish/modules/flashlight-framework.jar
+8603f000-8604a000 r--s 000b9000 08:01 280525     /opt/payara5/glassfish/modules/kernel.jar
+8604a000-8604b000 r--s 00007000 08:01 280249     /opt/payara5/glassfish/modules/deployment-javaee-core.jar
+8604b000-8604d000 r--s 00004000 08:01 280495     /opt/payara5/glassfish/modules/libpam4j-repackaged.jar
+8604d000-86050000 r--s 00019000 08:01 280344     /opt/payara5/glassfish/modules/resources-connector.jar
+86050000-86051000 r--s 00007000 08:01 280379     /opt/payara5/glassfish/modules/jackson-module-jaxb-annotations.jar
+86051000-86055000 r--s 0004b000 08:01 280543     /opt/payara5/glassfish/modules/jackson-core.jar
+86055000-86068000 r--s 00135000 08:01 280303     /opt/payara5/glassfish/modules/jackson-databind.jar
+86068000-8606b000 r--s 0000e000 08:01 280427     /opt/payara5/glassfish/modules/jackson-annotations.jar
+8606b000-86070000 r--s 00021000 08:01 280439     /opt/payara5/glassfish/modules/security-services.jar
+86070000-86077000 r--s 00051000 08:01 280368     /opt/payara5/glassfish/modules/admin-util.jar
+86077000-86079000 r--s 00005000 08:01 280161     /opt/payara5/glassfish/modules/transaction-internal-api.jar
+86079000-8607c000 r--s 00016000 08:01 280168     /opt/payara5/glassfish/modules/connectors-internal-api.jar
+8607c000-8607d000 r--s 00002000 08:01 280414     /opt/payara5/glassfish/modules/ejb-internal-api.jar
+8607d000-8607f000 r--s 0000f000 08:01 280328     /opt/payara5/glassfish/modules/jaspic.provider.framework.jar
+8607f000-86080000 r--s 0000c000 08:01 280347     /opt/payara5/glassfish/modules/javax.security.jacc-api.jar
+86080000-86082000 r--s 0000b000 08:01 280454     /opt/payara5/glassfish/modules/javax.security.auth.message-api.jar
+86082000-86084000 r--s 0000e000 08:01 280346     /opt/payara5/glassfish/modules/nucleus-resources.jar
+86084000-86087000 r--s 00009000 08:01 280206     /opt/payara5/glassfish/modules/payara-api.jar
+86087000-860b3000 r--s 00208000 08:01 280192     /opt/payara5/glassfish/modules/guava.jar
+860b3000-860b5000 r--s 00009000 08:01 280501     /opt/payara5/glassfish/modules/annotation-framework.jar
+860b5000-860b9000 r--s 0000e000 08:01 280367     /opt/payara5/glassfish/modules/javax.resource-api.jar
+860b9000-860bf000 r--s 0002a000 08:01 280324     /opt/payara5/glassfish/modules/javax.persistence.jar
+860bf000-860c2000 r--s 0000a000 08:01 280533     /opt/payara5/glassfish/modules/javax.enterprise.deploy-api.jar
+860c2000-860c4000 r--s 00005000 08:01 280450     /opt/payara5/glassfish/modules/javax.interceptor-api.jar
+860c4000-860c9000 r--s 00016000 08:01 280296     /opt/payara5/glassfish/modules/cdi-api.jar
+860c9000-860d7000 r--s 000b7000 08:01 280440     /opt/payara5/glassfish/modules/dol.jar
+860d7000-860db000 r--s 00016000 08:01 280200     /opt/payara5/glassfish/modules/javax.servlet-api.jar
+860db000-860dc000 r--s 00002000 08:01 280314     /opt/payara5/glassfish/modules/glassfish-ee-api.jar
+860dc000-860df000 r--s 0000b000 08:01 280352     /opt/payara5/glassfish/modules/ldapbp-repackaged.jar
+860df000-860e1000 r--s 0000b000 08:01 280359     /opt/payara5/glassfish/modules/pfl-tf-tools.jar
+860e1000-860e3000 r--s 00010000 08:01 280447     /opt/payara5/glassfish/modules/pfl-basic-tools.jar
+860e3000-860ec000 r--s 0004c000 08:01 280160     /opt/payara5/glassfish/modules/pfl-dynamic.jar
+860ec000-860f2000 r--s 00051000 08:01 280412     /opt/payara5/glassfish/modules/pfl-asm.jar
+860f2000-860f5000 r--s 00015000 08:01 280270     /opt/payara5/glassfish/modules/pfl-tf.jar
+860f5000-860fb000 r--s 0002c000 08:01 280228     /opt/payara5/glassfish/modules/pfl-basic.jar
+860fb000-86100000 r--s 0002d000 08:01 280213     /opt/payara5/glassfish/modules/gmbal.jar
+86100000-861ff000 rw-p 00000000 00:00 0 
+861ff000-86200000 ---p 00000000 00:00 0 
+86200000-86300000 rw-p 00000000 00:00 0 
+86300000-86360000 rw-p 00000000 00:00 0 
+86380000-86400000 ---p 00000000 00:00 0 
+86400000-864eb000 rw-p 00000000 00:00 0 
+864eb000-86500000 ---p 00000000 00:00 0 
+86500000-86504000 r--s 0002a000 08:01 280524     /opt/payara5/glassfish/modules/deployment-common.jar
+86504000-86509000 r--s 0001e000 08:01 280494     /opt/payara5/glassfish/modules/internal-api.jar
+86509000-8650a000 r--s 00005000 08:01 280276     /opt/payara5/glassfish/modules/ssl-impl.jar
+8650a000-86517000 r--s 00085000 08:01 280390     /opt/payara5/glassfish/modules/config-api.jar
+86517000-8651e000 r--s 00059000 08:01 280363     /opt/payara5/glassfish/modules/asm-repackaged.jar
+8651e000-86521000 r--s 00013000 08:01 280247     /opt/payara5/glassfish/modules/class-model.jar
+86521000-86522000 r--s 00000000 08:01 280268     /opt/payara5/glassfish/modules/hk2.jar
+86522000-8652a000 r--s 0006d000 08:01 280226     /opt/payara5/glassfish/modules/security.jar
+8652a000-86531000 r--s 0004c000 08:01 280503     /opt/payara5/glassfish/modules/security-ee.jar
+86531000-86532000 r--s 00002000 08:01 280170     /opt/payara5/glassfish/modules/ejb-client.jar
+86532000-86534000 r--s 00006000 08:01 280289     /opt/payara5/glassfish/modules/javax.transaction-api.jar
+86534000-86537000 r--s 0000d000 08:01 280452     /opt/payara5/glassfish/modules/javax.ejb-api.jar
+86537000-86543000 r--s 000de000 08:01 280506     /opt/payara5/glassfish/modules/ejb-container.jar
+86543000-86545000 r--s 00011000 08:01 280520     /opt/payara5/glassfish/modules/ejb-full-container.jar
+86545000-86547000 r--s 0000a000 08:01 280530     /opt/payara5/glassfish/modules/management-api.jar
+86547000-86548000 r--s 00002000 08:01 280334     /opt/payara5/glassfish/modules/config-types.jar
+86548000-8654a000 r--s 0000e000 08:01 280257     /opt/payara5/glassfish/modules/classmate.jar
+8654a000-8654c000 r--s 0000f000 08:01 280420     /opt/payara5/glassfish/modules/jboss-logging.jar
+8654c000-86551000 r--s 00012000 08:01 280490     /opt/payara5/glassfish/modules/validation-api.jar
+86551000-8656e000 r--s 000fe000 08:01 280326     /opt/payara5/glassfish/modules/hibernate-validator.jar
+8656e000-86573000 r--s 00030000 08:01 280356     /opt/payara5/glassfish/modules/hk2-config.jar
+86573000-86592000 r--s 001af000 08:01 280561     /opt/payara5/glassfish/modules/nucleus-grizzly-all.jar
+86592000-86595000 r--s 0000c000 08:01 280254     /opt/payara5/glassfish/modules/hk2-runlevel.jar
+86595000-86597000 r--s 00002000 08:01 280376     /opt/payara5/glassfish/modules/scattered-archive-api.jar
+86597000-8659f000 r--s 00029000 08:01 280553     /opt/payara5/glassfish/modules/glassfish-api.jar
+8659f000-865aa000 r--s 00078000 08:01 280522     /opt/payara5/glassfish/modules/common-util.jar
+865aa000-865b4000 r--s 000ab000 08:01 280382     /opt/payara5/glassfish/modules/javassist.jar
+865b4000-865b9000 r--s 00029000 08:01 280446     /opt/payara5/glassfish/modules/hk2-api.jar
+865b9000-865c6000 r--s 001ae000 08:01 280306     /opt/payara5/glassfish/modules/gf-client-module.jar
+865c6000-86640000 r--s 010ff000 08:01 559922     /usr/lib/jvm/java-8-openjdk-i386/lib/tools.jar
+86640000-86641000 ---p 00000000 00:00 0 
+86641000-866c1000 rw-p 00000000 00:00 0 
+866c1000-866c4000 ---p 00000000 00:00 0 
+866c4000-86712000 rw-p 00000000 00:00 0 
+86712000-86715000 ---p 00000000 00:00 0 
+86715000-86793000 rw-p 00000000 00:00 0 
+86793000-86796000 ---p 00000000 00:00 0 
+86796000-86814000 rw-p 00000000 00:00 0 
+86814000-86817000 ---p 00000000 00:00 0 
+86817000-86865000 rw-p 00000000 00:00 0 
+86865000-86a00000 r--p 00000000 08:01 524289     /usr/lib/locale/locale-archive
+86a00000-86af8000 rw-p 00000000 00:00 0 
+86af8000-86b00000 ---p 00000000 00:00 0 
+86b00000-86b03000 r--s 0001e000 08:01 280461     /opt/payara5/glassfish/modules/hk2-utils.jar
+86b03000-86b07000 r--s 0002b000 08:01 280397     /opt/payara5/glassfish/modules/hk2-locator.jar
+86b07000-86b0b000 r--s 00019000 08:01 280333     /opt/payara5/glassfish/modules/hk2-core.jar
+86b0b000-86b11000 r--s 0003b000 08:01 532322     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/sunjce_provider.jar
+86b11000-86b1b000 r--s 00116000 08:01 532316     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/localedata.jar
+86b1b000-86b1e000 ---p 00000000 00:00 0 
+86b1e000-86b6c000 rw-p 00000000 00:00 0 
+86b6c000-86b6f000 ---p 00000000 00:00 0 
+86b6f000-86bbd000 rw-p 00000000 00:00 0 
+86bbd000-86bbe000 ---p 00000000 00:00 0 
+86bbe000-86c8c000 rw-p 00000000 00:00 0 
+86c8c000-86e5b000 r--s 03c33000 08:01 532432     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/rt.jar
+86e5b000-86eb6000 rw-p 00000000 00:00 0 
+86eb6000-872fc000 rw-p 00000000 00:00 0 
+872fc000-87302000 ---p 00000000 00:00 0 
+87302000-87305000 rw-p 00000000 00:00 0 
+87305000-87356000 ---p 00000000 00:00 0 
+87356000-8735b000 rw-p 00000000 00:00 0 
+8735b000-873ff000 ---p 00000000 00:00 0 
+873ff000-87820000 rw-p 00000000 00:00 0 
+87820000-91ca0000 ---p 00000000 00:00 0 
+91ca0000-924bf000 rw-p 00000000 00:00 0 
+924bf000-924ff000 ---p 00000000 00:00 0 
+924ff000-a6e00000 ---p 00000000 00:00 0 
+a6e00000-a6e02000 r--s 00002000 08:01 280377     /opt/payara5/glassfish/modules/aopalliance-repackaged.jar
+a6e02000-a6e03000 r--s 00001000 08:01 280224     /opt/payara5/glassfish/modules/javax.inject.jar
+a6e03000-a6e04000 r--s 00005000 08:01 280829     /opt/payara5/glassfish/lib/gf-client.jar
+a6e04000-a6e05000 r--s 00000000 08:01 281238     /opt/payara5/glassfish/lib/appserv-rt.jar
+a6e05000-a6e08000 r--s 00038000 08:01 532324     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/sunpkcs11.jar
+a6e08000-a6e0a000 r--s 00001000 08:01 532310     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/dnsns.jar
+a6e0a000-a6e25000 r--s 00394000 08:01 532308     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/cldrdata.jar
+a6e25000-a6e26000 r--s 0000a000 08:01 532314     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/jaccess.jar
+a6e26000-a6e28000 r--s 00007000 08:01 9546       /usr/share/java/java-atk-wrapper.jar
+a6e28000-a6e43000 r--s 001d6000 08:01 532318     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/nashorn.jar
+a6e43000-a6e45000 r--s 00008000 08:01 532320     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/sunec.jar
+a6e45000-a6e48000 r--s 0000f000 08:01 532312     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/icedtea-sound.jar
+a6e48000-a6e4d000 rw-p 00000000 00:00 0 
+a6e4d000-a6ef1000 ---p 00000000 00:00 0 
+a6ef1000-a6efa000 rw-p 00000000 00:00 0 
+a6efa000-a72b1000 ---p 00000000 00:00 0 
+a72b1000-a74f1000 rwxp 00000000 00:00 0 
+a74f1000-b62b1000 ---p 00000000 00:00 0 
+b62b1000-b62bc000 r-xp 00000000 08:01 131092     /lib/i386-linux-gnu/libnss_files-2.24.so
+b62bc000-b62bd000 r--p 0000a000 08:01 131092     /lib/i386-linux-gnu/libnss_files-2.24.so
+b62bd000-b62be000 rw-p 0000b000 08:01 131092     /lib/i386-linux-gnu/libnss_files-2.24.so
+b62be000-b62c4000 rw-p 00000000 00:00 0 
+b62c4000-b62cf000 r-xp 00000000 08:01 131094     /lib/i386-linux-gnu/libnss_nis-2.24.so
+b62cf000-b62d0000 r--p 0000a000 08:01 131094     /lib/i386-linux-gnu/libnss_nis-2.24.so
+b62d0000-b62d1000 rw-p 0000b000 08:01 131094     /lib/i386-linux-gnu/libnss_nis-2.24.so
+b62d1000-b62e7000 r-xp 00000000 08:01 131089     /lib/i386-linux-gnu/libnsl-2.24.so
+b62e7000-b62e8000 r--p 00016000 08:01 131089     /lib/i386-linux-gnu/libnsl-2.24.so
+b62e8000-b62e9000 rw-p 00017000 08:01 131089     /lib/i386-linux-gnu/libnsl-2.24.so
+b62e9000-b62eb000 rw-p 00000000 00:00 0 
+b62eb000-b62f3000 r-xp 00000000 08:01 131090     /lib/i386-linux-gnu/libnss_compat-2.24.so
+b62f3000-b62f4000 r--p 00007000 08:01 131090     /lib/i386-linux-gnu/libnss_compat-2.24.so
+b62f4000-b62f5000 rw-p 00008000 08:01 131090     /lib/i386-linux-gnu/libnss_compat-2.24.so
+b62f5000-b62f6000 r--s 00010000 08:01 532326     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/ext/zipfs.jar
+b62f6000-b62fe000 r-xp 00000000 08:01 532396     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libzip.so
+b62fe000-b62ff000 r--p 00007000 08:01 532396     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libzip.so
+b62ff000-b6300000 rw-p 00008000 08:01 532396     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libzip.so
+b6300000-b63fc000 rw-p 00000000 00:00 0 
+b63fc000-b6400000 ---p 00000000 00:00 0 
+b6400000-b6428000 r-xp 00000000 08:01 532358     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libjava.so
+b6428000-b6429000 r--p 00027000 08:01 532358     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libjava.so
+b6429000-b642a000 rw-p 00028000 08:01 532358     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libjava.so
+b642a000-b6438000 r-xp 00000000 08:01 532394     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libverify.so
+b6438000-b6439000 r--p 0000d000 08:01 532394     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libverify.so
+b6439000-b643a000 rw-p 0000e000 08:01 532394     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/libverify.so
+b643a000-b6441000 r-xp 00000000 08:01 131099     /lib/i386-linux-gnu/librt-2.24.so
+b6441000-b6442000 r--p 00006000 08:01 131099     /lib/i386-linux-gnu/librt-2.24.so
+b6442000-b6443000 rw-p 00007000 08:01 131099     /lib/i386-linux-gnu/librt-2.24.so
+b6443000-b6446000 ---p 00000000 00:00 0 
+b6446000-b6494000 rw-p 00000000 00:00 0 
+b6494000-b64b0000 r-xp 00000000 08:01 131079     /lib/i386-linux-gnu/libgcc_s.so.1
+b64b0000-b64b1000 r--p 0001b000 08:01 131079     /lib/i386-linux-gnu/libgcc_s.so.1
+b64b1000-b64b2000 rw-p 0001c000 08:01 131079     /lib/i386-linux-gnu/libgcc_s.so.1
+b64b2000-b6505000 r-xp 00000000 08:01 131087     /lib/i386-linux-gnu/libm-2.24.so
+b6505000-b6506000 r--p 00052000 08:01 131087     /lib/i386-linux-gnu/libm-2.24.so
+b6506000-b6507000 rw-p 00053000 08:01 131087     /lib/i386-linux-gnu/libm-2.24.so
+b6507000-b6677000 r-xp 00000000 08:01 529707     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.22
+b6677000-b667d000 r--p 0016f000 08:01 529707     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.22
+b667d000-b667e000 rw-p 00175000 08:01 529707     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.22
+b667e000-b6681000 rw-p 00000000 00:00 0 
+b6681000-b7141000 r-xp 00000000 08:01 532400     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/server/libjvm.so
+b7141000-b718d000 r--p 00abf000 08:01 532400     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/server/libjvm.so
+b718d000-b71a4000 rw-p 00b0b000 08:01 532400     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/server/libjvm.so
+b71a4000-b75c3000 rw-p 00000000 00:00 0 
+b75c3000-b75c5000 rw-p 00000000 00:00 0 
+b75c5000-b7776000 r-xp 00000000 08:01 131083     /lib/i386-linux-gnu/libc-2.24.so
+b7776000-b7778000 r--p 001b0000 08:01 131083     /lib/i386-linux-gnu/libc-2.24.so
+b7778000-b7779000 rw-p 001b2000 08:01 131083     /lib/i386-linux-gnu/libc-2.24.so
+b7779000-b777c000 rw-p 00000000 00:00 0 
+b777c000-b777f000 r-xp 00000000 08:01 131086     /lib/i386-linux-gnu/libdl-2.24.so
+b777f000-b7780000 r--p 00002000 08:01 131086     /lib/i386-linux-gnu/libdl-2.24.so
+b7780000-b7781000 rw-p 00003000 08:01 131086     /lib/i386-linux-gnu/libdl-2.24.so
+b7781000-b778e000 r-xp 00000000 08:01 532330     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/jli/libjli.so
+b778e000-b778f000 r--p 0000c000 08:01 532330     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/jli/libjli.so
+b778f000-b7790000 rw-p 0000d000 08:01 532330     /usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386/jli/libjli.so
+b7790000-b77a9000 r-xp 00000000 08:01 131186     /lib/i386-linux-gnu/libz.so.1.2.8
+b77a9000-b77aa000 r--p 00018000 08:01 131186     /lib/i386-linux-gnu/libz.so.1.2.8
+b77aa000-b77ab000 rw-p 00019000 08:01 131186     /lib/i386-linux-gnu/libz.so.1.2.8
+b77ab000-b77c4000 r-xp 00000000 08:01 131097     /lib/i386-linux-gnu/libpthread-2.24.so
+b77c4000-b77c5000 r--p 00018000 08:01 131097     /lib/i386-linux-gnu/libpthread-2.24.so
+b77c5000-b77c6000 rw-p 00019000 08:01 131097     /lib/i386-linux-gnu/libpthread-2.24.so
+b77c6000-b77c8000 rw-p 00000000 00:00 0 
+b77c8000-b77c9000 r--p 0019a000 08:01 524289     /usr/lib/locale/locale-archive
+b77c9000-b77d1000 rw-s 00000000 08:01 12624      /tmp/hsperfdata_kristhian/24359
+b77d1000-b77d2000 rw-p 00000000 00:00 0 
+b77d2000-b77d3000 r--p 00000000 00:00 0 
+b77d3000-b77d6000 rw-p 00000000 00:00 0 
+b77d6000-b77d8000 r--p 00000000 00:00 0          [vvar]
+b77d8000-b77da000 r-xp 00000000 00:00 0          [vdso]
+b77da000-b77fd000 r-xp 00000000 08:01 131078     /lib/i386-linux-gnu/ld-2.24.so
+b77fd000-b77fe000 r--p 00022000 08:01 131078     /lib/i386-linux-gnu/ld-2.24.so
+b77fe000-b77ff000 rw-p 00023000 08:01 131078     /lib/i386-linux-gnu/ld-2.24.so
+bfc68000-bfc89000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dapplication.home=/usr/lib/jvm/java-8-openjdk-i386 -Xms8m 
+java_command: com.sun.tools.javac.Main -d /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/build/classes -classpath /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/build/classes:/opt/payara5/glassfish/lib/appserv-rt.jar:/opt/payara5/glassfish/lib/gf-client.jar:/opt/payara5/glassfish/lib/javaee.jar:/opt/payara5/glassfish/lib/jndi-properties.jar:/home/kristhian/Desktop/PD_TP_ESPECIAL/viagens-lib/dist/viagens-lib.jar:/home/kristhian/netbeans-8.2/enterprise/modules/ext/javaee-api-6.0.jar -sourcepath /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/build/empty -target 1.8 -encoding UTF-8 -g -processorpath /opt/payara5/glassfish/lib/appserv-rt.jar:/opt/payara5/glassfish/lib/gf-client.jar:/opt/payara5/glassfish/lib/javaee.jar:/opt/payara5/glassfish/lib/jndi-properties.jar:/home/kristhian/Desktop/PD_TP_ESPECIAL/viagens-lib/dist/viagens-lib.jar:/home/kristhian/netbeans-8.2/enterprise/modules/ext/javaee-api-6.0.jar:/home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/build/empty -s /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/build/generated-sources/ap-source-output -source 1.8 /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/src/viagens_cliente/menu/Cliente.java /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/src/viagens_cliente/menu/Menu.java /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/src/viagens_cliente/menu/Operador.java /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/src/viagens_cliente/menu/Visitante.java /home/kristhian/Desktop/PD_TP_ESPECIAL/viagens_cliente-rca/src/viagens_cliente/rca/Viagens_clienteRca.java
+java_class_path (initial): /usr/lib/jvm/java-8-openjdk-i386/lib/tools.jar:/usr/lib/jvm/java-8-openjdk-i386/classes
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk-i386/jre/lib/amd64:/usr/lib/jvm/java-8-openjdk-i386/jre/lib/i386:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x8c88c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x8c88c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x726380], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x7261c0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x726810], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: SIG_IGN, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: [libjvm.so+0x726810], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x726810], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:PRETTY_NAME="Debian GNU/Linux 9 (stretch)"
+NAME="Debian GNU/Linux"
+VERSION_ID="9"
+VERSION="9 (stretch)"
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+uname:Linux 4.9.0-8-686-pae #1 SMP Debian 4.9.130-2 (2018-10-27) i686
+libc:glibc 2.24 NPTL 2.24 
+rlimit: STACK 8192k, CORE 0k, NPROC 16018, NOFILE 1048576, AS infinity
+load average:0.79 0.58 0.37
+
+/proc/meminfo:
+MemTotal:        2068340 kB
+MemFree:          115092 kB
+MemAvailable:          0 kB
+Buffers:            2168 kB
+Cached:           111404 kB
+SwapCached:            0 kB
+Active:          1809636 kB
+Inactive:         101496 kB
+Active(anon):    1797896 kB
+Inactive(anon):    90896 kB
+Active(file):      11740 kB
+Inactive(file):    10600 kB
+Unevictable:          96 kB
+Mlocked:              96 kB
+HighTotal:       1185736 kB
+HighFree:          15200 kB
+LowTotal:         882604 kB
+LowFree:           99892 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               468 kB
+Writeback:            36 kB
+AnonPages:       1797688 kB
+Mapped:           106532 kB
+Shmem:             91200 kB
+Slab:              19932 kB
+SReclaimable:       9592 kB
+SUnreclaim:        10340 kB
+KernelStack:        2656 kB
+PageTables:         9876 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1034168 kB
+Committed_AS:    3469092 kB
+VmallocTotal:     122880 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       34808 kB
+DirectMap2M:      876544 kB
+
+
+CPU:total 1 (initial active 1) (1 cores per cpu, 1 threads per core) family 6 model 94 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, 3dnowpref, lzcnt, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+cpu MHz		: 2592.002
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 nx rdtscp constant_tsc xtopology nonstop_tsc pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase avx2 invpcid rdseed clflushopt flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 5184.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 2068340k(115092k free), swap 0k(0k free)
+
+vm_info: OpenJDK Server VM (25.181-b13) for linux-x86 JRE (1.8.0_181-8u181-b13-2~deb9u1-b13), built on Oct 22 2018 18:05:23 by "buildd" with gcc 6.3.0 20170516
+
+time: Mon Sep  9 22:10:31 2019
+elapsed time: 12 seconds (0d 0h 0m 12s)
+

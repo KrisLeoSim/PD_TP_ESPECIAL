@@ -7,12 +7,12 @@ package voos.beans;
 
 
 
-import com.sun.java.swing.plaf.windows.resources.windows;
 import javax.inject.Named;
 import javax.ejb.EJB;
 import persistencia.UtilizadorFacadeLocal;
 import entidade.Utilizador;
 import static java.awt.SystemColor.window;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -37,6 +37,10 @@ public class LoginBean implements Serializable {
     private String nameLogedUserIndex = "Entrar";
     private String nameLogedUserRegisto = "Registar";
     
+    private String registoUsername;
+    private String registoPassword; 
+    private String registoNif; 
+    
     public String login(){
 
 
@@ -60,13 +64,51 @@ public class LoginBean implements Serializable {
 
     }
     
-    public String entrarOuPerfil(){
     
-        if (logado == true){
-            return "/perfil/perfil.xhtml?faces-redirect=true";
-        }else{
-            return "/autentication/login.xhtml?faces-redirect=true";
+    public String logout(Boolean confirma) {
+        if (confirma){
+            FacesContext context = FacesContext.getCurrentInstance();
+            this.userLogado = null;
+            context.addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação", "Efetuou logout"));
+            context.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+            return "/home/index.xhtml?faces-redirect=true?";
         }
+        else{
+            return "/perfil/perfil.xhtml?faces-redirect=true";
+        }
+
+    }
+    
+    
+    public String registar(){
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        try {
+            HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();           
+            
+            utilizadorFacade.registar(registoUsername, registoPassword, registoNif, "cliente");
+            
+            context.addMessage("grow1", new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação", "Utilizador criado com sucesso"));
+        } catch (Exception ex) {
+            context.addMessage("grow1", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro ao criar o utilizador"));
+            return null;
+        } finally {
+            context.getCurrentInstance()
+                    .getExternalContext()
+                    .getFlash().setKeepMessages(true);
+            return "/home/listavooshome.xhtml?faces-redirect=true";
+        } 
+    }
+    
+    public String entrarOuPerfil(){
+        
+        if (logado == true){
+            return "../perfil/perfil.xhtml";
+        }else{
+            return "../autentication/login.xhtml";
+        }
+
     }
 
     public Boolean getLogado() {
@@ -107,6 +149,38 @@ public class LoginBean implements Serializable {
 
     public void setNameLogedUserRegisto(String nameLogedUserRegisto) {
         this.nameLogedUserRegisto = nameLogedUserRegisto;
+    }
+
+    public String getRegistoUsername() {
+        return registoUsername;
+    }
+
+    public void setRegistoUsername(String registoUsername) {
+        this.registoUsername = registoUsername;
+    }
+
+    public String getRegistoPassword() {
+        return registoPassword;
+    }
+
+    public void setRegistoPassword(String registoPassword) {
+        this.registoPassword = registoPassword;
+    }
+
+    public String getRegistoNif() {
+        return registoNif;
+    }
+
+    public void setRegistoNif(String registoNif) {
+        this.registoNif = registoNif;
+    }
+
+    public Utilizador getUserLogado() {
+        return userLogado;
+    }
+
+    public void setUserLogado(Utilizador userLogado) {
+        this.userLogado = userLogado;
     }
 
     

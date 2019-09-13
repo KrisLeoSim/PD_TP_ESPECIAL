@@ -28,5 +28,7 @@ public interface VooFacadeLocal {
     public Voo getVoo(int id);
 
     public List<Voo> getAllVoos();
+    
+    public List<Voo> viagensMaisLugaresDisponiveis();
 
 }

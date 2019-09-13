@@ -77,5 +77,15 @@ public class VooFacade implements VooFacadeLocal {
         Query query = getEntityManager().createNamedQuery("Voo.findAll");
         return query.getResultList();
     }
+    
+   
+    @Override
+    public List<Voo> viagensMaisLugaresDisponiveis() {
+        Query query = getEntityManager().createNativeQuery("select * from (select Distinct id_voo as voo_id, preco_compra from lugar) as vooPreco, voo where voo.id_voo =  vooPreco.voo_id order by preco_compra Limit 10",entidade.Voo.class);
+        return query.getResultList();
+        
+        
+       
+    }
 
 }

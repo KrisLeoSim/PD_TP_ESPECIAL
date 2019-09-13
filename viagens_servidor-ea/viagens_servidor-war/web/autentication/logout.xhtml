@@ -8,32 +8,28 @@
       xmlns:p="http://primefaces.org/ui">
     
     <ui:composition template="../templates/principal.xhtml">
-                
-        <ui:define name="logar_label">
-            <a href="login.xhtml" class="w3-bar-item w3-button">Entrar</a>
-        </ui:define>
-        
+                      
         <ui:define name="menu">
             <a href="../home/index.xhtml" class="w3-bar-item w3-button">Home</a>
             <a href="../home/listavooshome.xhtml" class="w3-bar-item w3-button w3-hide-small">Lista de Viagens</a>
-   
+
+        </ui:define>
+        
+        <ui:define name='body-subtitle'>
+            Deseja mesmo Sair?
         </ui:define>
         
         <ui:define name="body-content">
             <h:form style="display: inline-block">
+                <p:growl id="growl" showDetail="true" showSummary="true" sticky="true" />
                 <h:panelGrid columns="2" class="table margin-top-lg">
-                    <h:outputLabel value="username" for="username" />
-                    <p:inputText id="username" value="#{loginBean.registoUsername}" required="true"/>
-                    <h:outputLabel value="password" for="password" />
-                    <p:password id="password" value="#{loginBean.registoPassword}" required="true" />
-                    <h:outputLabel value="nif" for="nif" />
-                    <p:inputNumber id="nif" value="#{loginBean.registoNif}" required="true"/>
+                    <p:commandButton style="margin: 20px; padding: 20px" value="Sim" ajax="false" action="#{loginBean.logout(true)}"/>
+                    <p:commandButton style="margin: 20px; padding: 20px" value="Não" ajax="false" action="#{loginBean.logout(false)}"/>
                 </h:panelGrid>
-                <p:commandButton value="Enviar" ajax="false" action="#{loginBean.registar()}"/>
             </h:form>
+            <h:messages/>
         </ui:define>
         
     </ui:composition>
 
 </html>
-

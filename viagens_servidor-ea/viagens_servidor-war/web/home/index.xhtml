@@ -12,14 +12,14 @@
         <ui:define name="logar_label">
             <a id="logar_label_link" class="w3-bar-item w3-button" onclick="location.href='#{loginBean.entrarOuPerfil()}'">#{loginBean.nameLogedUserIndex}</a>
         </ui:define>
-        
+         
         <ui:define name="menu">
-            <a href="../home/index.xhtml" class="w3-bar-item w3-button">Home</a>
-            <a href="../home/listavooshome.xhtml" class="w3-bar-item w3-button w3-hide-small w3-light-grey">Lista de Viagens</a>
+            <a href="../home/index.xhtml" class="w3-bar-item w3-button w3-light-grey">Home</a>
+            <a href="../home/listavooshome.xhtml" class="w3-bar-item w3-button w3-hide-small">Lista de Viagens</a>
         </ui:define>
         
         <ui:define name='body-subtitle'>
-            Lista de Voos
+            Top 10 de Voos Mais Baratos
         </ui:define>
         
         <ui:define name="body-content">
@@ -34,7 +34,7 @@
                     <th>Preco</th>
                 </tr>
                 
-                <ui:repeat value="#{viagemBean.listaVoo()}" var="item">
+                <ui:repeat value="#{viagemBean.listaVooMaisLugares()}" var="item">
                     <tr>
                       <td><p:outputLabel value="#{viagemBean.getPartidaByVooID(item.partidaCollection)}" style="margin: 10px"/></td>
                       <td><p:outputLabel value="#{viagemBean.getChegadaByVooID(item.chegadaCollection)}" style="margin: 10px"/></td>
@@ -50,4 +50,3 @@
         
     </ui:composition>
 </html>
-           
