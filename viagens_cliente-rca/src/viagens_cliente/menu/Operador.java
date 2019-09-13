@@ -49,6 +49,45 @@ public class Operador extends Menu {
         System.out.println("  0  - Sair");
         System.out.println("--------------------------");
     }
+    
+    protected void imprimeMenuGestaoLocais() {
+        System.out.println();
+        System.out.println("--------------------------");
+        System.out.println("GESTÂO DE LOCAIS");
+        System.out.println("  1  - Registar local");
+        System.out.println("  2  - Remover local");
+        System.out.println("  3  - Editar local"); 
+        System.out.println("  4  - Consultar local"); 
+        System.out.println("--------------------------");
+        System.out.println("  0  - Sair");
+        System.out.println("--------------------------");
+    }
+    
+    protected void imprimeMenuGestaoCompanhias() {
+        System.out.println();
+        System.out.println("--------------------------");
+        System.out.println("GESTÂO DE COMPANHIAS");
+        System.out.println("  1  - Registar companhia");
+        System.out.println("  2  - Remover companhia");
+        System.out.println("  3  - Editar companhia");
+        System.out.println("  4  - Consultar companhia"); 
+        System.out.println("--------------------------");
+        System.out.println("  0  - Sair");
+        System.out.println("--------------------------");
+    }
+    
+    protected void imprimeMenuGestaoAgencias() {
+        System.out.println();
+        System.out.println("--------------------------");
+        System.out.println("GESTÂO DE AGENCIAS");
+        System.out.println("  1  - Registar agencia");
+        System.out.println("  2  - Remover agencia");
+        System.out.println("  3  - Editar agencia");
+        System.out.println("  4  - Consultar agencias"); 
+        System.out.println("--------------------------");
+        System.out.println("  0  - Sair");
+        System.out.println("--------------------------");
+    }
 
     protected void imprimeMenuConsultarVoos() {
         System.out.println();
@@ -199,7 +238,7 @@ public class Operador extends Menu {
 
         try {
             while (!Sair) {
-                imprimeMenuGestaoUtilizadores();
+                imprimeMenuGestaoLocais();
 
                 opcao = obtemOpcaoMenu(5);
 
@@ -213,8 +252,11 @@ public class Operador extends Menu {
                     case 3:
                         editarLocal();
                         break;
+                    case 4:    
+                        ListarLocais();
+                        break;
                     case 0:
-                        Sair = !true;
+                        Sair = true;
                         break;
                     default:
                         break;
@@ -224,6 +266,72 @@ public class Operador extends Menu {
         }
     }
 
+    public void menuGestaoDeCompanhias() {
+        boolean Sair = false;
+
+        try {
+            while (!Sair) {
+                imprimeMenuGestaoCompanhias();
+
+                opcao = obtemOpcaoMenu(5);
+
+                switch (opcao) {
+                    case 1:
+                        registarCompanhia();
+                        break;
+                    case 2:
+                        removerCompanhia();
+                        break;
+                    case 3:
+                        editarCompanhia();
+                        break;
+                    case 4:    
+                        ListarCompanhias();
+                        break;
+                    case 0:
+                        Sair = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    public void menuGestaoDeAgencias() {
+        boolean Sair = false;
+
+        try {
+            while (!Sair) {
+                imprimeMenuGestaoAgencias();
+
+                opcao = obtemOpcaoMenu(5);
+
+                switch (opcao) {
+                    case 1:
+                        registarAgencia();
+                        break;
+                    case 2:
+                        removerAgencia();
+                        break;
+                    case 3:
+                        editarAgencia();
+                        break;
+                    case 4:    
+                        ListarAgencias();
+                        break;
+                    case 0:
+                        Sair = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+    
     public void menuGestaoGeral() {
         boolean Sair = false;
 
@@ -244,10 +352,10 @@ public class Operador extends Menu {
                         menuGestaoDeLocais();
                         break;
                     case 4:
-
+                        menuGestaoDeCompanhias();
                         break;
                     case 5:
-
+                        menuGestaoDeAgencias();
                         break;
                     case 0:
 
@@ -323,7 +431,6 @@ public class Operador extends Menu {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -802,25 +909,22 @@ public class Operador extends Menu {
     }
 
     private void removerLocal() {
-        /*
         try {
 
             System.out.println();
             System.out.println("--------------------------------------");
-            System.out.println("  UTILIZADORES  ");
+            System.out.println("  LOCAIS  ");
             System.out.println("--------------------------------------");
 
-            ArrayList<UtilizadorPojo> lista_utilizadores = ListarUtilizadores();
+            ArrayList<LocalPojo> lista_locais = ListarLocais();
 
-            if (!lista_utilizadores.isEmpty()) {
+            if (!lista_locais.isEmpty()) {
                 System.out.println("0 - Voltar ...");
-                opcao = obtemOpcaoMenu(lista_utilizadores.size());
+                opcao = obtemOpcaoMenu(lista_locais.size());
                 --opcao;
                 if (opcao != -1) {
 
-                    int id = lista_utilizadores.get(opcao).getIdUtilizador();
-
-                    if (controladorEJB.apagaUtilizador(id)) {
+                    if (controladorEJB.excluirLocal(lista_locais.get(opcao))) {
                         System.out.print("Apagou COM sucesso");
                     } else {
                         System.out.print("Não foi possivel apagar");
@@ -828,18 +932,18 @@ public class Operador extends Menu {
                 }
 
             } else {
-                System.out.println("Não ha utilizadores");
+                System.out.println("Não ha locais");
             }
 
         } catch (Exception e) {
             System.out.println("ERRO: " + e.getMessage());
             e.printStackTrace(System.out);
         }
-         */
     }
 
     private void registarLocal() {
-        /*try {
+        try {
+
             System.out.println();
             System.out.println("--------------------------");
             System.out.println("  REGISTAR LOCAL");
@@ -850,9 +954,12 @@ public class Operador extends Menu {
             String cidade = sc.nextLine();
             System.out.print("descrição: ");
             String descricao = sc.nextLine();
-
             System.out.println();
-            if (controladorEJB.registarLocal(Localpojo)) {
+
+            LocalPojo localPojo = new LocalPojo(pais, cidade);
+            localPojo.setDescricaoLocal(descricao);
+
+            if (controladorEJB.registarLocal(localPojo)) {
                 System.out.print("Registou COM sucesso");
             } else {
                 System.out.print("Não registou");
@@ -862,6 +969,214 @@ public class Operador extends Menu {
         } catch (Exception e) {
             System.out.println("ERRO: " + e.getMessage());
             e.printStackTrace(System.out);
-        }*/
+        }
+    }
+    
+    //crud companhias
+    private void editarCompanhia() {
+        try {
+
+            System.out.println();
+            System.out.println("--------------------------------------");
+            System.out.println("  EDITAR COMPANHIA  ");
+            System.out.println("--------------------------------------");
+
+            ArrayList<CompanhiaPojo> lista_companhias = ListarCompanhias();
+
+            if (!lista_companhias.isEmpty()) {
+                System.out.println("0 - Voltar ...");
+                opcao = obtemOpcaoMenu(lista_companhias.size());
+                --opcao;
+                if (opcao != -1) {
+
+                    CompanhiaPojo companhiaPojo = lista_companhias.get(opcao);
+ 
+
+                   
+                            System.out.print("novo nome: ");
+                            String nome = sc.nextLine();
+                            companhiaPojo.setNome(nome);
+                         
+
+                    if (controladorEJB.editarCompanhia(companhiaPojo)) {
+                        System.out.print("Editou COM sucesso");
+                    } else {
+                        System.out.print("Não foi possivel editar");
+                    }
+                }
+
+            } else {
+                System.out.println("Não ha companhias");
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+
+    }
+
+    private void removerCompanhia() {
+    try {
+
+            System.out.println();
+            System.out.println("--------------------------------------");
+            System.out.println("  COMPANHIAS  ");
+            System.out.println("--------------------------------------");
+
+            ArrayList<CompanhiaPojo> lista_companhia = ListarCompanhias();
+
+            if (!lista_companhia.isEmpty()) {
+                System.out.println("0 - Voltar ...");
+                opcao = obtemOpcaoMenu(lista_companhia.size());
+                --opcao;
+                if (opcao != -1) {
+
+                    if (controladorEJB.excluirCompanhia(lista_companhia.get(opcao))) {
+                        System.out.print("Apagou COM sucesso");
+                    } else {
+                        System.out.print("Não foi possivel apagar");
+                    }
+                }
+
+            } else {
+                System.out.println("Não ha companhias");
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
+    private void registarCompanhia() {
+        try {
+
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  REGISTAR COMPANHIA");
+            System.out.println("--------------------------");
+            System.out.print("nome: ");
+            String nome = sc.nextLine();
+         
+
+            CompanhiaPojo companhiaPojo = new CompanhiaPojo(nome);
+          
+
+            if (controladorEJB.registarCompanhia(companhiaPojo)) {
+                System.out.print("Registou COM sucesso");
+            } else {
+                System.out.print("Não registou");
+            }
+
+            System.out.println();
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+    
+    //crud agencias
+    private void editarAgencia() {
+        try {
+
+            System.out.println();
+            System.out.println("--------------------------------------");
+            System.out.println("  EDITAR AGENCIA ");
+            System.out.println("--------------------------------------");
+
+            ArrayList<AgenciaPojo> lista_agencias = ListarAgencias();
+
+            if (!lista_agencias.isEmpty()) {
+                System.out.println("0 - Voltar ...");
+                opcao = obtemOpcaoMenu(lista_agencias.size());
+                --opcao;
+                if (opcao != -1) {
+
+                    AgenciaPojo agenciaPojo = lista_agencias.get(opcao);
+ 
+
+                   
+                            System.out.print("novo nome: ");
+                            String nome = sc.nextLine();
+                            agenciaPojo.setNome(nome);
+                         
+
+                    if (controladorEJB.editarAgencia(agenciaPojo)) {
+                        System.out.print("Editou COM sucesso");
+                    } else {
+                        System.out.print("Não foi possivel editar");
+                    }
+                }
+
+            } else {
+                System.out.println("Não ha agencias");
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+
+    }
+
+    private void removerAgencia() {
+     try {
+
+            System.out.println();
+            System.out.println("--------------------------------------");
+            System.out.println("  AGENCIAS  ");
+            System.out.println("--------------------------------------");
+
+            ArrayList<AgenciaPojo> lista_agencia = ListarAgencias();
+
+            if (!lista_agencia.isEmpty()) {
+                System.out.println("0 - Voltar ...");
+                opcao = obtemOpcaoMenu(lista_agencia.size());
+                --opcao;
+                if (opcao != -1) {
+
+                    if (controladorEJB.excluirAgencia(lista_agencia.get(opcao))) {
+                        System.out.print("Apagou COM sucesso");
+                    } else {
+                        System.out.print("Não foi possivel apagar");
+                    }
+                }
+
+            } else {
+                System.out.println("Não ha agencias");
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
+    private void registarAgencia() {
+        try {
+
+            System.out.println();
+            System.out.println("--------------------------");
+            System.out.println("  REGISTAR AGENCIA");
+            System.out.println("--------------------------");
+            System.out.print("nome: ");
+            String nome = sc.nextLine();
+         
+
+            AgenciaPojo agenciaPojo = new AgenciaPojo(nome);
+          
+
+            if (controladorEJB.registarAgencia(agenciaPojo)) {
+                System.out.print("Registou COM sucesso");
+            } else {
+                System.out.print("Não registou");
+            }
+
+            System.out.println();
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
     }
 }
