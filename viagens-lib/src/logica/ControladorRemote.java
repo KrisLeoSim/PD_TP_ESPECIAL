@@ -46,18 +46,21 @@ public interface ControladorRemote {
     ArrayList<UtilizadorPojo> listaOperadores();
     
     //Companhia
-    boolean registaCompanhia(CompanhiaPojo companhiaPojo);
+    boolean registarCompanhia(CompanhiaPojo companhiaPojo);
     boolean editarCompanhia(CompanhiaPojo companhiaPojo);
+    boolean excluirCompanhia(CompanhiaPojo companhiaPojo);
     ArrayList<CompanhiaPojo> listaCompanhias();
     
     //Agencia
     boolean registarAgencia(AgenciaPojo agenciaPojo);
     boolean editarAgencia(AgenciaPojo agenciaPojo);
+    boolean excluirAgencia(AgenciaPojo agenciaPojo);
     ArrayList<AgenciaPojo> listaAgencias();
     
     //Local
     boolean registarLocal(LocalPojo localPojo);
     boolean editarLocal(LocalPojo localPojo);
+    boolean excluirLocal(LocalPojo localPojo);
     ArrayList<LocalPojo> listaLocais();
     
     //voo
