@@ -6,6 +6,7 @@
 package logica;
 
 
+import entidade.Agencia;
 import entidade.Companhia;
 import entidade.Local;
 import entidade.Utilizador;
@@ -199,18 +200,136 @@ public class Controlador implements ControladorRemote {
     public UtilizadorPojo selecionarUtilizador(int id) {
         return util.converteEntityToPojo.converteUtilizadorToUtilizadorPojo(utilizadorFacade.getUtilizador(id));
     }
-    
-    /*
-    //Companhia
-    public boolean registaCompanhia(CompanhiaPojo companhiaPojo){
- 
+   
+
+    @Override
+    public boolean registarCompanhia(CompanhiaPojo companhiaPojo) {
+        try {
+             Companhia entidadeAactualizar = util.convertePojoToEntity.converteCompanhiaPojoToCompanhia(companhiaPojo);
+
+            if (entidadeAactualizar == null) {
+                return false;
+            }
+           
+            companhiaFacade.editarCompanhia(entidadeAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
     }
     
+    //voos
     
-    public boolean editarCompanhia(CompanhiaPojo companhiaPojo);
-    public boolean apagaCompanhia(int idCompanhia){
-    try {
-            Companhia companhiaAapagar = companhiaFacade.getCompanhia(idCompanhia);
+    @Override
+    public ArrayList<VooPojo> listaVoos() {
+        return util.converteEntityToPojo.converteListaDeVooToVooPojo(vooFacade.getAllVoos()); 
+    }
+
+    @Override
+    public boolean editarCompanhia(CompanhiaPojo companhiaPojo) {
+      try {
+             Companhia entidadeAactualizar = util.convertePojoToEntity.converteCompanhiaPojoToCompanhia(companhiaPojo);
+
+            if (entidadeAactualizar == null) {
+                return false;
+            }
+
+            companhiaFacade.editarCompanhia(entidadeAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public ArrayList<CompanhiaPojo> listaCompanhias() {
+        return util.converteEntityToPojo.converteListaDeCompanhiaToCompanhiaPojo(companhiaFacade.getAllCompanhias()); 
+    }
+
+    @Override
+    public boolean registarAgencia(AgenciaPojo agenciaPojo) {
+          try {
+             Agencia entidadeAactualizar = util.convertePojoToEntity.converteAgenciaPojoToAgencia(agenciaPojo);
+
+            if (entidadeAactualizar == null) {
+                return false;
+            }
+           
+            agenciaFacade.editarAgencia(entidadeAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean editarAgencia(AgenciaPojo agenciaPojo) {
+        try {
+             Agencia entidadeAactualizar = util.convertePojoToEntity.converteAgenciaPojoToAgencia(agenciaPojo);
+
+            if (entidadeAactualizar == null) {
+                return false;
+            }
+
+            agenciaFacade.editarAgencia(entidadeAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public ArrayList<AgenciaPojo> listaAgencias() {
+        return util.converteEntityToPojo.converteListaDeAgenciaToAgenciaPojo(agenciaFacade.getAllAgencias()); 
+    }
+
+    @Override
+    public boolean registarLocal(LocalPojo localPojo) {
+          try {
+             Local entidadeAactualizar = util.convertePojoToEntity.converteLocalPojoToLocal(localPojo);
+
+            if (entidadeAactualizar == null) {
+                return false;
+            }
+           
+            localFacade.editarLocal(entidadeAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean editarLocal(LocalPojo localPojo) {
+     try {
+             Local entidadeAactualizar = util.convertePojoToEntity.converteLocalPojoToLocal(localPojo);
+
+            if (entidadeAactualizar == null) {
+                return false;
+            }
+
+            localFacade.editarLocal(entidadeAactualizar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public ArrayList<LocalPojo> listaLocais() {
+        return util.converteEntityToPojo.converteListaDeLocalToLocalPojo(localFacade.getAllLocais()); 
+    }
+
+    @Override
+    public boolean excluirCompanhia(CompanhiaPojo companhiaPojo) {
+        try {
+            Companhia companhiaAapagar = companhiaFacade.getCompanhia(companhiaPojo.getIdCompanhia());
 
             if (companhiaAapagar == null) {
                 return false;
@@ -223,62 +342,39 @@ public class Controlador implements ControladorRemote {
         }
 
         return true;
-    
-    }
-    public ArrayList<CompanhiaPojo> getCompanhias();
-*/
-
-    @Override
-    public boolean registaCompanhia(CompanhiaPojo companhiaPojo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    //voos
-    
-    @Override
-    public ArrayList<VooPojo> listaVoos() {
-        return util.converteEntityToPojo.converteListaDeVooToVooPojo(vooFacade.getAllVoos()); 
     }
 
     @Override
-    public boolean editarCompanhia(CompanhiaPojo companhiaPojo) {
-   
-        return false;
+    public boolean excluirAgencia(AgenciaPojo agenciaPojo) {
+       try {
+            Agencia agenciaaAapagar = agenciaFacade.getAgencia(agenciaPojo.getIdAgencia());
+
+            if (agenciaaAapagar == null) {
+                return false;
+            }
+          
+            agenciaFacade.excluirAgencia(agenciaaAapagar);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
-    public ArrayList<CompanhiaPojo> listaCompanhias() {
-        return util.converteEntityToPojo.converteListaDeCompanhiaToCompanhiaPojo(companhiaFacade.getAllCompanhias()); 
-    }
+    public boolean excluirLocal(LocalPojo localPojo) {
+         try {
+            Local localAapagar = localFacade.getLocal(localPojo.getIdLocal());
 
-    @Override
-    public boolean registarAgencia(AgenciaPojo agenciaPojo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+            if (localAapagar == null) {
+                return false;
+            }
+          
+            localFacade.excluirLocal(localAapagar);
+        } catch (Exception e) {
+            return false;
+        }
 
-    @Override
-    public boolean editarAgencia(AgenciaPojo agenciaPojo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<AgenciaPojo> listaAgencias() {
-        return util.converteEntityToPojo.converteListaDeAgenciaToAgenciaPojo(agenciaFacade.getAllAgencias()); 
-    }
-
-    @Override
-    public boolean registarLocal(LocalPojo localPojo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean editarLocal(LocalPojo localPojo) {
-     
-        return false;
-    }
-
-    @Override
-    public ArrayList<LocalPojo> listaLocais() {
-        return util.converteEntityToPojo.converteListaDeLocalToLocalPojo(localFacade.getAllLocais()); 
+        return true;
     }
 }
