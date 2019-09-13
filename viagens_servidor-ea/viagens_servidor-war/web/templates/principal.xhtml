@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        
+    <style>
+        body,h1 {font-family: "Raleway", Arial, sans-serif}
+        h1 {letter-spacing: 6px}
+        .w3-row-padding img {margin-bottom: 1px}
+    </style>
+    
+        
+    <h:head>
+        
+        <div style="text-align: right; padding: 0px 10px;">
+            <ui:insert name="logar_label">
+
+            </ui:insert>
+        </div>
+        
+        
+        <div id="cabecalho" class="w3-center w3-opacity" style="padding:50px 16px; background-image: url('../resources/capa.jpg'); background-size: 100%">
+        
+        <h1 class="w3-xxxlarge">VOOS PD 18/19</h1>
+        
+        <div class="w3-padding-32">
+          <div class="w3-bar w3-border">
+              <ui:insert name="menu">
+
+              </ui:insert>
+          </div>
+        </div>
+        </div>
+        
+    </h:head>
+        
+    <h:body>
+        <div id ="conteudo" class="w3-light-grey w3-row-padding w3-container" style="padding-top: 70px; padding-bottom: 9%">
+          <div class="w3-content">
+            <div class="w3-center">
+                <h1 class="w3-xlarge" style="background-image: url('../resources/capa.jpg')">
+                    <ui:insert name="body-subtitle">Default SubTitle</ui:insert>
+                </h1>
+              <div class="w3-center">
+                <ui:insert name="body-content">Default content</ui:insert>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div id="rodape" class="w3-container w3-padding-10 w3-center w3-large"> 
+            <p>Kristhian Simões e Sérgio Cruz</p>
+        </div>
+    </h:body>
+        
+</html>
+
+
+
